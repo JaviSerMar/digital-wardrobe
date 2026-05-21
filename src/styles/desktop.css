@@ -1,0 +1,111 @@
+/* DESKTOP GRID */
+
+.desktop-grid {
+  position: absolute;
+  top: 62px;
+  left: 48px;
+  right: 36px;
+  bottom: 32px;
+
+  display: grid;
+  grid-template-columns: repeat(14, 86px);
+  grid-template-rows: repeat(7, 96px);
+  gap: 10px 20px;
+
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.desktop-item {
+  width: 86px;
+  height: 86px;
+  padding: 4px 3px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: white;
+  cursor: grab;
+  text-align: center;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  pointer-events: auto;
+  user-select: none;
+  touch-action: none;
+}
+
+.desktop-item:active {
+  cursor: grabbing;
+}
+
+.desktop-item.is-dragging {
+  opacity: 0.65;
+  cursor: grabbing;
+}
+
+.desktop-item-content {
+  padding: 4px 6px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.desktop-item:hover .desktop-item-content {
+  background: rgba(40, 120, 255, 0.22);
+}
+
+.desktop-item-icon {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 2px;
+  filter: drop-shadow(0 7px 9px rgba(0, 0, 0, 0.22));
+}
+
+.desktop-item span {
+  display: block;
+  max-width: 110px;
+  font-size: 11px;
+  line-height: 1.15;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.desktop-item-app .desktop-item-icon {
+  width: 62px;
+  height: 62px;
+}
+
+.desktop-item-note .desktop-item-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.desktop-item-icon-cooking {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+  margin-bottom: 2px;
+}
+
+/* FLOATING WINDOWS */
+
+.desktop-floating-layer {
+  position: absolute;
+  inset: 26px 0 0 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.floating-window {
+  position: absolute;
+  pointer-events: auto;
+}

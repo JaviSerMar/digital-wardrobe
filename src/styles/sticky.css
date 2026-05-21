@@ -1,0 +1,166 @@
+/* STICKY NOTES */
+
+.sticky-window {
+  position: absolute;
+  background: #ffe77b;
+  color: #141414;
+  pointer-events: auto;
+  border: 1px solid #ffd000;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  user-select: none;
+}
+
+.sticky-window-header {
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 7px;
+  background: #eccd43;
+  border-bottom: 1px solid #ffd000;
+  cursor: grab;
+  touch-action: none;
+}
+
+.sticky-window-header:active {
+  cursor: grabbing;
+}
+
+.sticky-window-header-left,
+.sticky-window-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.sticky-window-header-right {
+  gap: 8px;
+}
+
+.sticky-window-header img {
+  width: 10px;
+  height: 10px;
+  display: block;
+}
+
+.sticky-window-close {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sticky-window-close img {
+  width: 10px;
+  height: 10px;
+  display: block;
+}
+
+.sticky-window-close::after {
+  content: "×";
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: #8c761f;
+  font-size: 10px;
+  line-height: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+.sticky-window-close:hover::after {
+  display: flex;
+}
+
+/* WELCOME NOTE */
+
+.welcome-window-content {
+  height: calc(100% - 15px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px 12px 12px;
+  overflow: hidden;
+}
+
+.welcome-window-image {
+  width: 105px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+  margin-left: -4px;
+  filter: contrast(1.05);
+}
+
+.welcome-window-text {
+  flex: 1;
+  min-width: 0;
+  color: #4c4c4c;
+  font-family: "Courier New", monospace;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1.45;
+  margin-left: -4px;
+  white-space: nowrap;
+}
+
+.welcome-window-text p {
+  margin: 0;
+}
+
+/* PROFILE NOTE */
+
+.profile-window-content {
+  height: calc(100% - 15px);
+  padding: 10px 22px 8px 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 4px;
+  overflow: hidden;
+}
+
+.profile-window-text {
+  color: #4c4c4c;
+  font-family: "Courier New", monospace;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1.35;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-window-text p {
+  margin: 0 0 2px;
+}
+
+.profile-window-image {
+  width: 215px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin-left: 2px;
+  align-self: flex-end;
+  transform: translateY(8px);
+}
+
+.welcome-window-text strong,
+.profile-window-text strong {
+  font-weight: 800;
+  color: #111;
+  text-shadow:
+    0.2px 0 0 #111,
+    -0.2px 0 0 #111;
+}

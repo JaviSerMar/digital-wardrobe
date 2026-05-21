@@ -1,0 +1,234 @@
+/* FOLDER WINDOWS */
+
+.folder-window {
+  background: rgba(246, 246, 246, 0.96);
+  color: #111;
+  border: 1px solid rgba(160, 160, 160, 0.55);
+  border-radius: 18px;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.32);
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  user-select: none;
+  backdrop-filter: blur(18px);
+}
+
+.folder-window-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.folder-header {
+  width: 100%;
+  height: 52px;
+  display: flex;
+  align-items: stretch;
+  background: rgba(248, 248, 248, 0.95);
+  border-bottom: 1px solid rgba(210, 210, 210, 0.75);
+  overflow: hidden;
+}
+
+.folder-titlebar {
+  width: 330px;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(248, 248, 248, 0.95);
+}
+
+.folder-window-buttons {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-left: 14px;
+  position: relative;
+  z-index: 2;
+}
+
+.folder-window-button {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  cursor: default;
+}
+
+.folder-close {
+  position: relative;
+  background: #ff5f57;
+}
+
+.folder-close::after {
+  content: "×";
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: rgba(90, 0, 0, 0.65);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.folder-close:hover::after {
+  display: flex;
+}
+
+.folder-minimize {
+  background: #ffbd2e;
+  pointer-events: none;
+}
+
+.folder-maximize {
+  background: #28c840;
+  pointer-events: none;
+}
+
+.folder-navigation {
+  display: flex;
+  align-items: center;
+  margin-left: 17px;
+  height: 28px;
+  padding: 0 4px;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 999px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.folder-nav-button {
+  width: 23px;
+  height: 23px;
+  border: 0;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 21px;
+  line-height: 1;
+  padding: 0;
+  cursor: default;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.folder-nav-button:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.folder-nav-divider {
+  width: 1px;
+  height: 15px;
+  margin: 0 3px;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.folder-title {
+  margin: 0 0 0 8px;
+  font-size: 14px;
+  font-weight: 650;
+  color: #4d4d4d;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.folder-toolbar-image {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center right;
+  pointer-events: none;
+  user-select: none;
+  padding-right: 4px;
+}
+
+.folder-main {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.folder-sidebar {
+  width: 150px;
+  padding: 8px 10px 16px;
+  background: rgba(236, 239, 241, 0.78);
+  border-right: 1px solid rgba(210, 210, 210, 0.6);
+  color: rgba(0, 0, 0, 0.72);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.folder-sidebar p {
+  margin: 0 0 4px;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.folder-sidebar-section {
+  margin-top: 8px !important;
+  margin-bottom: 1px !important;
+  color: rgba(0, 0, 0, 0.42);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.folder-sidebar-system {
+  margin-top: 20px !important;
+  margin-bottom: 1px !important;
+}
+
+.folder-sidebar .is-selected {
+  background: rgba(210, 213, 216, 0.8);
+}
+
+.folder-content {
+  flex: 1;
+  padding: 34px 42px;
+  display: flex;
+  align-content: flex-start;
+  align-items: flex-start;
+  gap: 34px 44px;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.folder-item {
+  width: 86px;
+  padding: 6px 4px;
+  border: 0;
+  background: transparent;
+  color: #111;
+  text-align: center;
+  font-size: 11px;
+  cursor: default;
+  border-radius: 7px;
+}
+
+.folder-item:hover {
+  background: rgba(40, 120, 255, 0.16);
+}
+
+.folder-item img {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 4px;
+}
+
+.folder-item span {
+  display: block;
+  white-space: nowrap;
+}
