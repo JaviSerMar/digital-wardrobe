@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 const initialDesktopItems = [
@@ -40,7 +40,7 @@ const initialDesktopItems = [
     label: "papelera",
     icon: "/icons/papelera.png",
     x: 0,
-    y: 4,
+    y: 5,
   },
   {
     id: "terminal",
@@ -81,6 +81,14 @@ const initialDesktopItems = [
     icon: "/icons/cocinando.png",
     x: 13,
     y: 0,
+  },
+  {
+    id: "digital-wardrobe",
+    type: "app",
+    label: "digital_wardrobe",
+    icon: "/icons/iconoDigitalWardrobe.png",
+    x: 0,
+    y: 4,
   },
 ];
 
@@ -124,18 +132,181 @@ const documentWindowsData = {
     width: 760,
     height: 650,
   },
+  "velaris-readme": {
+    id: "velaris-readme-window",
+    title: "README.txt",
+    type: "document",
+    left: 360,
+    top: 90,
+    width: 620,
+    height: 590,
+  },
 };
 
-function DocumentHeader({ title, onClose, onDragStart, onDragMove, onDragEnd }) {
+const terminalWindowsData = {
+  terminal: {
+    id: "terminal-window",
+    title: "terminal",
+    type: "terminal",
+    left: 360,
+    top: 140,
+    width: 620,
+    height: 380,
+  },
+};
+
+const folderWindowsData = {
+  projects: {
+    id: "projects-window",
+    title: "proyectos",
+    type: "folder-window",
+    currentFolder: "projects",
+    left: 260,
+    top: 90,
+    width: 760,
+    height: 430,
+    items: [
+      {
+        id: "velaris-folder",
+        type: "folder",
+        label: "velaris",
+        icon: "/icons/folder.png",
+        targetFolder: "velaris",
+      },
+      {
+        id: "airmonitor-folder",
+        type: "folder",
+        label: "airmonitor",
+        icon: "/icons/folder.png",
+        targetFolder: "airmonitor",
+      },
+      {
+        id: "bancotech-folder",
+        type: "folder",
+        label: "bancotech",
+        icon: "/icons/folder.png",
+        targetFolder: "bancotech",
+      },
+    ],
+  },
+
+  skills: {
+    id: "skills-window",
+    title: "skills",
+    type: "folder-window",
+    left: 290,
+    top: 120,
+    width: 760,
+    height: 430,
+    items: [
+      {
+        id: "habilidades-file",
+        label: "habilidades.txt",
+        icon: "/icons/archivoTxt.png",
+      },
+    ],
+  },
+
+  contact: {
+    id: "contact-window",
+    title: "@contacto",
+    type: "folder-window",
+    left: 320,
+    top: 150,
+    width: 760,
+    height: 430,
+    items: [
+      {
+        id: "email-file",
+        label: "email.txt",
+        icon: "/icons/archivoTxt.png",
+      },
+      {
+        id: "github-file",
+        label: "github.url",
+        icon: "/icons/archivoTxt.png",
+      },
+      {
+        id: "linkedin-file",
+        label: "linkedin.url",
+        icon: "/icons/archivoTxt.png",
+      },
+    ],
+  },
+};
+
+const projectFolderScreens = {
+  velaris: {
+    title: "velaris",
+    items: [
+      {
+        id: "velaris-readme",
+        label: "README.txt",
+        icon: "/icons/archivoTxt.png",
+        openWindowKey: "velaris-readme",
+      },
+      {
+        id: "velaris-stack",
+        label: "stack.txt",
+        icon: "/icons/archivoTxt.png",
+      },
+      {
+        id: "velaris-media",
+        label: "capturas",
+        icon: "/icons/folder.png",
+      },
+    ],
+  },
+
+  airmonitor: {
+    title: "airmonitor",
+    items: [
+      {
+        id: "airmonitor-readme",
+        label: "README.txt",
+        icon: "/icons/archivoTxt.png",
+      },
+      {
+        id: "airmonitor-stack",
+        label: "stack.txt",
+        icon: "/icons/archivoTxt.png",
+      },
+      {
+        id: "airmonitor-media",
+        label: "capturas",
+        icon: "/icons/folder.png",
+      },
+    ],
+  },
+
+  bancotech: {
+    title: "bancotech",
+    items: [
+      {
+        id: "bancotech-readme",
+        label: "README.txt",
+        icon: "/icons/archivoTxt.png",
+      },
+      {
+        id: "bancotech-stack",
+        label: "stack.txt",
+        icon: "/icons/archivoTxt.png",
+      },
+      {
+        id: "bancotech-media",
+        label: "capturas",
+        icon: "/icons/folder.png",
+      },
+    ],
+  },
+};
+
+
+
+function DocumentHeader({ title, onClose }) {
   return (
     <div className="document-header">
-      <div
-        className="document-titlebar"
-        onPointerDown={onDragStart}
-        onPointerMove={onDragMove}
-        onPointerUp={onDragEnd}
-        onPointerCancel={onDragEnd}
-      >
+      <div className="document-titlebar">
         <div className="document-window-buttons">
           <button
             className="document-window-button document-close"
@@ -179,6 +350,48 @@ function DocumentHeader({ title, onClose, onDragStart, onDragMove, onDragEnd }) 
   );
 }
 
+
+
+function formatTopbarDate(date) {
+  const days = [
+    "domingo",
+    "lunes",
+    "martes",
+    "miércoles",
+    "jueves",
+    "viernes",
+    "sábado",
+  ];
+
+  const months = [
+    "enero",
+    "febrero",
+    "marzo",
+    "abril",
+    "mayo",
+    "junio",
+    "julio",
+    "agosto",
+    "septiembre",
+    "octubre",
+    "noviembre",
+    "diciembre",
+  ];
+
+  const dayName = days[date.getDay()];
+  const dayNumber = date.getDate();
+  const monthName = months[date.getMonth()];
+
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+
+  return `${dayName} ${dayNumber} ${monthName} ${hours}:${minutes}`;
+}
+
+
+
+
+
 function App() {
   const gridRef = useRef(null);
   const floatingLayerRef = useRef(null);
@@ -193,19 +406,34 @@ function App() {
   );
   const [draggingWindow, setDraggingWindow] = useState(null);
 
+  const [currentDate, setCurrentDate] = useState(() => new Date());
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setCurrentDate(new Date());
+    }, 1000);
+
+    return () => {
+      window.clearInterval(intervalId);
+    };
+  }, []);
+
   const [windowPositions, setWindowPositions] = useState(() =>
-    Object.fromEntries(
-      [...Object.values(stickyNotesData), ...Object.values(documentWindowsData)].map(
-        (window) => [
-          window.id,
-          {
-            left: window.left,
-            top: window.top,
-          },
-        ]
-      )
-    )
-  );
+  Object.fromEntries(
+    [
+      ...Object.values(stickyNotesData),
+      ...Object.values(documentWindowsData),
+      ...Object.values(terminalWindowsData),
+      ...Object.values(folderWindowsData),
+    ].map((window) => [
+      window.id,
+      {
+        left: window.left,
+        top: window.top,
+      },
+    ])
+  )
+);
 
   const columns = 14;
   const rows = 7;
@@ -270,7 +498,11 @@ function App() {
   function handleItemDoubleClick(item) {
     const noteData = stickyNotesData[item.id];
     const documentData = documentWindowsData[item.id];
-    const windowData = noteData || documentData;
+    const terminalData = terminalWindowsData[item.id];
+    const folderData = folderWindowsData[item.id];
+
+
+    const windowData = noteData || documentData || terminalData || folderData;
 
     if (!windowData) return;
 
@@ -358,15 +590,67 @@ function App() {
     }
   }
 
-
-
   function closeWindow(windowId) {
     setOpenWindows((currentWindows) =>
       currentWindows.filter((currentWindow) => currentWindow.id !== windowId)
     );
   }
 
+  function openFolderScreen(windowId, targetFolder) {
+    const folderScreen = projectFolderScreens[targetFolder];
 
+    if (!folderScreen) return;
+
+    setOpenWindows((currentWindows) =>
+      currentWindows.map((window) =>
+        window.id === windowId
+          ? {
+              ...window,
+              title: `proyectos / ${folderScreen.title}`,
+              currentFolder: targetFolder,
+              items: folderScreen.items,
+            }
+          : window
+      )
+    );
+  }
+
+  function openWindowByKey(windowKey) {
+    const windowData =
+      documentWindowsData[windowKey] ||
+      terminalWindowsData[windowKey] ||
+      folderWindowsData[windowKey];
+
+    if (!windowData) return;
+
+    setOpenWindows((currentWindows) => {
+      const alreadyOpen = currentWindows.some(
+        (window) => window.id === windowData.id
+      );
+
+      if (alreadyOpen) return currentWindows;
+
+      const savedPosition = windowPositions[windowData.id] ?? {
+        left: windowData.left,
+        top: windowData.top,
+      };
+
+      const maxZIndex = Math.max(
+        0,
+        ...currentWindows.map((window) => window.zIndex || 1)
+      );
+
+      return [
+        ...currentWindows,
+        {
+          ...windowData,
+          left: savedPosition.left,
+          top: savedPosition.top,
+          zIndex: maxZIndex + 1,
+        },
+      ];
+    });
+  }
 
   function bringWindowToFront(windowId) {
     setOpenWindows((currentWindows) => {
@@ -436,7 +720,7 @@ function App() {
           </button>
 
           <button className="topbar-item topbar-date">
-            lunes 18 mayo 15:56
+            {formatTopbarDate(currentDate)}
           </button>
         </div>
       </header>
@@ -479,8 +763,16 @@ function App() {
             className={`floating-window ${
               window.type === "document"
                 ? "document-window"
-                : `sticky-window sticky-window-${window.type}`
+                : window.type === "terminal"
+                  ? "terminal-window"
+                  : window.type === "folder-window"
+                    ? "folder-window"
+                    : `sticky-window sticky-window-${window.type}`
             }`}
+            onPointerDown={(event) => handleWindowPointerDown(event, window.id)}
+            onPointerMove={handleWindowPointerMove}
+            onPointerUp={handleWindowPointerUp}
+            onPointerCancel={() => setDraggingWindow(null)}
             style={{
               left: window.left,
               top: window.top,
@@ -489,16 +781,10 @@ function App() {
               zIndex: window.zIndex || 1,
             }}
           >
-            {window.type !== "document" && (
-              <div
-                className="sticky-window-header"
-                onPointerDown={(event) =>
-                  handleWindowPointerDown(event, window.id)
-                }
-                onPointerMove={handleWindowPointerMove}
-                onPointerUp={handleWindowPointerUp}
-                onPointerCancel={() => setDraggingWindow(null)}
-              >
+            {window.type !== "document" &&
+              window.type !== "terminal" &&
+              window.type !== "folder-window" && (
+              <div className="sticky-window-header">
                 <div className="sticky-window-header-left">
                   <img src="/icons/noteHeader/square-left.svg" alt="" />
                 </div>
@@ -582,18 +868,17 @@ function App() {
             )}
 
             {window.type === "document" && (
-              <div className="document-window-content">
-                <DocumentHeader
+                <div className="document-window-content">
+                                <DocumentHeader
                   title={window.title}
                   onClose={() => closeWindow(window.id)}
-                  onDragStart={(event) =>
-                    handleWindowPointerDown(event, window.id)
-                  }
-                  onDragMove={handleWindowPointerMove}
-                  onDragEnd={handleWindowPointerUp}
                 />
 
-                <div className="document-body">
+                <div
+                  className={`document-body ${
+                    window.id === "skills-file-window" ? "document-body-no-scroll" : ""
+                  }`}
+                >                
                   {window.id === "skills-file-window" && (
                     <pre className="document-code-text">{`              { skills }
                   ├── web / backend
@@ -628,6 +913,217 @@ function App() {
                   {window.id === "about-window" && (
                     <p>Contenido provisional del documento.</p>
                   )}
+
+                  {window.id === "velaris-readme-window" && (
+                    <article className="velaris-readme-content">
+                      <img
+                        className="velaris-readme-cover"
+                        src="/projects/velaris/turtlebotRectangular.png"
+                        alt="Velaris project preview"
+                        draggable="false"
+                      />
+
+                      <h1>VELARIS</h1>
+
+                      <p>
+                        <strong>Robot móvil autónomo de vigilancia</strong> para entornos tipo
+                        almacén.
+                      </p>
+
+                      <p>
+                        <strong>Velaris</strong> combina robótica, simulación, visión artificial y
+                        desarrollo web en un sistema capaz de patrullar un espacio, mostrar
+                        información en tiempo real y ser controlado desde una interfaz web.
+                      </p>
+
+                      <p>
+                        El robot funciona en un almacén simulado con <strong>Gazebo</strong>.{" "}
+                        <strong>ROS2</strong> coordina el sistema y <strong>Nav2</strong> permite
+                        la navegación autónoma por el mapa.
+                      </p>
+
+                      <p>
+                        Desde la web se puede ver la cámara, consultar el mapa, revisar el estado
+                        del robot, iniciar patrullas y enviar comandos de movimiento.
+                      </p>
+
+                      <p>
+                        También incorpora <strong>OpenCV</strong> para capturar y procesar imágenes
+                        durante las patrullas, preparando la base para futuras detecciones mediante
+                        inteligencia artificial.
+                      </p>
+
+                      <h2>TECNOLOGÍAS</h2>
+
+                      <p>
+                        <strong>
+                          Python · ROS2 · Nav2 · Gazebo · RViz · OpenCV · Vite · WebSocket
+                          · AWS Cloud
+                        </strong>
+                      </p>
+                    </article>
+                  )}
+
+                </div>
+              </div>
+            )}
+
+            {window.type === "terminal" && (
+              <div className="terminal-window-content">
+                <div className="terminal-header">
+                  <div className="terminal-buttons">
+                    <button
+                      className="terminal-button terminal-close"
+                      type="button"
+                      onPointerDown={(event) => event.stopPropagation()}
+                      onClick={() => closeWindow(window.id)}
+                      aria-label="Cerrar terminal"
+                    />
+
+                    <button
+                      className="terminal-button terminal-minimize"
+                      type="button"
+                      aria-label="Minimizar"
+                    />
+
+                    <button
+                      className="terminal-button terminal-maximize"
+                      type="button"
+                      aria-label="Maximizar"
+                    />
+                  </div>
+
+                  <span className="terminal-title">terminal — [javier serrano]</span>
+                </div>
+
+                <div className="terminal-body">
+                  <p className="terminal-line">Last login: portfolio desktop</p>
+                  <p className="terminal-line">Type <span>help</span> to explore.</p>
+                  <p className="terminal-line"></p>
+                  <p className="terminal-line">
+                    <span className="terminal-prompt">javier@portfolio</span>:~$ help
+                  </p>
+                  <p className="terminal-line">available commands:</p>
+                  <p className="terminal-line">about · projects · skills · contact · clear</p>
+                  <p className="terminal-line"></p>
+                  <p className="terminal-line">
+                    <span className="terminal-prompt">javier@portfolio</span>:~$ <span className="terminal-cursor">_</span>
+                  </p>
+                </div>
+              </div>
+            )}
+            {window.type === "folder-window" && (
+              <div className="folder-window-content">
+                <div className="folder-header">
+                  <div className="folder-titlebar">
+                    <div className="folder-window-buttons">
+                      <button
+                        className="folder-window-button folder-close"
+                        type="button"
+                        onPointerDown={(event) => event.stopPropagation()}
+                        onClick={() => closeWindow(window.id)}
+                        aria-label="Cerrar carpeta"
+                      />
+
+                      <button
+                        className="folder-window-button folder-minimize"
+                        type="button"
+                        aria-label="Minimizar"
+                      />
+
+                      <button
+                        className="folder-window-button folder-maximize"
+                        type="button"
+                        aria-label="Maximizar"
+                      />
+                    </div>
+
+                    <div className="folder-navigation">
+                      <button
+                        className="folder-nav-button"
+                        type="button"
+                        onPointerDown={(event) => event.stopPropagation()}
+                        onClick={() => {
+                          if (
+                            window.id === "projects-window" &&
+                            window.currentFolder !== "projects"
+                          ) {
+                            const projectsRoot = folderWindowsData.projects;
+
+                            setOpenWindows((currentWindows) =>
+                              currentWindows.map((currentWindow) =>
+                                currentWindow.id === "projects-window"
+                                  ? {
+                                      ...currentWindow,
+                                      title: "proyectos",
+                                      currentFolder: "projects",
+                                      items: projectsRoot.items,
+                                    }
+                                  : currentWindow
+                              )
+                            );
+                          }
+                        }}
+                      >
+                        ‹
+                      </button>
+
+                      <div className="folder-nav-divider" />
+
+                      <button className="folder-nav-button" type="button">
+                        ›
+                      </button>
+                    </div>
+
+                    <h2 className="folder-title">{window.title}</h2>
+                  </div>
+
+                  <img
+                    className="folder-toolbar-image"
+                    src="/images/cabeceraCarpetas.png"
+                    alt=""
+                    draggable="false"
+                  />
+                </div>
+
+                <div className="folder-main">
+                  <aside className="folder-sidebar">
+                    <p className="folder-sidebar-section">Javier Serrano</p>
+                    <p>Proyectos</p>
+                    <p>Skills</p>
+                    <p>Contacto</p>
+                    <p>Sobre mí</p>
+
+                    <p className="folder-sidebar-section folder-sidebar-system">Sistema</p>
+                    <p className="is-selected">[portfolio]</p>
+                    <p>Archivo local</p>
+                    <p>Recursos</p>
+                  </aside>
+
+                  <div className="folder-content">
+                    {window.items.map((folderItem) => (
+                      <button
+                        className="folder-item"
+                        key={folderItem.id}
+                        onPointerDown={(event) => event.stopPropagation()}
+                        onDoubleClick={(event) => {
+                          event.stopPropagation();
+
+                          if (folderItem.targetFolder) {
+                            openFolderScreen(window.id, folderItem.targetFolder);
+                            return;
+                          }
+
+                          if (folderItem.openWindowKey) {
+                            openWindowByKey(folderItem.openWindowKey);
+                          }
+                        }}
+                      >
+                        <img src={folderItem.icon} alt="" draggable="false" />
+                        <span>{folderItem.label}</span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
