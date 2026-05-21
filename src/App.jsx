@@ -3,33 +3,33 @@ import "./App.css";
 
 const initialDesktopItems = [
   {
-    id: "rules",
+    id: "projects",
     type: "folder",
-    label: "reglas",
+    label: "proyectos",
     icon: "/icons/folder.png",
     x: 0,
     y: 0,
   },
   {
-    id: "socials",
+    id: "skills",
     type: "folder",
-    label: "@redes",
+    label: "skills",
     icon: "/icons/folder.png",
     x: 0,
     y: 1,
   },
   {
-    id: "playlist",
+    id: "contact",
     type: "folder",
-    label: "playlist",
+    label: "@contacto",
     icon: "/icons/folder.png",
     x: 0,
     y: 2,
   },
   {
-    id: "readme",
+    id: "about",
     type: "file",
-    label: "README.txt",
+    label: "sobre mi",
     icon: "/icons/archivoTxt.png",
     x: 0,
     y: 3,
@@ -43,51 +43,141 @@ const initialDesktopItems = [
     y: 4,
   },
   {
-    id: "game",
+    id: "terminal",
     type: "app",
-    label: "digital_wardrobe",
-    icon: "/icons/iconoDigitalWardrobe.png",
-    x: 7,
+    label: "terminal",
+    icon: "/icons/terminal.png",
+    x: 1,
     y: 2,
   },
   {
-    id: "sketch-note",
-    type: "note",
-    label: "sketch01",
-    icon: "/icons/stickyNote.png",
-    x: 9,
-    y: 1,
+    id: "skills-file",
+    type: "file",
+    label: "habilidades.txt",
+    icon: "/icons/archivoTxt.png",
+    x: 1,
+    y: 3,
   },
   {
-    id: "tasks-note",
+    id: "welcome-note",
     type: "note",
-    label: "tareas",
+    label: "bienvenida",
+    icon: "/icons/stickyNote.png",
+    x: 8,
+    y: 2,
+  },
+  {
+    id: "profile-note",
+    type: "note",
+    label: "profile.js",
     icon: "/icons/stickyNote.png",
     x: 9,
     y: 2,
+  },
+  {
+    id: "cooking",
+    type: "app",
+    label: "cocinando",
+    icon: "/icons/cocinando.png",
+    x: 13,
+    y: 0,
   },
 ];
 
 const stickyNotesData = {
-  "sketch-note": {
-    id: "sketch-note-window",
-    title: "sketch01",
-    type: "sketch",
+  "welcome-note": {
+    id: "welcome-note-window",
+    title: "bienvenida",
+    type: "welcome",
     left: 170,
-    top: 75,
-    width: 320,
-    height: 180,
+    top: 58,
+    width: 455,
+    height: 155,
   },
-  "tasks-note": {
-    id: "tasks-note-window",
-    title: "tareas",
-    type: "tasks",
-    left: 690,
-    top: 395,
-    width: 480,
-    height: 160,
+  "profile-note": {
+    id: "profile-note-window",
+    title: "profile.js",
+    type: "profile",
+    left: 620,
+    top: 360,
+    width: 540,
+    height: 190,
   },
 };
+
+const documentWindowsData = {
+  about: {
+    id: "about-window",
+    title: "sobre mi",
+    type: "document",
+    left: 300,
+    top: 120,
+    width: 760,
+    height: 430,
+  },
+  "skills-file": {
+    id: "skills-file-window",
+    title: "habilidades.txt",
+    type: "document",
+    left: 340,
+    top: 150,
+    width: 760,
+    height: 650,
+  },
+};
+
+function DocumentHeader({ title, onClose, onDragStart, onDragMove, onDragEnd }) {
+  return (
+    <div className="document-header">
+      <div
+        className="document-titlebar"
+        onPointerDown={onDragStart}
+        onPointerMove={onDragMove}
+        onPointerUp={onDragEnd}
+        onPointerCancel={onDragEnd}
+      >
+        <div className="document-window-buttons">
+          <button
+            className="document-window-button document-close"
+            type="button"
+            onPointerDown={(event) => event.stopPropagation()}
+            onClick={onClose}
+            aria-label="Cerrar ventana"
+          />
+
+          <button
+            className="document-window-button document-minimize"
+            type="button"
+            aria-label="Minimizar"
+          />
+
+          <button
+            className="document-window-button document-maximize"
+            type="button"
+            aria-label="Maximizar"
+          />
+        </div>
+
+        <div className="document-title">
+          <img
+            className="document-title-icon"
+            src="/icons/archivoTxt.png"
+            alt=""
+            draggable="false"
+          />
+          <span>{title} — [javier serrano]</span>
+        </div>
+      </div>
+
+      <img
+        className="document-toolbar-image"
+        src="/images/document-toolbar.png"
+        alt=""
+        draggable="false"
+      />
+    </div>
+  );
+}
 
 function App() {
   const gridRef = useRef(null);
@@ -95,22 +185,29 @@ function App() {
 
   const [desktopItems, setDesktopItems] = useState(initialDesktopItems);
   const [draggedItemId, setDraggedItemId] = useState(null);
-  const [openWindows, setOpenWindows] = useState([]);
+  const [openWindows, setOpenWindows] = useState(() =>
+    Object.values(stickyNotesData).map((window, index) => ({
+      ...window,
+      zIndex: index + 1,
+    }))
+  );
   const [draggingWindow, setDraggingWindow] = useState(null);
 
   const [windowPositions, setWindowPositions] = useState(() =>
     Object.fromEntries(
-      Object.values(stickyNotesData).map((note) => [
-        note.id,
-        {
-          left: note.left,
-          top: note.top,
-        },
-      ])
+      [...Object.values(stickyNotesData), ...Object.values(documentWindowsData)].map(
+        (window) => [
+          window.id,
+          {
+            left: window.left,
+            top: window.top,
+          },
+        ]
+      )
     )
   );
 
-  const columns = 12;
+  const columns = 14;
   const rows = 7;
   const cellWidth = 86;
   const cellHeight = 96;
@@ -142,9 +239,7 @@ function App() {
           item.id !== itemId && item.x === limitedX && item.y === limitedY
       );
 
-      if (isCellOccupied) {
-        return currentItems;
-      }
+      if (isCellOccupied) return currentItems;
 
       return currentItems.map((item) =>
         item.id === itemId
@@ -174,36 +269,44 @@ function App() {
 
   function handleItemDoubleClick(item) {
     const noteData = stickyNotesData[item.id];
+    const documentData = documentWindowsData[item.id];
+    const windowData = noteData || documentData;
 
-    if (!noteData) return;
+    if (!windowData) return;
 
     setOpenWindows((currentWindows) => {
       const alreadyOpen = currentWindows.some(
-        (window) => window.id === noteData.id
+        (window) => window.id === windowData.id
       );
 
-      if (alreadyOpen) {
-        return currentWindows;
-      }
+      if (alreadyOpen) return currentWindows;
 
-      const savedPosition = windowPositions[noteData.id] ?? {
-        left: noteData.left,
-        top: noteData.top,
+      const savedPosition = windowPositions[windowData.id] ?? {
+        left: windowData.left,
+        top: windowData.top,
       };
+
+      const maxZIndex = Math.max(
+        0,
+        ...currentWindows.map((window) => window.zIndex || 1)
+      );
 
       return [
         ...currentWindows,
         {
-          ...noteData,
+          ...windowData,
           left: savedPosition.left,
           top: savedPosition.top,
+          zIndex: maxZIndex + 1,
         },
       ];
     });
   }
 
   function handleWindowPointerDown(event, windowId) {
-    const windowElement = event.currentTarget.closest(".sticky-window");
+    bringWindowToFront(windowId);
+
+    const windowElement = event.currentTarget.closest(".floating-window");
 
     if (!windowElement) return;
 
@@ -255,6 +358,35 @@ function App() {
     }
   }
 
+
+
+  function closeWindow(windowId) {
+    setOpenWindows((currentWindows) =>
+      currentWindows.filter((currentWindow) => currentWindow.id !== windowId)
+    );
+  }
+
+
+
+  function bringWindowToFront(windowId) {
+    setOpenWindows((currentWindows) => {
+      const maxZIndex = Math.max(
+        ...currentWindows.map((window) => window.zIndex || 1)
+      );
+
+      return currentWindows.map((window) =>
+        window.id === windowId
+          ? {
+              ...window,
+              zIndex: maxZIndex + 1,
+            }
+          : window
+      );
+    });
+  }
+
+
+
   return (
     <main className="desktop">
       <header className="topbar">
@@ -263,16 +395,15 @@ function App() {
             <img
               className="topbar-logo"
               src="/icons/topbar/wardrobe_os1.png"
-              alt="Wardrobe OS"
+              alt="[portfolio]"
               draggable="false"
             />
           </button>
 
-          <button className="topbar-item topbar-title">Wardrobe OS</button>
+          <button className="topbar-item topbar-title">[portfolio]</button>
+          <button className="topbar-item">Proyectos</button>
           <button className="topbar-item">Archivo</button>
-          <button className="topbar-item">Edición</button>
-          <button className="topbar-item">Visualización</button>
-          <button className="topbar-item">Ventana</button>
+          <button className="topbar-item">Contacto</button>
           <button className="topbar-item">Ayuda</button>
         </div>
 
@@ -328,7 +459,9 @@ function App() {
           >
             <div className="desktop-item-content">
               <img
-                className="desktop-item-icon"
+                className={`desktop-item-icon ${
+                  item.id === "cooking" ? "desktop-item-icon-cooking" : ""
+                }`}
                 src={item.icon}
                 alt=""
                 draggable="false"
@@ -343,81 +476,159 @@ function App() {
         {openWindows.map((window) => (
           <article
             key={window.id}
-            className={`sticky-window sticky-window-${window.type}`}
+            className={`floating-window ${
+              window.type === "document"
+                ? "document-window"
+                : `sticky-window sticky-window-${window.type}`
+            }`}
             style={{
               left: window.left,
               top: window.top,
               width: window.width,
               height: window.height,
+              zIndex: window.zIndex || 1,
             }}
           >
-            <div
-              className="sticky-window-header"
-              onPointerDown={(event) =>
-                handleWindowPointerDown(event, window.id)
-              }
-              onPointerMove={handleWindowPointerMove}
-              onPointerUp={handleWindowPointerUp}
-              onPointerCancel={() => setDraggingWindow(null)}
-            >
-              <div className="sticky-window-header-left">
-                <img src="/icons/noteHeader/square-left.svg" alt="" />
+            {window.type !== "document" && (
+              <div
+                className="sticky-window-header"
+                onPointerDown={(event) =>
+                  handleWindowPointerDown(event, window.id)
+                }
+                onPointerMove={handleWindowPointerMove}
+                onPointerUp={handleWindowPointerUp}
+                onPointerCancel={() => setDraggingWindow(null)}
+              >
+                <div className="sticky-window-header-left">
+                  <img src="/icons/noteHeader/square-left.svg" alt="" />
+                </div>
+
+                <div className="sticky-window-header-right">
+                  <img src="/icons/noteHeader/triangle-right.svg" alt="" />
+
+                  <button
+                    className="sticky-window-close"
+                    onPointerDown={(event) => event.stopPropagation()}
+                    onClick={() => closeWindow(window.id)}
+                  >
+                    <img src="/icons/noteHeader/square-right.svg" alt="" />
+                  </button>
+                </div>
               </div>
+            )}
 
-              <div className="sticky-window-header-right">
-                <img src="/icons/noteHeader/triangle-right.svg" alt="" />
-
-                <button
-                  className="sticky-window-close"
-                  onPointerDown={(event) => event.stopPropagation()}
-                  onClick={() =>
-                    setOpenWindows((currentWindows) =>
-                      currentWindows.filter(
-                        (currentWindow) => currentWindow.id !== window.id
-                      )
-                    )
-                  }
-                >
-                  <img src="/icons/noteHeader/square-right.svg" alt="" />
-                </button>
-              </div>
-            </div>
-
-            {window.type === "sketch" && (
-              <div className="sketch-window-content">
+            {window.type === "welcome" && (
+              <div className="welcome-window-content">
                 <img
-                  className="sketch-character"
+                  className="welcome-window-image"
                   src="/images/talkingHeads.png"
                   alt=""
                   draggable="false"
                 />
 
-                <div className="sketch-window-text">
-                  <p>// SKETCH_01</p>
-                  <p>// ----------------------</p>
-                  <p>// Boceto de personaje</p>
-                  <p>// pendiente de integrar</p>
+                <div className="welcome-window-text">
+                  <p>/**</p>
+                  <p> * <strong>Bienvenido a mi [portfolio]</strong></p>
+                  <p> *</p>
+                  <p> * Soy <strong>Javier Serrano</strong>,</p>
+                  <p>
+                    {" "}
+                    * estudiante de <strong>Tecnologías Interactivas</strong> en
+                    la UPV.
+                  </p>
+                  <p> *</p>
+                  <p> * Haz clic en los iconos para explorar el escritorio.</p>
+                  <p> */</p>
                 </div>
               </div>
             )}
 
-            {window.type === "tasks" && (
-              <div className="tasks-window-content">
-                <div className="tasks-window-text">
-                  <p>/* TAREAS</p>
-                  <p>--------------------------</p>
-                  <p>Abrir Digital Wardrobe</p>
-                  <p>Revisar iconos</p>
-                  <p>Pulir animaciones</p>
-                  <p>*/</p>
+            {window.type === "profile" && (
+              <div className="profile-window-content">
+                <div className="profile-window-text">
+                  <p>/**</p>
+                  <p> * [profile.js]</p>
+                  <p> *</p>
+                  <p>
+                    {" "}
+                    * <strong>Desarrollador de software</strong> en formación,
+                  </p>
+                  <p>
+                    {" "}
+                    * interesado en crear <strong>sistemas interactivos</strong>
+                  </p>
+                  <p>
+                    {" "}
+                    * que conecten <strong>web</strong>, <strong>datos</strong>,
+                    sensores y robótica.
+                  </p>
+                  <p> *</p>
+                  <p> * Trabajo con tecnologías frontend, backend,</p>
+                  <p>
+                    {" "}
+                    * IoT, <strong>visión artificial</strong> y entornos
+                    simulados.
+                  </p>
+                  <p> */</p>
                 </div>
 
                 <img
-                  className="tasks-window-image"
+                  className="profile-window-image"
                   src="/images/caballoSticky.png"
                   alt=""
                   draggable="false"
                 />
+              </div>
+            )}
+
+            {window.type === "document" && (
+              <div className="document-window-content">
+                <DocumentHeader
+                  title={window.title}
+                  onClose={() => closeWindow(window.id)}
+                  onDragStart={(event) =>
+                    handleWindowPointerDown(event, window.id)
+                  }
+                  onDragMove={handleWindowPointerMove}
+                  onDragEnd={handleWindowPointerUp}
+                />
+
+                <div className="document-body">
+                  {window.id === "skills-file-window" && (
+                    <pre className="document-code-text">{`              { skills }
+                  ├── web / backend
+                  │   ├── React
+                  │   ├── Node.js
+                  │   ├── API REST
+                  │   └── WebSocket
+                  │
+                  ├── IA / robótica
+                  │   ├── ROS2
+                  │   ├── Nav2
+                  │   └── OpenCV
+                  │
+                  ├── datos / cloud
+                  │   ├── PostgreSQL
+                  │   ├── Firebase
+                  │   └── AWS
+                  │
+                  ├── lenguajes
+                  │   ├── Python
+                  │   ├── Java
+                  │   ├── C++
+                  │   └── JavaScript
+                  │
+                  └── tools
+                      ├── Docker
+                      ├── Git
+                      ├── Linux
+                      └── Figma`}</pre>
+                  )}
+
+                  {window.id === "about-window" && (
+                    <p>Contenido provisional del documento.</p>
+                  )}
+                </div>
               </div>
             )}
           </article>

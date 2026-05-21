@@ -3,6 +3,7 @@
 }
 
 body {
+  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -110,7 +111,7 @@ button {
   bottom: 32px;
 
   display: grid;
-  grid-template-columns: repeat(12, 86px);
+  grid-template-columns: repeat(14, 86px);
   grid-template-rows: repeat(7, 96px);
   gap: 10px 20px;
 
@@ -179,27 +180,6 @@ button {
   text-align: center;
 }
 
-/* APP ICON */
-
-.app-icon {
-  width: 54px;
-  height: 54px;
-  margin: 0 auto 2px;
-  display: grid;
-  place-items: center;
-  border-radius: 13px;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.35), transparent),
-    linear-gradient(135deg, #1c1c1e, #555);
-  color: white;
-  font-size: 28px;
-  font-weight: 800;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.35),
-    0 10px 22px rgba(0, 0, 0, 0.28);
-}
-
-
 .desktop-item-app .desktop-item-icon {
   width: 62px;
   height: 62px;
@@ -210,7 +190,16 @@ button {
   height: 48px;
 }
 
+.desktop-item-icon-cooking {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+  margin-bottom: 2px;
+}
 
+/* FLOATING WINDOWS */
 
 .desktop-floating-layer {
   position: absolute;
@@ -218,6 +207,13 @@ button {
   pointer-events: none;
   z-index: 5;
 }
+
+.floating-window {
+  position: absolute;
+  pointer-events: auto;
+}
+
+/* STICKY NOTES */
 
 .sticky-window {
   position: absolute;
@@ -229,6 +225,7 @@ button {
   overflow: hidden;
   font-family: "Courier New", monospace;
   font-size: 12px;
+  user-select: none;
 }
 
 .sticky-window-header {
@@ -239,6 +236,12 @@ button {
   padding: 0 7px;
   background: #eccd43;
   border-bottom: 1px solid #ffd000;
+  cursor: grab;
+  touch-action: none;
+}
+
+.sticky-window-header:active {
+  cursor: grabbing;
 }
 
 .sticky-window-header-left,
@@ -294,17 +297,19 @@ button {
   display: flex;
 }
 
-.sketch-window-content {
+/* WELCOME NOTE */
+
+.welcome-window-content {
   height: calc(100% - 15px);
   display: flex;
   align-items: center;
-  gap: 0px;
-  padding: 12px 14px 16px 12px;
+  gap: 6px;
+  padding: 10px 12px 12px 12px;
   overflow: hidden;
 }
 
-.sketch-character {
-  width: 120px;
+.welcome-window-image {
+  width: 105px;
   height: auto;
   object-fit: contain;
   display: block;
@@ -313,68 +318,225 @@ button {
   filter: contrast(1.05);
 }
 
-.sketch-window-text {
+.welcome-window-text {
   flex: 1;
   min-width: 0;
-  color: #4C4C4C;
+  color: #4c4c4c;
   font-family: "Courier New", monospace;
   font-weight: 600;
-  font-size: 12px;
-  line-height: 1.35;
-  margin-left: -6px;
+  font-size: 10px;
+  line-height: 1.45;
+  margin-left: -4px;
   white-space: nowrap;
-  transform: translateY(-16px);
 }
 
-.sketch-window-text p {
+.welcome-window-text p {
   margin: 0;
 }
 
-.tasks-window-content {
+/* PROFILE NOTE */
+
+.profile-window-content {
   height: calc(100% - 15px);
-  padding: 12px 34px 12px 20px;
+  padding: 10px 22px 8px 20px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
-  gap: 8px;
+  gap: 4px;
   overflow: hidden;
 }
 
-.tasks-window-text {
-  color: #4C4C4C;
+.profile-window-text {
+  color: #4c4c4c;
   font-family: "Courier New", monospace;
   font-weight: 600;
-  font-size: 12px;
-  line-height: 1.45;
+  font-size: 10px;
+  line-height: 1.35;
   white-space: nowrap;
-  flex-shrink: 0;
+  flex: 1;
+  min-width: 0;
 }
 
-.tasks-window-text p {
-  margin: 0 0 4px;
+.profile-window-text p {
+  margin: 0 0 2px;
 }
 
-.tasks-window-image {
-  width: 220px;
+.profile-window-image {
+  width: 215px;
   height: auto;
   object-fit: contain;
   display: block;
-  margin-left: 4px;
-  margin-right: 18px;
-  transform: translateY(-8px);
+  margin-left: 2px;
+  align-self: flex-end;
+  transform: translateY(8px);
 }
 
+.welcome-window-text strong,
+.profile-window-text strong {
+  font-weight: 800;
+  color: #111;
+  text-shadow:
+    0.2px 0 0 #111,
+    -0.2px 0 0 #111;
+}
 
-.sticky-window {
-  position: absolute;
+/* DOCUMENT WINDOWS */
+
+.document-window {
+  background: #f6f6f6;
+  color: #111;
+  border: 1px solid rgba(120, 120, 120, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  font-family: "Courier New", monospace;
   user-select: none;
 }
 
-.sticky-window-header {
+.document-window-content {
+  width: 100%;
+  height: 100%;
+  background: #f6f6f6;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.document-header {
+  width: 100%;
+  background: #eeeeee;
+  border-bottom: 1px solid #8f8f8f;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+
+.document-titlebar {
+  height: 25px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(#f8f8f8, #dfdfdf);
+  border-bottom: 1px solid #b6b6b6;
   cursor: grab;
   touch-action: none;
 }
 
-.sticky-window-header:active {
+.document-titlebar:active {
   cursor: grabbing;
+}
+
+.document-window-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 18px;
+  position: relative;
+  z-index: 2;
+}
+
+.document-window-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  padding: 0;
+  cursor: default;
+}
+
+.document-close {
+  background: #ff5f57;
+  pointer-events: auto;
+}
+
+.document-minimize {
+  background: #ffbd2e;
+  pointer-events: none;
+}
+
+.document-maximize {
+  background: #28c840;
+  pointer-events: none;
+}
+
+.document-close:hover {
+  filter: brightness(0.92);
+}
+
+.document-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #333;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.document-title-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  opacity: 0.82;
+}
+
+.document-toolbar-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+  border-bottom: 1px solid #bdbdbd;
+  margin-top: -42px;
+}
+
+.document-body {
+  flex: 1;
+  padding: 34px 44px;
+  background: #fffdf8;
+  color: #111;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.6;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+
+.document-close {
+  position: relative;
+}
+
+.document-close::after {
+  content: "×";
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: rgba(120, 0, 0, 0.75);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.document-close:hover::after {
+  display: flex;
+}
+
+.document-code-text {
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.45;
+  white-space: pre;
 }
