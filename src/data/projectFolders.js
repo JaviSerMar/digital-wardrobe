@@ -10,13 +10,51 @@ export const projectFolderScreens = {
       },
       {
         id: "velaris-stack",
-        label: "stack.txt",
+        label: "tecnologias.txt",
         icon: "/icons/archivoTxt.png",
+        openWindowKey: "velaris-stack",
       },
       {
         id: "velaris-media",
-        label: "capturas",
+        label: "media",
         icon: "/icons/folder.png",
+        targetFolder: "velaris-media",
+      },
+    ],
+  },
+
+  "velaris-media": {
+    title: "media",
+    items: [
+      {
+        id: "velaris-poster",
+        label: "poster.png",
+        icon: "/icons/iconoFoto.png",
+        openWindowKey: "velaris-poster",
+      },
+      {
+        id: "velaris-landing",
+        label: "landingPage.png",
+        icon: "/icons/iconoFoto.png",
+        openWindowKey: "velaris-landing",
+      },
+      {
+        id: "velaris-gazebo",
+        label: "gazebo_Rviz.png",
+        icon: "/icons/iconoFoto.png",
+        openWindowKey: "velaris-gazebo",
+      },
+      {
+        id: "velaris-camera",
+        label: "camara.png",
+        icon: "/icons/iconoFoto.png",
+        openWindowKey: "velaris-camera",
+      },
+      {
+        id: "velaris-opencv",
+        label: "openCV.png",
+        icon: "/icons/iconoFoto.png",
+        openWindowKey: "velaris-opencv",
       },
     ],
   },

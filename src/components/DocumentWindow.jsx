@@ -6,12 +6,19 @@ function DocumentWindow({ window, closeWindow }) {
       <DocumentHeader
         title={window.title}
         onClose={() => closeWindow(window.id)}
+        toolbarSrc={window.toolbarSrc}
+        titleIconSrc={window.titleIconSrc}
+        isImageFile={window.fileType === "image"}
       />
 
       <div
         className={`document-body ${
-          window.id === "skills-file-window" ? "document-body-no-scroll" : ""
-        }`}
+          window.id === "skills-file-window" ||
+          window.id === "velaris-stack-window" ||
+          window.fileType === "image"
+            ? "document-body-no-scroll"
+            : ""
+        } ${window.fileType === "image" ? "image-document-body" : ""}`}
       >
         {window.id === "skills-file-window" && (
           <pre className="document-code-text">{`              { skills }
@@ -48,6 +55,18 @@ function DocumentWindow({ window, closeWindow }) {
           <p>Contenido provisional del documento.</p>
         )}
 
+
+        {window.fileType === "image" && (
+          <div className="image-file-viewer">
+            <img
+              className="image-file-preview"
+              src={window.imageSrc}
+              alt={window.title}
+              draggable="false"
+            />
+          </div>
+        )}
+
         {window.id === "velaris-readme-window" && (
           <article className="velaris-readme-content">
             <img
@@ -58,12 +77,7 @@ function DocumentWindow({ window, closeWindow }) {
             />
 
             <div className="document-readme-text">
-              <h1>VELARIS</h1>
-
-              <p>
-                <strong>Robot móvil autónomo de vigilancia</strong> para
-                entornos tipo almacén.
-              </p>
+            <h2>VELARIS: Robot autónomo de vigilancia</h2>
 
               <p>
                 <strong>Velaris</strong> combina robótica, simulación, visión
@@ -101,6 +115,37 @@ function DocumentWindow({ window, closeWindow }) {
               </p>
             </div>
           </article>
+        )}
+
+        {window.id === "velaris-stack-window" && (
+          <pre className="document-code-text velaris-stack-text">{`      [ROBÓTICA]
+        - Python
+        - ROS2
+        - Nav2
+        - rosbridge_server
+        - ros_gz_bridge
+
+      [SIMULACIÓN]
+        - Gazebo
+        - RViz
+        - TurtleBot3
+        - Entorno de almacén
+
+      [PANEL WEB]
+        - React
+        - Vite
+        - WebSocket
+        - HTML / CSS / JavaScript
+
+      [VISIÓN ARTIFICIAL]
+        - OpenCV
+        - Cámara en tiempo real
+        - Capturas procesadas
+
+      [CLOUD + AI]
+        - AWS Cloud
+        - Preparación de dataset
+        - Modelos de detección`}</pre>
         )}
       </div>
     </div>

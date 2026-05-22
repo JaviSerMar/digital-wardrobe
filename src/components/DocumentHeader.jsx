@@ -1,4 +1,10 @@
-function DocumentHeader({ title, onClose }) {
+function DocumentHeader({
+  title,
+  onClose,
+  toolbarSrc = "/images/document-toolbar.png",
+  titleIconSrc = "/icons/archivoTxt.png",
+  isImageFile = false,
+}) {
   return (
     <div className="document-header">
       <div className="document-titlebar">
@@ -27,7 +33,7 @@ function DocumentHeader({ title, onClose }) {
         <div className="document-title">
           <img
             className="document-title-icon"
-            src="/icons/archivoTxt.png"
+            src={titleIconSrc}
             alt=""
             draggable="false"
           />
@@ -36,8 +42,10 @@ function DocumentHeader({ title, onClose }) {
       </div>
 
       <img
-        className="document-toolbar-image"
-        src="/images/document-toolbar.png"
+        className={`document-toolbar-image ${
+          isImageFile ? "image-toolbar-picture" : ""
+        }`}
+        src={toolbarSrc}
         alt=""
         draggable="false"
       />
