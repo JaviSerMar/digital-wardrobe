@@ -4,6 +4,9 @@ function DocumentHeader({
   toolbarSrc = "/images/document-toolbar.png",
   titleIconSrc = "/icons/archivoTxt.png",
   isImageFile = false,
+  isDesktopPhoto = false,
+  isTeamImage = false,
+  isManifestoImage = false,
 }) {
   return (
     <div className="document-header">
@@ -44,7 +47,9 @@ function DocumentHeader({
       <img
         className={`document-toolbar-image ${
           isImageFile ? "image-toolbar-picture" : ""
-        }`}
+        } ${isDesktopPhoto ? "desktop-photo-toolbar" : ""} ${
+          isTeamImage ? "team-image-toolbar" : ""
+        } ${isManifestoImage ? "manifesto-image-toolbar" : ""}`}
         src={toolbarSrc}
         alt=""
         draggable="false"

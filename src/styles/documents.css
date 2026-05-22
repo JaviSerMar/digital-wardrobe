@@ -285,3 +285,26 @@
   object-position: center;
   border-bottom: 1px solid #bdbdbd;
 }
+
+.desktop-photo-toolbar {
+  height: 38px;
+}
+
+
+.actualmente-text {
+  padding: 18px 10px;
+  line-height: 1.7;
+}
+
+.skills-detail-text {
+  padding: 18px 10px;
+  line-height: 1.7;
+}
+
+.team-image-toolbar {
+  height: 60px;
+}
+
+.manifesto-image-toolbar {
+  height: 54px;
+}

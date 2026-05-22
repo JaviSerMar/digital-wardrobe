@@ -9,12 +9,18 @@ function DocumentWindow({ window, closeWindow }) {
         toolbarSrc={window.toolbarSrc}
         titleIconSrc={window.titleIconSrc}
         isImageFile={window.fileType === "image"}
+        isDesktopPhoto={window.id === "desktop-photo-window"}
+        isTeamImage={window.id === "equipo-image-window"}
+        isManifestoImage={window.id === "velaris-manifesto-window"}
       />
 
       <div
         className={`document-body ${
           window.id === "skills-file-window" ||
           window.id === "velaris-stack-window" ||
+          window.id === "actualmente-file-window" ||
+          window.id === "aprendizaje-file-window" ||
+          window.id === "workflow-file-window" ||
           window.fileType === "image"
             ? "document-body-no-scroll"
             : ""
@@ -146,6 +152,56 @@ function DocumentWindow({ window, closeWindow }) {
         - AWS Cloud
         - Preparación de dataset
         - Modelos de detección`}</pre>
+        )}
+
+        {window.id === "actualmente-file-window" && (
+          <pre className="document-code-text actualmente-text">{`   ACTUALMENTE
+
+            > VELARIS
+              Robot autónomo de vigilancia.
+              Proyecto documentado y disponible.
+
+            > DIGITAL WARDROBE
+              Experiencia interactiva en desarrollo.
+              Se está cocinando...
+
+            > PORTFOLIO
+              Escritorio web experimental.
+              Nuevas funciones próximamente.`}</pre>
+        )}
+        {window.id === "aprendizaje-file-window" && (
+          <pre className="document-code-text skills-detail-text">{` EN APRENDIZAJE
+
+          [ACTUALMENTE]
+          - Robótica autónoma con ROS2
+          - Visión artificial con OpenCV
+          - Interfaces web interactivas
+          - Integración cloud
+
+          [PRÓXIMOS PASOS]
+          - Modelos de detección visual
+          - Despliegue de aplicaciones completas
+          - Automatización y sistemas inteligentes`}</pre>
+        )}
+
+        {window.id === "workflow-file-window" && (
+          <pre className="document-code-text skills-detail-text">{` WORKFLOW
+
+          01 / IDEA
+          Definir el objetivo y las funcionalidades
+          principales del proyecto.
+
+          02 / ESTRUCTURA
+          Organizar componentes, datos y estados.
+
+          03 / DESARROLLO
+          Construir por bloques pequeños y comprobables.
+
+          04 / REVISIÓN
+          Corregir errores y simplificar el código.
+
+          05 / PRESENTACIÓN
+          Preparar documentación y recursos visuales.`}</pre>
         )}
       </div>
     </div>

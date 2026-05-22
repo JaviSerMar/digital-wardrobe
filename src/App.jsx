@@ -18,6 +18,7 @@ import DocumentWindow from "./components/DocumentWindow";
 
 import FolderWindow from "./components/FolderWindow";
 import StickyWindow from "./components/StickyWindow";
+import ImageWidget from "./components/ImageWidget";
 
 function formatTopbarDate(date) {
   const days = [
@@ -273,7 +274,7 @@ function App() {
         window.id === windowId
           ? {
               ...window,
-              title: `proyectos / ${folderScreen.title}`,
+              title: folderScreen.path,
               currentFolder: targetFolder,
               items: folderScreen.items,
             }
@@ -351,6 +352,8 @@ function App() {
         handlePointerUp={handlePointerUp}
         setDraggedItemId={setDraggedItemId}
       />
+
+      <ImageWidget />
 
       <section ref={floatingLayerRef} className="desktop-floating-layer">
         {openWindows.map((window) => (

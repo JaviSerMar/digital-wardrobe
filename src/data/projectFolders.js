@@ -1,6 +1,7 @@
 export const projectFolderScreens = {
   velaris: {
     title: "velaris",
+    path: "proyectos / velaris",
     items: [
       {
         id: "velaris-readme",
@@ -15,6 +16,12 @@ export const projectFolderScreens = {
         openWindowKey: "velaris-stack",
       },
       {
+        id: "velaris-manifesto",
+        label: "manifesto.png",
+        icon: "/icons/iconoFoto.png",
+        openWindowKey: "velaris-manifesto",
+      },
+      {
         id: "velaris-media",
         label: "media",
         icon: "/icons/folder.png",
@@ -25,6 +32,7 @@ export const projectFolderScreens = {
 
   "velaris-media": {
     title: "media",
+    path: "proyectos / velaris / media",
     items: [
       {
         id: "velaris-poster",
@@ -61,6 +69,7 @@ export const projectFolderScreens = {
 
   airmonitor: {
     title: "airmonitor",
+    path: "proyectos / airmonitor",
     items: [
       {
         id: "airmonitor-readme",
@@ -74,14 +83,22 @@ export const projectFolderScreens = {
       },
       {
         id: "airmonitor-media",
-        label: "capturas",
+        label: "media",
         icon: "/icons/folder.png",
       },
     ],
+    
+  },
+
+  "airmonitor-media": {
+    title: "media",
+    path: "proyectos / airmonitor / media",
+    items: [],
   },
 
   bancotech: {
     title: "bancotech",
+    path: "proyectos / bancotech",
     items: [
       {
         id: "bancotech-readme",
@@ -95,9 +112,15 @@ export const projectFolderScreens = {
       },
       {
         id: "bancotech-media",
-        label: "capturas",
+        label: "media",
         icon: "/icons/folder.png",
       },
     ],
+  },
+
+  "bancotech-media": {
+    title: "media",
+    path: "proyectos / bancotech / media",
+    items: [],
   },
 };
