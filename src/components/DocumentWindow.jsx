@@ -1,4 +1,5 @@
 import DocumentHeader from "./DocumentHeader";
+import VideoPlayer from "./VideoPlayer";
 
 function DocumentWindow({ window, closeWindow }) {
   return (
@@ -12,6 +13,7 @@ function DocumentWindow({ window, closeWindow }) {
         isDesktopPhoto={window.id === "desktop-photo-window"}
         isTeamImage={window.id === "equipo-image-window"}
         isManifestoImage={window.id === "velaris-manifesto-window"}
+        isVideoFile={window.fileType === "video"}
       />
 
       <div
@@ -21,10 +23,13 @@ function DocumentWindow({ window, closeWindow }) {
           window.id === "actualmente-file-window" ||
           window.id === "aprendizaje-file-window" ||
           window.id === "workflow-file-window" ||
-          window.fileType === "image"
+          window.fileType === "image" ||
+          window.fileType === "video"
             ? "document-body-no-scroll"
             : ""
-        } ${window.fileType === "image" ? "image-document-body" : ""}`}
+        } ${window.fileType === "image" ? "image-document-body" : ""} ${
+          window.fileType === "video" ? "video-document-body" : ""
+        }`}
       >
         {window.id === "skills-file-window" && (
           <pre className="document-code-text">{`              { skills }
@@ -71,6 +76,10 @@ function DocumentWindow({ window, closeWindow }) {
               draggable="false"
             />
           </div>
+        )}
+
+        {window.fileType === "video" && (
+          <VideoPlayer src={window.videoSrc} />
         )}
 
         {window.id === "velaris-readme-window" && (

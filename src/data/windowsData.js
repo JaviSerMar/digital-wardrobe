@@ -100,7 +100,7 @@ export const documentWindowsData = {
 
   "velaris-landing": {
     id: "velaris-landing-window",
-    title: "landingPage.png",
+    title: "landing.png",
     type: "document",
     left: 380,
     top: 90,
@@ -114,7 +114,7 @@ export const documentWindowsData = {
 
   "velaris-gazebo": {
     id: "velaris-gazebo-window",
-    title: "gazebo_Rviz.png",
+    title: "Rviz.png",
     type: "document",
     left: 390,
     top: 100,
@@ -155,14 +155,14 @@ export const documentWindowsData = {
   },
   "desktop-photo": {
     id: "desktop-photo-window",
-    title: "philip.jpg",
+    title: "barack.jpg",
     type: "document",
     left: 330,
     top: 70,
     width: 660,
     height: 505,
     fileType: "image",
-    imageSrc: "/images/philip.jpg",
+    imageSrc: "/images/barack.jpg",
     toolbarSrc: "/images/cabeceraImagen.png",
     titleIconSrc: "/icons/iconoFoto.png",
   },
@@ -204,6 +204,18 @@ export const documentWindowsData = {
     imageSrc: "/projects/velaris/manifesto.png",
     toolbarSrc: "/images/cabeceraImagenMini.png",
     titleIconSrc: "/icons/iconoFoto.png",
+  },
+  "desktop-video": {
+    id: "desktop-video-window",
+    title: "nido_del_cuco.mp4",
+    type: "document",
+    left: 320,
+    top: 90,
+    width: 720,
+    height: 470,
+    fileType: "video",
+    videoSrc: "/videos/nido_del_cuco.mp4",
+    titleIconSrc: "/icons/archivoVideo.png",
   },
 };
 

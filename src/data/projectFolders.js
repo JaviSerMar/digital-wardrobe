@@ -42,13 +42,13 @@ export const projectFolderScreens = {
       },
       {
         id: "velaris-landing",
-        label: "landingPage.png",
+        label: "landing.png",
         icon: "/icons/iconoFoto.png",
         openWindowKey: "velaris-landing",
       },
       {
         id: "velaris-gazebo",
-        label: "gazebo_Rviz.png",
+        label: "Rviz.png",
         icon: "/icons/iconoFoto.png",
         openWindowKey: "velaris-gazebo",
       },

@@ -4,6 +4,7 @@ function DocumentHeader({
   toolbarSrc = "/images/document-toolbar.png",
   titleIconSrc = "/icons/archivoTxt.png",
   isImageFile = false,
+  isVideoFile = false,
   isDesktopPhoto = false,
   isTeamImage = false,
   isManifestoImage = false,
@@ -44,16 +45,18 @@ function DocumentHeader({
         </div>
       </div>
 
-      <img
-        className={`document-toolbar-image ${
-          isImageFile ? "image-toolbar-picture" : ""
-        } ${isDesktopPhoto ? "desktop-photo-toolbar" : ""} ${
-          isTeamImage ? "team-image-toolbar" : ""
-        } ${isManifestoImage ? "manifesto-image-toolbar" : ""}`}
-        src={toolbarSrc}
-        alt=""
-        draggable="false"
-      />
+      {!isVideoFile && (
+        <img
+          className={`document-toolbar-image ${
+            isImageFile ? "image-toolbar-picture" : ""
+          } ${isDesktopPhoto ? "desktop-photo-toolbar" : ""} ${
+            isTeamImage ? "team-image-toolbar" : ""
+          } ${isManifestoImage ? "manifesto-image-toolbar" : ""}`}
+          src={toolbarSrc}
+          alt=""
+          draggable="false"
+        />
+      )}
     </div>
   );
 }

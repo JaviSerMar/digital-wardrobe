@@ -36,8 +36,8 @@ export const initialDesktopItems = [
     type: "app",
     label: "digital_wardrobe",
     icon: "/icons/iconoDigitalWardrobe.png",
-    x: 0,
-    y: 4,
+    x: 13,
+    y: 0,
   },
   {
     id: "trash",
@@ -82,8 +82,16 @@ export const initialDesktopItems = [
   {
     id: "desktop-photo",
     type: "file",
-    label: "philip.jpg",
+    label: "barack.jpg",
     icon: "/icons/iconoFoto.png",
+    x: 0,
+    y: 4,
+  },
+  {
+    id: "desktop-video",
+    type: "file",
+    label: "nido_del_cuco.mp4",
+    icon: "/icons/archivoVideo.png",
     x: 1,
     y: 4,
   },
