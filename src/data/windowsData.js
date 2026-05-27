@@ -64,7 +64,7 @@ export const documentWindowsData = {
     left: 330,
     top: 140,
     width: 560,
-    height: 420,
+    height: 460,
   },
   "velaris-readme": {
     id: "velaris-readme-window",
@@ -205,17 +205,14 @@ export const documentWindowsData = {
     toolbarSrc: "/images/cabeceraImagenMini.png",
     titleIconSrc: "/icons/iconoFoto.png",
   },
-  "desktop-video": {
-    id: "desktop-video-window",
-    title: "nido_del_cuco.mp4",
+  "email-file": {
+    id: "email-file-window",
+    title: "correo.txt",
     type: "document",
-    left: 320,
-    top: 90,
-    width: 720,
-    height: 470,
-    fileType: "video",
-    videoSrc: "/videos/nido_del_cuco.mp4",
-    titleIconSrc: "/icons/archivoVideo.png",
+    left: 420,
+    top: 170,
+    width: 450,
+    height: 245,
   },
 };
 
@@ -319,18 +316,21 @@ export const folderWindowsData = {
     items: [
       {
         id: "email-file",
-        label: "email.txt",
-        icon: "/icons/archivoTxt.png",
+        label: "correo",
+        icon: "/icons/iconoCorreo.png",
+        openWindowKey: "email-file",
       },
       {
         id: "github-file",
-        label: "github.url",
-        icon: "/icons/archivoTxt.png",
+        label: "github",
+        icon: "/icons/iconoGithub.png",
+        externalUrl: "https://github.com/JaviSerMar",
       },
       {
         id: "linkedin-file",
-        label: "linkedin.url",
-        icon: "/icons/archivoTxt.png",
+        label: "linkedin",
+        icon: "/icons/LI-In-Bug.png",
+        externalUrl: "https://www.linkedin.com/in/javier-serrano-marco-800167409/",
       },
     ],
   },

@@ -87,12 +87,4 @@ export const initialDesktopItems = [
     x: 0,
     y: 4,
   },
-  {
-    id: "desktop-video",
-    type: "file",
-    label: "nido_del_cuco.mp4",
-    icon: "/icons/archivoVideo.png",
-    x: 1,
-    y: 4,
-  },
 ];

@@ -1,5 +1,4 @@
 import DocumentHeader from "./DocumentHeader";
-import VideoPlayer from "./VideoPlayer";
 
 function DocumentWindow({ window, closeWindow }) {
   return (
@@ -13,7 +12,6 @@ function DocumentWindow({ window, closeWindow }) {
         isDesktopPhoto={window.id === "desktop-photo-window"}
         isTeamImage={window.id === "equipo-image-window"}
         isManifestoImage={window.id === "velaris-manifesto-window"}
-        isVideoFile={window.fileType === "video"}
       />
 
       <div
@@ -23,13 +21,11 @@ function DocumentWindow({ window, closeWindow }) {
           window.id === "actualmente-file-window" ||
           window.id === "aprendizaje-file-window" ||
           window.id === "workflow-file-window" ||
-          window.fileType === "image" ||
-          window.fileType === "video"
+          window.id === "email-file-window" ||
+          window.fileType === "image"
             ? "document-body-no-scroll"
             : ""
-        } ${window.fileType === "image" ? "image-document-body" : ""} ${
-          window.fileType === "video" ? "video-document-body" : ""
-        }`}
+        } ${window.fileType === "image" ? "image-document-body" : ""}`}
       >
         {window.id === "skills-file-window" && (
           <pre className="document-code-text">{`              { skills }
@@ -66,6 +62,23 @@ function DocumentWindow({ window, closeWindow }) {
           <p>Contenido provisional del documento.</p>
         )}
 
+        {window.id === "email-file-window" && (
+          <div className="email-document-content">
+            <h2>CONTACTO</h2>
+
+            <p className="email-document-text">
+              Puedes contactar conmigo en:
+            </p>
+
+            <p
+              className="email-document-address"
+              onPointerDown={(event) => event.stopPropagation()}
+            >
+              javiersemarco@gmail.com
+            </p>
+          </div>
+        )}
+
 
         {window.fileType === "image" && (
           <div className="image-file-viewer">
@@ -76,10 +89,6 @@ function DocumentWindow({ window, closeWindow }) {
               draggable="false"
             />
           </div>
-        )}
-
-        {window.fileType === "video" && (
-          <VideoPlayer src={window.videoSrc} />
         )}
 
         {window.id === "velaris-readme-window" && (
@@ -164,19 +173,20 @@ function DocumentWindow({ window, closeWindow }) {
         )}
 
         {window.id === "actualmente-file-window" && (
-          <pre className="document-code-text actualmente-text">{`   ACTUALMENTE
+          <pre className="document-code-text actualmente-text">{`ACTUALMENTE
 
-            > VELARIS
-              Robot autónomo de vigilancia.
-              Proyecto documentado y disponible.
+        > BUSCANDO PRÁCTICAS
+          En búsqueda de una oportunidad
+          para realizar prácticas de empresa
+          y seguir creciendo como desarrollador.
 
-            > DIGITAL WARDROBE
-              Experiencia interactiva en desarrollo.
-              Se está cocinando...
+        > ÁREAS DE INTERÉS
+          Desarrollo web, robótica,
+          visión artificial y cloud.
 
-            > PORTFOLIO
-              Escritorio web experimental.
-              Nuevas funciones próximamente.`}</pre>
+        > PROYECTOS
+          Desarrollando un portfolio interactivo
+          y documentando proyectos como VELARIS.`}</pre>
         )}
         {window.id === "aprendizaje-file-window" && (
           <pre className="document-code-text skills-detail-text">{` EN APRENDIZAJE

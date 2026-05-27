@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { initialDesktopItems } from "./data/desktopItems";
+import ProfilePanel from "./components/ProfilePanel";
 
 import {
   stickyNotesData,
@@ -75,6 +76,7 @@ function App() {
   const [draggingWindow, setDraggingWindow] = useState(null);
 
   const [currentDate, setCurrentDate] = useState(() => new Date());
+  const [isProfilePanelOpen, setIsProfilePanelOpen] = useState(false);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -337,11 +339,24 @@ function App() {
     });
   }
 
+  function toggleProfilePanel() {
+    setIsProfilePanelOpen((currentState) => !currentState);
+  }
+
 
 
   return (
     <main className="desktop">
-      <Topbar currentDate={currentDate} formatTopbarDate={formatTopbarDate} />
+      <Topbar
+        currentDate={currentDate}
+        formatTopbarDate={formatTopbarDate}
+        toggleProfilePanel={toggleProfilePanel}
+        isProfilePanelOpen={isProfilePanelOpen}
+      />
+
+      {isProfilePanelOpen && (
+        <ProfilePanel onClose={() => setIsProfilePanelOpen(false)} />
+      )}
 
       <DesktopGrid
         gridRef={gridRef}

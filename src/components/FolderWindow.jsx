@@ -113,7 +113,19 @@ function FolderWindow({
 
                 if (folderItem.openWindowKey) {
                   openWindowByKey(folderItem.openWindowKey);
+                  return;
                 }
+
+                if (!folderItem.externalUrl) {
+                  return;
+                }
+
+                if (folderItem.id === "email-file") {
+                  document.location.href = folderItem.externalUrl;
+                  return;
+                }
+
+                globalThis.open(folderItem.externalUrl, "_blank", "noopener,noreferrer");
               }}
             >
               <img src={folderItem.icon} alt="" draggable="false" />
