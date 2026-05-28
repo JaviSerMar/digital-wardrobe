@@ -1,6 +1,6 @@
 import DocumentHeader from "./DocumentHeader";
 
-function DocumentWindow({ window, closeWindow }) {
+function DocumentWindow({ window, closeWindow, isDarkMode }) {
   return (
     <div className="document-window-content">
       <DocumentHeader
@@ -12,6 +12,7 @@ function DocumentWindow({ window, closeWindow }) {
         isDesktopPhoto={window.id === "desktop-photo-window"}
         isTeamImage={window.id === "equipo-image-window"}
         isManifestoImage={window.id === "velaris-manifesto-window"}
+        isDarkMode={isDarkMode}
       />
 
       <div

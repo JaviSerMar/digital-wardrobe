@@ -6,6 +6,7 @@ function FolderWindow({
   openFolderScreen,
   openWindowByKey,
   setOpenWindows,
+  isDarkMode,
 }) {
   return (
     <div className="folder-window-content">
@@ -75,7 +76,11 @@ function FolderWindow({
 
         <img
           className="folder-toolbar-image"
-          src="/images/cabeceraCarpetas.png"
+          src={
+            isDarkMode
+              ? "/images/VersionOscuro/cabeceraCarpetas_Oscura.png"
+              : "/images/cabeceraCarpetas.png"
+          }
           alt=""
           draggable="false"
         />

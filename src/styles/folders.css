@@ -236,3 +236,84 @@
   white-space: normal;
   overflow-wrap: anywhere;
 }
+
+
+/* DARK MODE - FOLDER WINDOWS */
+
+.dark-mode .folder-window {
+  background: rgba(27, 28, 33, 0.97);
+  color: rgba(242, 242, 245, 0.92);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .folder-window-content {
+  background: #1b1c21;
+}
+
+.dark-mode .folder-header {
+  background: #1c1d1f;
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.dark-mode .folder-titlebar {
+  background: #1c1d1f;
+}
+
+.dark-mode .folder-toolbar-image {
+  background: #1c1d1f;
+}
+
+.dark-mode .folder-navigation {
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.dark-mode .folder-nav-button {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-mode .folder-nav-button:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.dark-mode .folder-nav-divider {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.dark-mode .folder-title {
+  color: rgba(245, 245, 247, 0.87);
+}
+
+.dark-mode .folder-toolbar-image {
+  background: #23242a;
+}
+
+.dark-mode .folder-sidebar {
+  background: rgba(35, 36, 42, 0.96);
+  border-right-color: rgba(255, 255, 255, 0.1);
+  color: rgba(242, 242, 245, 0.74);
+}
+
+.dark-mode .folder-sidebar-section {
+  color: rgba(242, 242, 245, 0.4);
+}
+
+.dark-mode .folder-sidebar .is-selected {
+  background: rgba(255, 255, 255, 0.11);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-mode .folder-content {
+  background: rgba(22, 23, 28, 0.96);
+}
+
+.dark-mode .folder-item {
+  color: rgba(242, 242, 245, 0.9);
+}
+
+.dark-mode .folder-item:hover {
+  background: rgba(70, 125, 232, 0.22);
+}

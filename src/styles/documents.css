@@ -306,3 +306,79 @@
   user-select: text;
   cursor: text;
 }
+
+/* DARK MODE - DOCUMENT WINDOWS */
+
+.dark-mode .document-window {
+  background: #1c1d22;
+  color: #ececef;
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.48);
+}
+
+.dark-mode .document-window-content {
+  background: #1c1d22;
+}
+
+.dark-mode .document-header {
+  background: #24252b;
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.dark-mode .document-titlebar {
+  background: linear-gradient(#32343b, #23252b);
+  border-bottom-color: rgba(255, 255, 255, 0.13);
+}
+
+.dark-mode .document-title {
+  color: rgba(245, 245, 247, 0.86);
+}
+
+.dark-mode .document-title-icon {
+  opacity: 0.92;
+  filter: brightness(1.08);
+}
+
+.dark-mode .document-toolbar-image,
+.dark-mode .image-toolbar-picture {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+/* CUERPO DE DOCUMENTOS */
+
+.dark-mode .document-body {
+  background: #17181d;
+  color: rgba(242, 242, 245, 0.9);
+}
+
+.dark-mode .document-code-text {
+  color: rgba(242, 242, 245, 0.9);
+}
+
+.dark-mode .velaris-readme-content {
+  color: rgba(242, 242, 245, 0.9);
+}
+
+.dark-mode .document-readme-text strong {
+  color: #ffffff;
+}
+
+.dark-mode .velaris-readme-cover {
+  filter: brightness(0.88) contrast(1.06);
+}
+
+/* ARCHIVOS DE IMAGEN */
+
+.dark-mode .image-document-body {
+  background: #15161b;
+}
+
+/* CONTACTO */
+
+.dark-mode .email-document-content {
+  color: rgba(242, 242, 245, 0.9);
+}
+
+.dark-mode .email-document-address {
+  color: #ffffff;
+}

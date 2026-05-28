@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { initialDesktopItems } from "./data/desktopItems";
-import ProfilePanel from "./components/ProfilePanel";
+import ReleaseToast from "./components/ReleaseToast";
 
 import {
   stickyNotesData,
@@ -77,6 +77,15 @@ function App() {
 
   const [currentDate, setCurrentDate] = useState(() => new Date());
   const [isProfilePanelOpen, setIsProfilePanelOpen] = useState(false);
+  const [isNotificationsPanelOpen, setIsNotificationsPanelOpen] = useState(false);
+
+  const [isControlCenterPanelOpen, setIsControlCenterPanelOpen] = useState(false);
+
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const [activeTopbarMenu, setActiveTopbarMenu] = useState(null);
+
+  const [isReleaseToastVisible, setIsReleaseToastVisible] = useState(true);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -87,6 +96,18 @@ function App() {
       window.clearInterval(intervalId);
     };
   }, []);
+
+  useEffect(() => {
+    if (!isReleaseToastVisible) return;
+
+    const timeoutId = window.setTimeout(() => {
+      setIsReleaseToastVisible(false);
+    }, 15000);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [isReleaseToastVisible]);
 
   const [windowPositions, setWindowPositions] = useState(() =>
   Object.fromEntries(
@@ -339,24 +360,112 @@ function App() {
     });
   }
 
+  function toggleControlCenterPanel() {
+    setIsControlCenterPanelOpen((currentState) => !currentState);
+    setIsNotificationsPanelOpen(false);
+    setIsProfilePanelOpen(false);
+    setActiveTopbarMenu(null);
+  }
+
   function toggleProfilePanel() {
     setIsProfilePanelOpen((currentState) => !currentState);
+    setIsNotificationsPanelOpen(false);
+    setIsControlCenterPanelOpen(false);
+    setActiveTopbarMenu(null);
+  }
+
+  function toggleTopbarMenu(menuName) {
+    setActiveTopbarMenu((currentMenu) =>
+      currentMenu === menuName ? null : menuName
+    );
+
+    setIsProfilePanelOpen(false);
+    setIsNotificationsPanelOpen(false);
+    setIsControlCenterPanelOpen(false);
+  }
+
+  function toggleNotificationsPanel() {
+    setIsNotificationsPanelOpen((currentState) => !currentState);
+    setIsProfilePanelOpen(false);
+    setIsControlCenterPanelOpen(false);
+    setActiveTopbarMenu(null);
+  }
+
+  function toggleDarkMode() {
+    setIsDarkMode((currentState) => !currentState);
   }
 
 
+  function openVelarisFromToast() {
+    const projectsWindow = folderWindowsData.projects;
+    const velarisScreen = projectFolderScreens.velaris;
+
+    if (!velarisScreen) return;
+
+    setIsReleaseToastVisible(false);
+
+    setOpenWindows((currentWindows) => {
+      const maxZIndex = Math.max(
+        0,
+        ...currentWindows.map((window) => window.zIndex || 1)
+      );
+
+      const projectsWindowIsOpen = currentWindows.some(
+        (window) => window.id === projectsWindow.id
+      );
+
+      if (projectsWindowIsOpen) {
+        return currentWindows.map((window) =>
+          window.id === projectsWindow.id
+            ? {
+                ...window,
+                title: velarisScreen.path,
+                currentFolder: "velaris",
+                items: velarisScreen.items,
+                zIndex: maxZIndex + 1,
+              }
+            : window
+        );
+      }
+
+      const savedPosition = windowPositions[projectsWindow.id] ?? {
+        left: projectsWindow.left,
+        top: projectsWindow.top,
+      };
+
+      return [
+        ...currentWindows,
+        {
+          ...projectsWindow,
+          title: velarisScreen.path,
+          currentFolder: "velaris",
+          items: velarisScreen.items,
+          left: savedPosition.left,
+          top: savedPosition.top,
+          zIndex: maxZIndex + 1,
+        },
+      ];
+    });
+  }
 
   return (
-    <main className="desktop">
+    <main className={`desktop ${isDarkMode ? "dark-mode" : ""}`}>
       <Topbar
         currentDate={currentDate}
         formatTopbarDate={formatTopbarDate}
+        toggleControlCenterPanel={toggleControlCenterPanel}
+        isControlCenterPanelOpen={isControlCenterPanelOpen}
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
         toggleProfilePanel={toggleProfilePanel}
         isProfilePanelOpen={isProfilePanelOpen}
+        toggleNotificationsPanel={toggleNotificationsPanel}
+        isNotificationsPanelOpen={isNotificationsPanelOpen}
+        activeTopbarMenu={activeTopbarMenu}
+        toggleTopbarMenu={toggleTopbarMenu}
+        setActiveTopbarMenu={setActiveTopbarMenu}
       />
 
-      {isProfilePanelOpen && (
-        <ProfilePanel onClose={() => setIsProfilePanelOpen(false)} />
-      )}
 
       <DesktopGrid
         gridRef={gridRef}
@@ -369,6 +478,12 @@ function App() {
       />
 
       <ImageWidget />
+      {isReleaseToastVisible && (
+        <ReleaseToast
+          onOpenProject={openVelarisFromToast}
+          onClose={() => setIsReleaseToastVisible(false)}
+        />
+      )}
 
       <section ref={floatingLayerRef} className="desktop-floating-layer">
         {openWindows.map((window) => (
@@ -400,7 +515,11 @@ function App() {
             )}
 
             {window.type === "document" && (
-              <DocumentWindow window={window} closeWindow={closeWindow} />
+              <DocumentWindow
+                window={window}
+                closeWindow={closeWindow}
+                isDarkMode={isDarkMode}
+              />
             )}
 
             {window.type === "terminal" && (
@@ -414,8 +533,9 @@ function App() {
               openFolderScreen={openFolderScreen}
               openWindowByKey={openWindowByKey}
               setOpenWindows={setOpenWindows}
+              isDarkMode={isDarkMode}
             />
-          )}  
+          )}
           </article>
         ))}
       </section>

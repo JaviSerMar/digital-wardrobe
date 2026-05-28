@@ -22,3 +22,216 @@
   object-fit: contain;
   filter: saturate(0.72);
 }
+
+
+/* RELEASE TOAST */
+
+.release-toast {
+  position: absolute;
+  top: 46px;
+  right: 20px;
+  width: 320px;
+  padding: 11px 38px 11px 11px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  background: rgba(246, 246, 248, 0.95);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  border-radius: 18px;
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  user-select: none;
+  z-index: 900;
+
+  animation:
+    release-toast-enter 0.4s ease both,
+    release-toast-exit 0.35s ease 14.65s forwards;
+
+  transition:
+    background 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.release-toast:hover {
+  background: rgba(252, 252, 253, 0.98);
+  box-shadow:
+    0 20px 44px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+}
+
+.release-toast-content {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  color: #171717;
+  text-align: left;
+  cursor: pointer;
+}
+
+.release-toast-content:hover {
+  background: transparent;
+}
+
+.release-toast-content:focus-visible {
+  outline: 2px solid rgba(47, 121, 236, 0.45);
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
+.release-toast-icon {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: block;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
+}
+
+.release-toast-text-content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.release-toast-label {
+  display: block;
+  margin: 0 0 5px;
+  color: rgba(0, 0, 0, 0.43);
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 750;
+  letter-spacing: 0.95px;
+}
+
+.release-toast-title {
+  display: block;
+  margin: 0 0 5px;
+  color: #171717;
+  font-size: 13px;
+  line-height: 1.25;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.release-toast-link {
+  display: block;
+  color: rgba(0, 0, 0, 0.58);
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 550;
+}
+
+.release-toast-close {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 19px;
+  height: 19px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+
+  background: transparent;
+  color: rgba(0, 0, 0, 0.4);
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 19px;
+
+  cursor: pointer;
+}
+
+.release-toast-close:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.release-toast-close:focus-visible {
+  outline: 2px solid rgba(47, 121, 236, 0.45);
+  outline-offset: 1px;
+}
+
+
+/* RELEASE TOAST ANIMATIONS */
+
+@keyframes release-toast-enter {
+  from {
+    opacity: 0;
+    transform: translateX(20px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes release-toast-exit {
+  from {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(18px) scale(0.98);
+    pointer-events: none;
+  }
+}
+
+
+/* DARK MODE - RELEASE TOAST */
+
+.dark-mode .release-toast {
+  background: rgba(29, 30, 35, 0.95);
+  border-color: rgba(255, 255, 255, 0.13);
+  box-shadow:
+    0 20px 44px rgba(0, 0, 0, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.dark-mode .release-toast:hover {
+  background: rgba(34, 35, 41, 0.97);
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.52),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .release-toast-icon {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .release-toast-label {
+  color: rgba(242, 242, 245, 0.46);
+}
+
+.dark-mode .release-toast-title {
+  color: rgba(248, 248, 250, 0.96);
+}
+
+.dark-mode .release-toast-link {
+  color: rgba(242, 242, 245, 0.64);
+}
+
+.dark-mode .release-toast-close {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-mode .release-toast-close:hover {
+  background: rgba(255, 255, 255, 0.11);
+  color: rgba(255, 255, 255, 0.88);
+}

@@ -109,3 +109,19 @@
   position: absolute;
   pointer-events: auto;
 }
+
+
+/* DARK MODE */
+
+.dark-mode .desktop-item {
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.88);
+}
+
+.dark-mode .desktop-item:hover .desktop-item-content {
+  background: rgba(96, 150, 255, 0.26);
+}
+
+.dark-mode .desktop-item-icon {
+  filter: drop-shadow(0 8px 11px rgba(0, 0, 0, 0.38));
+}

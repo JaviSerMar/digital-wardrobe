@@ -32,14 +32,6 @@ export const initialDesktopItems = [
     y: 3,
   },
   {
-    id: "digital-wardrobe",
-    type: "app",
-    label: "digital_wardrobe",
-    icon: "/icons/iconoDigitalWardrobe.png",
-    x: 13,
-    y: 0,
-  },
-  {
     id: "trash",
     type: "trash",
     label: "papelera",

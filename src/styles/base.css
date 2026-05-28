@@ -24,4 +24,14 @@ button {
   background-size: 163% auto;
   background-position: 74% 61%;
   background-repeat: no-repeat;
+
+  transition: background-image 0.22s ease;
+}
+
+/* DARK MODE */
+
+.desktop.dark-mode {
+  background-image:
+    linear-gradient(rgba(8, 12, 20, 0.58), rgba(8, 12, 20, 0.58)),
+    url("/images/fondoSuperActualizado.png");
 }

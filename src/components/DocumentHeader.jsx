@@ -7,7 +7,24 @@ function DocumentHeader({
   isDesktopPhoto = false,
   isTeamImage = false,
   isManifestoImage = false,
+  isDarkMode = false,
 }) {
+  function getToolbarSrc() {
+    if (!isDarkMode) {
+      return toolbarSrc;
+    }
+
+    if (toolbarSrc === "/images/cabeceraImagenMini.png") {
+      return "/images/VersionOscuro/cabeceraImagenMini_Oscura.png";
+    }
+
+    if (toolbarSrc === "/images/cabeceraImagen.png") {
+      return "/images/VersionOscuro/cabeceraImagen_Oscura.png";
+    }
+
+    return "/images/VersionOscuro/document-toolbar_Oscura.png";
+  }
+
   return (
     <div className="document-header">
       <div className="document-titlebar">
@@ -50,7 +67,7 @@ function DocumentHeader({
         } ${isDesktopPhoto ? "desktop-photo-toolbar" : ""} ${
           isTeamImage ? "team-image-toolbar" : ""
         } ${isManifestoImage ? "manifesto-image-toolbar" : ""}`}
-        src={toolbarSrc}
+        src={getToolbarSrc()}
         alt=""
         draggable="false"
       />

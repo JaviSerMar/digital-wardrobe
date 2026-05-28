@@ -54,6 +54,10 @@
   background: rgba(255, 255, 255, 0.18);
 }
 
+.topbar-logo-item:hover {
+  background: transparent;
+}
+
 .topbar-title {
   font-weight: 700;
 }
@@ -81,9 +85,10 @@
 }
 
 .profile-panel {
-  position: fixed;
-  top: 34px;
-  right: 18px;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
   width: 224px;
   padding: 18px 16px 16px;
   box-sizing: border-box;
@@ -106,13 +111,13 @@
   content: "";
   position: absolute;
   top: -7px;
-  right: 68px;
+  left: 50%;
   width: 13px;
   height: 13px;
   background: rgba(246, 246, 246, 0.92);
   border-top: 1px solid rgba(255, 255, 255, 0.58);
   border-left: 1px solid rgba(255, 255, 255, 0.58);
-  transform: rotate(45deg);
+  transform: translateX(-50%) rotate(45deg);
 }
 
 .profile-panel-close {
@@ -173,4 +178,457 @@
   font-size: 11px;
   line-height: 1.35;
   font-weight: 600;
+}
+
+
+/* NOTIFICATIONS PANEL */
+
+.notifications-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 270px;
+  padding: 14px;
+  box-sizing: border-box;
+  background: rgba(246, 246, 246, 0.93);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: 16px;
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  color: #1d1d1d;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  z-index: 1000;
+  user-select: none;
+}
+
+.notifications-panel::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 13px;
+  height: 13px;
+  background: rgba(246, 246, 246, 0.93);
+  border-top: 1px solid rgba(255, 255, 255, 0.58);
+  border-left: 1px solid rgba(255, 255, 255, 0.58);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.notifications-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.notifications-panel-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 650;
+  color: #1c1c1c;
+}
+
+.notifications-panel-close {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.4);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  line-height: 20px;
+  cursor: default;
+}
+
+.notifications-panel-close:hover {
+  background: rgba(0, 0, 0, 0.07);
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.notification-card {
+  position: relative;
+  padding: 12px 13px 12px 30px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(0, 0, 0, 0.045);
+}
+
+.notification-card + .notification-card {
+  margin-top: 9px;
+}
+
+.notification-card::before {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 16px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.notification-card-active::before {
+  background: #357be8;
+  box-shadow: 0 0 0 3px rgba(53, 123, 232, 0.14);
+}
+
+.notification-card-future::before {
+  background: rgba(0, 0, 0, 0.26);
+}
+
+.notification-label {
+  margin: 0 0 6px;
+  color: rgba(0, 0, 0, 0.43);
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 0.9px;
+}
+
+.notification-project {
+  margin: 0 0 4px;
+  color: #181818;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.notification-description {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.63);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.notification-cooking {
+  color: rgba(0, 0, 0, 0.52);
+  font-style: italic;
+}
+
+
+.topbar-popover-anchor {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+
+/* CONTROL CENTER PANEL */
+
+.control-center-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 230px;
+  padding: 14px;
+  box-sizing: border-box;
+  background: rgba(246, 246, 246, 0.93);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: 16px;
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  color: #1d1d1d;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  z-index: 1000;
+  user-select: none;
+}
+
+.control-center-panel::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 13px;
+  height: 13px;
+  background: rgba(246, 246, 246, 0.93);
+  border-top: 1px solid rgba(255, 255, 255, 0.58);
+  border-left: 1px solid rgba(255, 255, 255, 0.58);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.control-center-title {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 14px;
+  color: #1c1c1c;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.control-center-section {
+  position: relative;
+  z-index: 1;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(0, 0, 0, 0.045);
+}
+
+.control-center-section-title {
+  margin: 0 0 11px;
+  color: rgba(0, 0, 0, 0.43);
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 0.9px;
+}
+
+.control-center-setting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.control-center-setting-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.control-center-setting-name {
+  color: #181818;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.control-center-setting-status {
+  color: rgba(0, 0, 0, 0.52);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* INTERRUPTOR */
+
+.control-center-switch {
+  position: relative;
+  width: 40px;
+  height: 23px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.16);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.control-center-switch.is-enabled {
+  background: #2f79ec;
+}
+
+.control-center-switch-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+  transition: transform 0.18s ease;
+}
+
+.control-center-switch.is-enabled .control-center-switch-thumb {
+  transform: translateX(17px);
+}
+
+.control-center-switch:focus-visible {
+  outline: 2px solid rgba(47, 121, 236, 0.44);
+  outline-offset: 2px;
+}
+
+
+/* DARK MODE - TOPBAR PANELS */
+
+.dark-mode .profile-panel,
+.dark-mode .notifications-panel,
+.dark-mode .control-center-panel {
+  background: rgba(29, 30, 35, 0.94);
+  border-color: rgba(255, 255, 255, 0.13);
+  box-shadow:
+    0 20px 44px rgba(0, 0, 0, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: rgba(243, 243, 246, 0.92);
+}
+
+.dark-mode .profile-panel::before,
+.dark-mode .notifications-panel::before,
+.dark-mode .control-center-panel::before {
+  background: rgba(29, 30, 35, 0.94);
+  border-top-color: rgba(255, 255, 255, 0.13);
+  border-left-color: rgba(255, 255, 255, 0.13);
+}
+
+.dark-mode .profile-panel-close,
+.dark-mode .notifications-panel-close {
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.dark-mode .profile-panel-close:hover,
+.dark-mode .notifications-panel-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.86);
+}
+
+/* PERFIL */
+
+.dark-mode .profile-panel-photo {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 5px 13px rgba(0, 0, 0, 0.32);
+}
+
+.dark-mode .profile-panel-name {
+  color: rgba(248, 248, 250, 0.96);
+}
+
+.dark-mode .profile-panel-degree {
+  color: rgba(242, 242, 245, 0.6);
+}
+
+.dark-mode .profile-panel-status {
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(242, 242, 245, 0.78);
+}
+
+/* NOTIFICACIONES */
+
+.dark-mode .notifications-panel-title {
+  color: rgba(248, 248, 250, 0.96);
+}
+
+.dark-mode .notification-card {
+  background: rgba(255, 255, 255, 0.065);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark-mode .notification-label {
+  color: rgba(242, 242, 245, 0.46);
+}
+
+.dark-mode .notification-project {
+  color: rgba(248, 248, 250, 0.94);
+}
+
+.dark-mode .notification-description {
+  color: rgba(242, 242, 245, 0.65);
+}
+
+.dark-mode .notification-cooking {
+  color: rgba(242, 242, 245, 0.55);
+}
+
+/* CENTRO DE CONTROL */
+
+.dark-mode .control-center-title {
+  color: rgba(248, 248, 250, 0.96);
+}
+
+.dark-mode .control-center-section {
+  background: rgba(255, 255, 255, 0.065);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark-mode .control-center-section-title {
+  color: rgba(242, 242, 245, 0.46);
+}
+
+.dark-mode .control-center-setting-name {
+  color: rgba(248, 248, 250, 0.94);
+}
+
+.dark-mode .control-center-setting-status {
+  color: rgba(242, 242, 245, 0.56);
+}
+
+.dark-mode .control-center-switch {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.dark-mode .control-center-switch.is-enabled {
+  background: #2f79ec;
+}
+
+
+/* TOPBAR TEXT MENUS */
+
+.topbar-menu-anchor {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.topbar-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 172px;
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 8px;
+
+  background: rgba(246, 246, 246, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+
+  z-index: 1000;
+}
+
+.topbar-menu-item {
+  width: 100%;
+  height: 28px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  cursor: default;
+}
+
+.topbar-menu-item:hover {
+  background: rgba(47, 121, 236, 0.92);
+  color: #fff;
+}
+
+/* DARK MODE - TOPBAR TEXT MENUS */
+
+.dark-mode .topbar-menu {
+  background: rgba(29, 30, 35, 0.95);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.dark-mode .topbar-menu-item {
+  color: rgba(245, 245, 247, 0.88);
+}
+
+.dark-mode .topbar-menu-item:hover {
+  background: rgba(47, 121, 236, 0.9);
+  color: #fff;
 }
