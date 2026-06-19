@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { initialDesktopItems } from "./data/desktopItems";
 import ReleaseToast from "./components/ReleaseToast";
+import DockBar from "./components/DockBar";
+import ImageViewer from "./components/ImageViewer";
 
 import {
   stickyNotesData,
@@ -81,11 +83,17 @@ function App() {
 
   const [isControlCenterPanelOpen, setIsControlCenterPanelOpen] = useState(false);
 
+  const [isCalendarPanelOpen, setIsCalendarPanelOpen] = useState(false);
+
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const [activeTopbarMenu, setActiveTopbarMenu] = useState(null);
 
   const [isReleaseToastVisible, setIsReleaseToastVisible] = useState(true);
+
+  const [viewerImages, setViewerImages] = useState([]);
+  const [viewerSelectedIndex, setViewerSelectedIndex] = useState(0);
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -287,6 +295,26 @@ function App() {
     );
   }
 
+  function toggleCalendarPanel() {
+    setIsCalendarPanelOpen((currentState) => !currentState);
+    setIsProfilePanelOpen(false);
+    setIsNotificationsPanelOpen(false);
+    setIsControlCenterPanelOpen(false);
+    setActiveTopbarMenu(null);
+  }
+
+  function openImageViewer(images, selectedIndex) {
+    setViewerImages(images);
+    setViewerSelectedIndex(selectedIndex);
+    setIsImageViewerOpen(true);
+  }
+
+  function closeImageViewer() {
+    setIsImageViewerOpen(false);
+    setViewerImages([]);
+    setViewerSelectedIndex(0);
+  }
+
   function openFolderScreen(windowId, targetFolder) {
     const folderScreen = projectFolderScreens[targetFolder];
 
@@ -364,6 +392,7 @@ function App() {
     setIsControlCenterPanelOpen((currentState) => !currentState);
     setIsNotificationsPanelOpen(false);
     setIsProfilePanelOpen(false);
+    setIsCalendarPanelOpen(false);
     setActiveTopbarMenu(null);
   }
 
@@ -371,6 +400,7 @@ function App() {
     setIsProfilePanelOpen((currentState) => !currentState);
     setIsNotificationsPanelOpen(false);
     setIsControlCenterPanelOpen(false);
+    setIsCalendarPanelOpen(false);
     setActiveTopbarMenu(null);
   }
 
@@ -388,6 +418,7 @@ function App() {
     setIsNotificationsPanelOpen((currentState) => !currentState);
     setIsProfilePanelOpen(false);
     setIsControlCenterPanelOpen(false);
+    setIsCalendarPanelOpen(false);
     setActiveTopbarMenu(null);
   }
 
@@ -464,6 +495,8 @@ function App() {
         activeTopbarMenu={activeTopbarMenu}
         toggleTopbarMenu={toggleTopbarMenu}
         setActiveTopbarMenu={setActiveTopbarMenu}
+        toggleCalendarPanel={toggleCalendarPanel}
+        isCalendarPanelOpen={isCalendarPanelOpen}
       />
 
 
@@ -478,6 +511,18 @@ function App() {
       />
 
       <ImageWidget />
+
+      <DockBar />
+
+      {isImageViewerOpen && (
+        <ImageViewer
+          images={viewerImages}
+          selectedIndex={viewerSelectedIndex}
+          onSelectImage={setViewerSelectedIndex}
+          onClose={closeImageViewer}
+        />
+      )}
+
       {isReleaseToastVisible && (
         <ReleaseToast
           onOpenProject={openVelarisFromToast}
@@ -519,6 +564,7 @@ function App() {
                 window={window}
                 closeWindow={closeWindow}
                 isDarkMode={isDarkMode}
+                onOpenImageViewer={openImageViewer}
               />
             )}
 

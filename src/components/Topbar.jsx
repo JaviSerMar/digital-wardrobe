@@ -3,6 +3,7 @@ import ControlCenterPanel from "./ControlCenterPanel";
 import NotificationsPanel from "./NotificationsPanel";
 import ProfilePanel from "./ProfilePanel";
 import TopbarMenu from "./TopbarMenu";
+import CalendarPanel from "./CalendarPanel";
 
 function Topbar({
   currentDate,
@@ -18,6 +19,8 @@ function Topbar({
   toggleNotificationsPanel,
   isNotificationsPanelOpen,
   setActiveTopbarMenu,
+  toggleCalendarPanel,
+  isCalendarPanelOpen,
 }) {
   const topbarMenus = {
     projects: [
@@ -229,9 +232,21 @@ function Topbar({
           {isProfilePanelOpen && <ProfilePanel onClose={toggleProfilePanel} />}
         </div>
 
-        <button className="topbar-item topbar-date" type="button">
-          {formatTopbarDate(currentDate)}
-        </button>
+        <div className="topbar-popover-anchor">
+          <button
+            className={`topbar-item topbar-date ${
+              isCalendarPanelOpen ? "is-active" : ""
+            }`}
+            type="button"
+            onClick={toggleCalendarPanel}
+            aria-label="Abrir calendario"
+            aria-expanded={isCalendarPanelOpen}
+          >
+            {formatTopbarDate(currentDate)}
+          </button>
+
+          {isCalendarPanelOpen && <CalendarPanel currentDate={currentDate} />}
+        </div>
       </div>
     </header>
   );

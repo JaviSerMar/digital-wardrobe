@@ -32,14 +32,6 @@ export const initialDesktopItems = [
     y: 3,
   },
   {
-    id: "trash",
-    type: "trash",
-    label: "papelera",
-    icon: "/icons/papelera.png",
-    x: 0,
-    y: 5,
-  },
-  {
     id: "terminal",
     type: "app",
     label: "terminal",

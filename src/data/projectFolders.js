@@ -23,7 +23,7 @@ export const projectFolderScreens = {
       },
       {
         id: "velaris-media",
-        label: "media",
+        label: "dataset",
         icon: "/icons/folder.png",
         targetFolder: "velaris-media",
       },
@@ -31,38 +31,44 @@ export const projectFolderScreens = {
   },
 
   "velaris-media": {
-    title: "media",
-    path: "proyectos / velaris / media",
+    title: "dataset",
+    path: "proyectos / velaris / dataset",
     items: [
       {
         id: "velaris-poster",
-        label: "poster.png",
+        label: "foto01.png",
         icon: "/icons/iconoFoto.png",
         openWindowKey: "velaris-poster",
       },
       {
         id: "velaris-landing",
-        label: "landing.png",
+        label: "foto02.png",
         icon: "/icons/iconoFoto.png",
         openWindowKey: "velaris-landing",
       },
       {
         id: "velaris-gazebo",
-        label: "Rviz.png",
+        label: "foto03.png",
         icon: "/icons/iconoFoto.png",
         openWindowKey: "velaris-gazebo",
       },
       {
         id: "velaris-camera",
-        label: "camara.png",
+        label: "foto04.png",
         icon: "/icons/iconoFoto.png",
         openWindowKey: "velaris-camera",
       },
       {
         id: "velaris-opencv",
-        label: "openCV.png",
+        label: "foto05.png",
         icon: "/icons/iconoFoto.png",
         openWindowKey: "velaris-opencv",
+      },
+      {
+        id: "velaris-foto06",
+        label: "foto06.png",
+        icon: "/icons/iconoFoto.png",
+        openWindowKey: "velaris-foto06",
       },
     ],
   },
