@@ -37,6 +37,10 @@ function DocumentWindow({
         toolbarSrc={window.toolbarSrc}
         titleIconSrc={window.titleIconSrc}
         isImageFile={window.fileType === "image"}
+        isSmallImageHeader={
+          window.fileType === "image" &&
+          window.toolbarSrc === "/images/cabeceraImagenMini.png"
+        }
         isDesktopPhoto={window.id === "desktop-photo-window"}
         isTeamImage={window.id === "equipo-image-window"}
         isManifestoImage={window.id === "velaris-manifesto-window"}

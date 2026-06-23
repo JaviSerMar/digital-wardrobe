@@ -21,17 +21,24 @@
   border-radius: 10px;
 }
 
+
+/* DOCUMENT HEADER */
+
 .document-header {
   width: 100%;
+  flex-shrink: 0;
   background: #eeeeee;
   border-bottom: 1px solid #8f8f8f;
   overflow: hidden;
   border-radius: 10px 10px 0 0;
+
+  container-type: inline-size;
+  container-name: document-header;
 }
 
 .document-titlebar {
-  height: 25px;
   position: relative;
+  height: 25px;
   display: flex;
   align-items: center;
   background: linear-gradient(#f8f8f8, #dfdfdf);
@@ -45,20 +52,20 @@
 }
 
 .document-window-buttons {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   gap: 10px;
   margin-left: 18px;
-  position: relative;
-  z-index: 2;
 }
 
 .document-window-button {
   width: 12px;
   height: 12px;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.18);
   padding: 0;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 50%;
   cursor: default;
 }
 
@@ -116,34 +123,289 @@
 .document-title-icon {
   width: 18px;
   height: 18px;
+  display: block;
   object-fit: contain;
   opacity: 0.82;
 }
+
 
 /* TOOLBAR DE DOCUMENTOS DE TEXTO */
 
 .document-toolbar-image {
   width: 100%;
   height: auto;
+  margin-top: -25px;
   display: block;
   object-fit: contain;
+  border-bottom: 1px solid #bdbdbd;
   user-select: none;
   pointer-events: none;
-  border-bottom: 1px solid #bdbdbd;
-  margin-top: -25px;
 }
+
+
+/* CABECERA HTML PARA IMÁGENES PEQUEÑAS */
+
+.image-small-toolbar {
+  width: 100%;
+  min-height: 50px;
+  padding: 8px 16px;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns:
+    minmax(123px, 1.15fr)
+    minmax(79px, 0.78fr)
+    minmax(123px, 1.15fr)
+    minmax(107px, 0.94fr);
+  align-items: center;
+  gap: 12px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(250, 250, 250, 0.98),
+    rgba(235, 235, 235, 0.98)
+  );
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.22);
+  color: rgba(20, 20, 20, 0.86);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  overflow: hidden;
+}
+
+.image-toolbar-group {
+  width: 100%;
+  min-width: 0;
+  height: 32px;
+
+  display: flex;
+  align-items: stretch;
+
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(0, 0, 0, 0.13);
+  border-radius: 8px;
+
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.image-toolbar-group button {
+  width: auto;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  flex: 1 1 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  background: transparent;
+  color: inherit;
+
+  cursor: default;
+}
+
+.image-toolbar-group button:last-child {
+  border-right: 0;
+}
+
+.image-toolbar-group svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.image-toolbar-view-button {
+  width: 100%;
+  min-width: 0;
+  height: 32px;
+  padding: 0 10px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(0, 0, 0, 0.13);
+  border-radius: 8px;
+
+  color: rgba(20, 20, 20, 0.86);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  cursor: default;
+
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.image-toolbar-view-button svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.image-toolbar-search {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: 32px;
+  padding: 0 10px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  background: rgba(255, 255, 255, 0.64);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+
+  color: rgba(0, 0, 0, 0.48);
+  font-size: 11px;
+
+  overflow: hidden;
+
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.035),
+    0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.image-toolbar-search svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.image-toolbar-search span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* CABECERA ADAPTADA A VENTANAS MEDIANAS */
+
+@container document-header (max-width: 580px) {
+  .image-small-toolbar {
+    padding: 8px 10px;
+    grid-template-columns:
+      minmax(105px, 1.1fr)
+      minmax(63px, 0.72fr)
+      minmax(105px, 1.1fr)
+      minmax(71px, 0.82fr);
+    gap: 8px;
+  }
+
+  .image-toolbar-group svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .image-toolbar-view-button,
+  .image-toolbar-search {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+
+/* CABECERA ADAPTADA A VENTANAS ESTRECHAS */
+
+@container document-header (max-width: 470px) {
+  .image-small-toolbar {
+    padding: 7px 8px;
+    grid-template-columns:
+      minmax(96px, 1fr)
+      36px
+      minmax(96px, 1fr)
+      36px;
+    gap: 6px;
+  }
+
+  .image-toolbar-group button {
+    min-width: 0;
+  }
+
+  .image-toolbar-view-button {
+    width: 36px;
+    min-width: 36px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .image-toolbar-view-button span {
+    display: none;
+  }
+
+  .image-toolbar-search {
+    width: 36px;
+    min-width: 36px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .image-toolbar-search span {
+    display: none;
+  }
+}
+
+
+/* CABECERA ADAPTADA A VENTANAS MUY ESTRECHAS */
+
+@container document-header (max-width: 390px) {
+  .image-small-toolbar {
+    padding: 7px 6px;
+    grid-template-columns:
+      minmax(84px, 1fr)
+      32px
+      minmax(84px, 1fr)
+      32px;
+    gap: 5px;
+  }
+
+  .image-toolbar-group svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .image-toolbar-view-button,
+  .image-toolbar-search {
+    width: 32px;
+    min-width: 32px;
+    height: 32px;
+  }
+}
+
 
 /* CUERPO GENERAL DEL DOCUMENTO */
 
 .document-body {
   flex: 1;
+  min-height: 0;
   padding: 20px 26px 34px;
+
   background: #fffdf8;
   color: #111;
+
   font-family: "Courier New", Courier, monospace;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.6;
+
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -153,17 +415,20 @@
 }
 
 .document-body:has(.velaris-readme-content) {
-  padding: 14px 18px 14px;
+  padding: 14px 18px;
 }
 
 .document-code-text {
   margin: 0;
+
   font-family: "Courier New", Courier, monospace;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.45;
+
   white-space: pre;
 }
+
 
 /* VELARIS README */
 
@@ -185,42 +450,52 @@
 }
 
 .velaris-gallery-grid {
+  width: 100%;
+  min-height: 0;
+
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 1.35fr 1fr;
   gap: 6px;
-  width: 100%;
-  min-height: 0;
-}
-
-.velaris-gallery-item-1 {
-  grid-column: span 3;
-}
-
-.velaris-gallery-item-2 {
-  grid-column: span 3;
-}
-
-.velaris-gallery-item-3 {
-  grid-column: span 2;
-}
-
-.velaris-gallery-item-4 {
-  grid-column: span 2;
-}
-
-.velaris-gallery-item-5 {
-  grid-column: span 2;
 }
 
 .velaris-gallery-item {
   padding: 0;
+  overflow: hidden;
+
+  background: rgba(0, 0, 0, 0.08);
   border: 0;
   border-radius: 0;
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.08);
-  cursor: pointer;
   box-shadow: none;
+
+  cursor: pointer;
+}
+
+.velaris-gallery-item-1,
+.velaris-gallery-item-2 {
+  grid-column: span 3;
+}
+
+.velaris-gallery-item-3,
+.velaris-gallery-item-4,
+.velaris-gallery-item-5 {
+  grid-column: span 2;
+}
+
+.velaris-gallery-item img {
+  width: 100%;
+  height: 100%;
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
+
+  filter: brightness(1.28) contrast(1.12) saturate(1.08);
+  image-rendering: auto;
+
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease;
 }
 
 .velaris-gallery-item:hover img {
@@ -229,38 +504,28 @@
 }
 
 .velaris-gallery-item-4 img {
-  object-fit: contain;
   padding: 8px;
   box-sizing: border-box;
+
+  object-fit: contain;
+
   background: #07101b;
   filter: brightness(1.12) contrast(1.08) saturate(1.05);
 }
 
-.velaris-gallery-item img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-
-  filter: brightness(1.28) contrast(1.12) saturate(1.08);
-
-  image-rendering: auto;
-
-  transition:
-    transform 0.18s ease,
-    filter 0.18s ease;
+.velaris-gallery-grid .velaris-gallery-item-5 img {
+  object-position: center 75%;
 }
-
-
 
 .velaris-readme-cover {
   width: 100%;
   height: auto;
   display: block;
   margin: 0 0 18px;
-  border: none;
+
+  border: 0;
   object-fit: contain;
+
   filter: brightness(1.22) contrast(1.05);
 }
 
@@ -278,6 +543,7 @@
 
 .document-readme-text h2 {
   margin: 0 0 9px;
+
   font-size: 13px;
   font-weight: 900;
   letter-spacing: 0.8px;
@@ -288,18 +554,19 @@
   line-height: 1.38;
 }
 
-.document-readme-stack {
-  margin-top: 10px !important;
-}
-
 .document-readme-text p:last-child {
   margin-bottom: 0;
 }
 
 .document-readme-text strong {
-  font-weight: 900;
   color: #000;
+  font-weight: 900;
 }
+
+.document-readme-stack {
+  margin-top: 10px !important;
+}
+
 
 /* DOCUMENTOS DE TEXTO ESPECÍFICOS */
 
@@ -313,22 +580,26 @@
   line-height: 1.7;
 }
 
+
 /* IMAGE FILES */
 
 .image-document-body {
+  min-height: 0;
   padding: 14px 18px 18px;
   box-sizing: border-box;
+
   background: #fffdf8;
   overflow: hidden;
-  min-height: 0;
 }
 
 .image-file-viewer {
   width: 100%;
   height: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   overflow: hidden;
 }
 
@@ -336,20 +607,25 @@
   display: block;
   max-width: 100%;
   max-height: 100%;
+
   object-fit: contain;
+
   user-select: none;
   pointer-events: none;
 }
 
-/* CABECERA DE ARCHIVOS DE IMAGEN */
+
+/* ANTIGUAS CABECERAS DE ARCHIVOS DE IMAGEN */
 
 .image-toolbar-picture {
   width: 100%;
   height: 48px;
   margin-top: 0;
+
   display: block;
   object-fit: fill;
   object-position: center;
+
   border-bottom: 1px solid #bdbdbd;
 }
 
@@ -365,16 +641,19 @@
   height: 54px;
 }
 
+
 /* CONTACTO */
 
 .email-document-content {
   padding: 10px 8px;
-  font-family: "Courier New", Courier, monospace;
+
   color: #111;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .email-document-content h2 {
   margin: 0 0 26px;
+
   font-size: 13px;
   font-weight: 900;
   letter-spacing: 0.8px;
@@ -382,19 +661,23 @@
 
 .email-document-text {
   margin: 0 0 12px;
+
   font-size: 12px;
   line-height: 1.45;
 }
 
 .email-document-address {
   margin: 0;
+
+  color: #000;
   font-size: 14px;
   font-weight: 900;
   line-height: 1.45;
-  color: #000;
+
   user-select: text;
   cursor: text;
 }
+
 
 /* DARK MODE - DOCUMENT WINDOWS */
 
@@ -433,7 +716,42 @@
   border-bottom-color: rgba(255, 255, 255, 0.12);
 }
 
-/* CUERPO DE DOCUMENTOS */
+
+/* DARK MODE - CABECERA DE IMÁGENES PEQUEÑAS */
+
+.dark-mode .image-small-toolbar {
+  background: linear-gradient(
+    to bottom,
+    rgba(36, 37, 42, 0.98),
+    rgba(24, 25, 29, 0.98)
+  );
+
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark-mode .image-toolbar-group,
+.dark-mode .image-toolbar-view-button,
+.dark-mode .image-toolbar-search {
+  background: rgba(255, 255, 255, 0.035);
+  border-color: rgba(255, 255, 255, 0.09);
+  color: rgba(235, 235, 238, 0.38);
+
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+.dark-mode .image-toolbar-group button {
+  color: rgba(235, 235, 238, 0.78);
+  border-right-color: rgba(255, 255, 255, 0.07);
+}
+
+.dark-mode .image-toolbar-search {
+  color: rgba(245, 245, 247, 0.48);
+}
+
+
+/* DARK MODE - CUERPO DE DOCUMENTOS */
 
 .dark-mode .document-body {
   background: #17181d;
@@ -454,29 +772,27 @@
 }
 
 .dark-mode .document-readme-text strong {
-  color: #ffffff;
+  color: #fff;
 }
 
 .dark-mode .velaris-readme-cover {
   filter: brightness(0.88) contrast(1.06);
 }
 
-/* ARCHIVOS DE IMAGEN */
+
+/* DARK MODE - ARCHIVOS DE IMAGEN */
 
 .dark-mode .image-document-body {
   background: #15161b;
 }
 
-/* CONTACTO */
+
+/* DARK MODE - CONTACTO */
 
 .dark-mode .email-document-content {
   color: rgba(242, 242, 245, 0.9);
 }
 
 .dark-mode .email-document-address {
-  color: #ffffff;
-}
-
-.velaris-gallery-grid .velaris-gallery-item-5 img {
-  object-position: center 75% !important;
+  color: #fff;
 }
