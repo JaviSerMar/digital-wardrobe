@@ -4,7 +4,6 @@
   position: absolute;
   left: 50%;
   bottom: 22px;
-  transform: translateX(-50%);
 
   min-height: 72px;
   padding: 9px 22px;
@@ -26,13 +25,51 @@
 
   z-index: 80;
   user-select: none;
+
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transform: translateX(-50%) translateY(0) scale(1);
+
+  transition:
+    opacity 180ms ease,
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0s;
 }
+
+.dock-bar-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.dock-bar-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateX(-50%) translateY(34px) scale(0.96);
+
+  transition:
+    opacity 160ms ease,
+    transform 220ms ease,
+    visibility 0s linear 220ms;
+}
+
+
+/* DOCK ITEMS CONTAINER */
 
 .dock-apps {
   display: flex;
   align-items: center;
   gap: 12px;
 }
+
+
+/* DOCK ITEM */
 
 .dock-item {
   position: relative;
@@ -69,10 +106,14 @@
 .dock-item:hover {
   transform: translateY(-8px) scale(1.08);
   background: rgba(255, 255, 255, 0.94);
+
   box-shadow:
     0 10px 20px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
+
+
+/* DOCK ICON */
 
 .dock-icon {
   width: 100%;
@@ -86,8 +127,10 @@
 .dock-icon-image {
   width: 42px;
   height: 42px;
+
   display: block;
   object-fit: contain;
+
   pointer-events: none;
 }
 
@@ -147,10 +190,13 @@
 }
 
 
+/* DOCK TOOLTIP */
+
 .dock-tooltip {
   position: absolute;
   bottom: calc(100% + 9px);
   left: 50%;
+
   transform: translateX(-50%) translateY(4px);
 
   padding: 4px 8px;
@@ -178,12 +224,19 @@
   transform: translateX(-50%) translateY(0);
 }
 
+
+/* DOCK SEPARATOR */
+
 .dock-separator {
   width: 1px;
   height: 50px;
-  background: rgba(0, 0, 0, 0.18);
   margin: 0 3px;
+
+  background: rgba(0, 0, 0, 0.18);
 }
+
+
+/* TRASH */
 
 .dock-trash {
   background: rgba(255, 255, 255, 0.68);

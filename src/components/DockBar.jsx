@@ -1,4 +1,4 @@
-function DockBar() {
+function DockBar({ isVisible }) {
   const dockItems = [
     {
       id: "vscode",
@@ -53,10 +53,21 @@ function DockBar() {
   ];
 
   return (
-    <nav className="dock-bar" aria-label="Aplicaciones">
+    <nav
+      className={`dock-bar ${
+        isVisible ? "dock-bar-visible" : "dock-bar-hidden"
+      }`}
+      aria-label="Aplicaciones"
+      aria-hidden={!isVisible}
+    >
       <div className="dock-apps">
         {dockItems.map((item) => (
-          <button className="dock-item" type="button" key={item.id}>
+          <button
+            className="dock-item"
+            type="button"
+            key={item.id}
+            tabIndex={isVisible ? 0 : -1}
+          >
             <span className="dock-icon">
               <img
                 className="dock-icon-image"
@@ -73,7 +84,11 @@ function DockBar() {
 
       <div className="dock-separator" />
 
-      <button className="dock-item dock-trash" type="button">
+      <button
+        className="dock-item dock-trash"
+        type="button"
+        tabIndex={isVisible ? 0 : -1}
+      >
         <span className="dock-icon">
           <img
             className="dock-icon-image"

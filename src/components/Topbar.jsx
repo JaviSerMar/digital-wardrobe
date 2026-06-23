@@ -14,6 +14,8 @@ function Topbar({
   isControlCenterPanelOpen,
   isDarkMode,
   toggleDarkMode,
+  isDockVisible,
+  toggleDock,
   toggleProfilePanel,
   isProfilePanelOpen,
   toggleNotificationsPanel,
@@ -43,7 +45,6 @@ function Topbar({
       { id: "portfolio", label: "Acerca del portfolio" },
     ],
   };
-
 
   useEffect(() => {
     function handleOutsidePointerDown(event) {
@@ -180,6 +181,8 @@ function Topbar({
             <ControlCenterPanel
               isDarkMode={isDarkMode}
               onToggleDarkMode={toggleDarkMode}
+              isDockVisible={isDockVisible}
+              onToggleDock={toggleDock}
             />
           )}
         </div>
@@ -229,7 +232,9 @@ function Topbar({
             />
           </button>
 
-          {isProfilePanelOpen && <ProfilePanel onClose={toggleProfilePanel} />}
+          {isProfilePanelOpen && (
+            <ProfilePanel onClose={toggleProfilePanel} />
+          )}
         </div>
 
         <div className="topbar-popover-anchor">
@@ -245,7 +250,9 @@ function Topbar({
             {formatTopbarDate(currentDate)}
           </button>
 
-          {isCalendarPanelOpen && <CalendarPanel currentDate={currentDate} />}
+          {isCalendarPanelOpen && (
+            <CalendarPanel currentDate={currentDate} />
+          )}
         </div>
       </div>
     </header>

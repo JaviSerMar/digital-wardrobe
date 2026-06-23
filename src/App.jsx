@@ -22,6 +22,7 @@ import DocumentWindow from "./components/DocumentWindow";
 import FolderWindow from "./components/FolderWindow";
 import StickyWindow from "./components/StickyWindow";
 import ImageWidget from "./components/ImageWidget";
+import AppWindow from "./components/AppWindow";
 
 function formatTopbarDate(date) {
   const days = [
@@ -86,6 +87,13 @@ function App() {
   const [isCalendarPanelOpen, setIsCalendarPanelOpen] = useState(false);
 
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDockVisible, setIsDockVisible] = useState(() => {
+    const savedDockVisibility = localStorage.getItem(
+      "portfolio-dock-visible"
+    );
+
+    return savedDockVisibility !== "false";
+  });
 
   const [activeTopbarMenu, setActiveTopbarMenu] = useState(null);
 
@@ -116,6 +124,13 @@ function App() {
       window.clearTimeout(timeoutId);
     };
   }, [isReleaseToastVisible]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "portfolio-dock-visible",
+      String(isDockVisible)
+    );
+  }, [isDockVisible]);
 
   const [windowPositions, setWindowPositions] = useState(() =>
   Object.fromEntries(
@@ -426,6 +441,9 @@ function App() {
     setIsDarkMode((currentState) => !currentState);
   }
 
+  function toggleDock() {
+    setIsDockVisible((currentState) => !currentState);
+  }
 
   function openVelarisFromToast() {
     const projectsWindow = folderWindowsData.projects;
@@ -497,6 +515,8 @@ function App() {
         setActiveTopbarMenu={setActiveTopbarMenu}
         toggleCalendarPanel={toggleCalendarPanel}
         isCalendarPanelOpen={isCalendarPanelOpen}
+        isDockVisible={isDockVisible}
+        toggleDock={toggleDock}
       />
 
 
@@ -512,7 +532,7 @@ function App() {
 
       <ImageWidget />
 
-      <DockBar />
+      <DockBar isVisible={isDockVisible} />
 
       {isImageViewerOpen && (
         <ImageViewer
@@ -541,7 +561,9 @@ function App() {
                   ? "terminal-window"
                   : window.type === "folder-window"
                     ? "folder-window"
-                    : `sticky-window sticky-window-${window.type}`
+                    : window.type === "app"
+                      ? "app-window"
+                      : `sticky-window sticky-window-${window.type}`
             }`}
             onPointerDown={(event) => handleWindowPointerDown(event, window.id)}
             onPointerMove={handleWindowPointerMove}
@@ -579,6 +601,14 @@ function App() {
               openFolderScreen={openFolderScreen}
               openWindowByKey={openWindowByKey}
               setOpenWindows={setOpenWindows}
+              isDarkMode={isDarkMode}
+            />
+          )}
+
+          {window.type === "app" && (
+            <AppWindow
+              window={window}
+              closeWindow={closeWindow}
               isDarkMode={isDarkMode}
             />
           )}

@@ -4,8 +4,14 @@ export const projectFolderScreens = {
     path: "proyectos / velaris",
     items: [
       {
-        id: "velaris-readme",
+        id: "velaris-info",
         label: "README.txt",
+        icon: "/icons/archivoTxt.png",
+        openWindowKey: "velaris-info",
+      },
+      {
+        id: "velaris-readme",
+        label: "VELARIS.txt",
         icon: "/icons/archivoTxt.png",
         openWindowKey: "velaris-readme",
       },
@@ -16,10 +22,22 @@ export const projectFolderScreens = {
         openWindowKey: "velaris-stack",
       },
       {
+        id: "velaris-app",
+        label: "Velaris.app",
+        icon: "/icons/logoAppVelaris.png",
+        openWindowKey: "velaris-app",
+      },
+      {
         id: "velaris-manifesto",
         label: "manifesto.png",
         icon: "/icons/iconoFoto.png",
         openWindowKey: "velaris-manifesto",
+      },
+      {
+        id: "velaris-map",
+        label: "almacen.png",
+        icon: "/icons/iconoFoto.png",
+        openWindowKey: "velaris-map",
       },
       {
         id: "velaris-media",
@@ -93,7 +111,6 @@ export const projectFolderScreens = {
         icon: "/icons/folder.png",
       },
     ],
-    
   },
 
   "airmonitor-media": {

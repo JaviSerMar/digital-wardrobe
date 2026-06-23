@@ -8,6 +8,7 @@ export const stickyNotesData = {
     width: 455,
     height: 155,
   },
+
   "profile-note": {
     id: "profile-note-window",
     title: "profile.js",
@@ -29,6 +30,7 @@ export const documentWindowsData = {
     width: 760,
     height: 430,
   },
+
   "skills-file": {
     id: "skills-file-window",
     title: "habilidades.txt",
@@ -38,6 +40,7 @@ export const documentWindowsData = {
     width: 760,
     height: 650,
   },
+
   "aprendizaje-file": {
     id: "aprendizaje-file-window",
     title: "aprendizaje.txt",
@@ -57,6 +60,7 @@ export const documentWindowsData = {
     width: 560,
     height: 520,
   },
+
   "actualmente-file": {
     id: "actualmente-file-window",
     title: "actualmente.txt",
@@ -66,15 +70,27 @@ export const documentWindowsData = {
     width: 560,
     height: 460,
   },
+
   "velaris-readme": {
     id: "velaris-readme-window",
-    title: "README.txt",
+    title: "VELARIS.txt",
     type: "document",
     left: 360,
     top: 90,
     width: 620,
     height: 590,
   },
+
+  "velaris-info": {
+    id: "velaris-info-window",
+    title: "README.txt",
+    type: "document",
+    left: 380,
+    top: 105,
+    width: 560,
+    height: 520,
+  },
+
   "velaris-stack": {
     id: "velaris-stack-window",
     title: "tecnologias.txt",
@@ -84,7 +100,36 @@ export const documentWindowsData = {
     width: 520,
     height: 610,
   },
-    "velaris-poster": {
+
+  "velaris-manifesto": {
+    id: "velaris-manifesto-window",
+    title: "manifesto.png",
+    type: "document",
+    left: 390,
+    top: 15,
+    width: 420,
+    height: 600,
+    fileType: "image",
+    imageSrc: "/projects/velaris/manifesto.png",
+    toolbarSrc: "/images/cabeceraImagenMini.png",
+    titleIconSrc: "/icons/iconoFoto.png",
+  },
+
+  "velaris-map": {
+    id: "velaris-map-window",
+    title: "almacen.png",
+    type: "document",
+    left: 390,
+    top: 20,
+    width: 450,
+    height: 600,
+    fileType: "image",
+    imageSrc: "/projects/velaris/mapaAlmacen.png",
+    toolbarSrc: "/images/cabeceraImagenMini.png",
+    titleIconSrc: "/icons/iconoFoto.png",
+  },
+
+  "velaris-poster": {
     id: "velaris-poster-window",
     title: "foto01.png",
     type: "document",
@@ -154,8 +199,8 @@ export const documentWindowsData = {
     toolbarSrc: "/images/cabeceraImagenMini.png",
   },
 
-    "velaris-foto06": {
-    id: "velaris-poster-window",
+  "velaris-foto06": {
+    id: "velaris-foto06-window",
     title: "foto06.png",
     type: "document",
     left: 360,
@@ -181,6 +226,7 @@ export const documentWindowsData = {
     toolbarSrc: "/images/cabeceraImagen.png",
     titleIconSrc: "/icons/iconoFoto.png",
   },
+
   "equipo-image": {
     id: "equipo-image-window",
     title: "equipo.png",
@@ -194,6 +240,7 @@ export const documentWindowsData = {
     toolbarSrc: "/images/cabeceraImagenMini.png",
     titleIconSrc: "/icons/iconoFoto.png",
   },
+
   "skills-map-image": {
     id: "skills-map-image-window",
     title: "esquema.png",
@@ -207,19 +254,7 @@ export const documentWindowsData = {
     toolbarSrc: "/images/cabeceraImagen.png",
     titleIconSrc: "/icons/iconoFoto.png",
   },
-  "velaris-manifesto": {
-    id: "velaris-manifesto-window",
-    title: "manifesto.png",
-    type: "document",
-    left: 390,
-    top: 15,
-    width: 480,
-    height: 690,
-    fileType: "image",
-    imageSrc: "/projects/velaris/manifesto.png",
-    toolbarSrc: "/images/cabeceraImagenMini.png",
-    titleIconSrc: "/icons/iconoFoto.png",
-  },
+
   "email-file": {
     id: "email-file-window",
     title: "correo.txt",
@@ -228,6 +263,17 @@ export const documentWindowsData = {
     top: 170,
     width: 450,
     height: 245,
+  },
+
+  "velaris-app": {
+    id: "velaris-app-window",
+    title: "Velaris.app",
+    type: "app",
+    left: 760,
+    top: 45,
+    width: 340,
+    height: 625,
+    appType: "velaris",
   },
 };
 
@@ -345,7 +391,8 @@ export const folderWindowsData = {
         id: "linkedin-file",
         label: "linkedin",
         icon: "/icons/LI-In-Bug.png",
-        externalUrl: "https://www.linkedin.com/in/javier-serrano-marco-800167409/",
+        externalUrl:
+          "https://www.linkedin.com/in/javier-serrano-marco-800167409/",
       },
     ],
   },
