@@ -5,9 +5,73 @@ function FolderWindow({
   closeWindow,
   openFolderScreen,
   openWindowByKey,
+  openImageGallery,
   setOpenWindows,
-  isDarkMode,
 }) {
+  function handleFolderItemOpen(event, folderItem) {
+    event.stopPropagation();
+
+    if (folderItem.targetFolder) {
+      openFolderScreen(window.id, folderItem.targetFolder);
+      return;
+    }
+
+    if (
+      folderItem.galleryKey &&
+      Number.isInteger(folderItem.galleryIndex)
+    ) {
+      openImageGallery(
+        folderItem.galleryKey,
+        folderItem.galleryIndex
+      );
+      return;
+    }
+
+    if (folderItem.openWindowKey) {
+      openWindowByKey(folderItem.openWindowKey);
+      return;
+    }
+
+    if (!folderItem.externalUrl) {
+      return;
+    }
+
+    if (folderItem.id === "email-file") {
+      document.location.href = folderItem.externalUrl;
+      return;
+    }
+
+    globalThis.open(
+      folderItem.externalUrl,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  }
+
+  function returnToProjectsRoot() {
+    if (
+      window.id !== "projects-window" ||
+      window.currentFolder === "projects"
+    ) {
+      return;
+    }
+
+    const projectsRoot = folderWindowsData.projects;
+
+    setOpenWindows((currentWindows) =>
+      currentWindows.map((currentWindow) =>
+        currentWindow.id === "projects-window"
+          ? {
+              ...currentWindow,
+              title: "proyectos",
+              currentFolder: "projects",
+              items: projectsRoot.items,
+            }
+          : currentWindow
+      )
+    );
+  }
+
   return (
     <div className="folder-window-content">
       <div className="folder-header">
@@ -16,7 +80,9 @@ function FolderWindow({
             <button
               className="folder-window-button folder-close"
               type="button"
-              onPointerDown={(event) => event.stopPropagation()}
+              onPointerDown={(event) =>
+                event.stopPropagation()
+              }
               onClick={() => closeWindow(window.id)}
               aria-label="Cerrar carpeta"
             />
@@ -38,49 +104,34 @@ function FolderWindow({
             <button
               className="folder-nav-button"
               type="button"
-              onPointerDown={(event) => event.stopPropagation()}
-              onClick={() => {
-                if (
-                  window.id === "projects-window" &&
-                  window.currentFolder !== "projects"
-                ) {
-                  const projectsRoot = folderWindowsData.projects;
-
-                  setOpenWindows((currentWindows) =>
-                    currentWindows.map((currentWindow) =>
-                      currentWindow.id === "projects-window"
-                        ? {
-                            ...currentWindow,
-                            title: "proyectos",
-                            currentFolder: "projects",
-                            items: projectsRoot.items,
-                          }
-                        : currentWindow
-                    )
-                  );
-                }
-              }}
+              onPointerDown={(event) =>
+                event.stopPropagation()
+              }
+              onClick={returnToProjectsRoot}
+              aria-label="Volver a proyectos"
             >
               ‹
             </button>
 
             <div className="folder-nav-divider" />
 
-            <button className="folder-nav-button" type="button">
+            <button
+              className="folder-nav-button"
+              type="button"
+              aria-label="Avanzar"
+            >
               ›
             </button>
           </div>
 
-          <h2 className="folder-title">{window.title}</h2>
+          <h2 className="folder-title">
+            {window.title}
+          </h2>
         </div>
 
         <img
           className="folder-toolbar-image"
-          src={
-            isDarkMode
-              ? "/images/VersionOscuro/cabeceraCarpetas_Oscura.png"
-              : "/images/cabeceraCarpetas.png"
-          }
+          src="/images/cabeceraCarpetas.png"
           alt=""
           draggable="false"
         />
@@ -88,7 +139,10 @@ function FolderWindow({
 
       <div className="folder-main">
         <aside className="folder-sidebar">
-          <p className="folder-sidebar-section">Javier Serrano</p>
+          <p className="folder-sidebar-section">
+            Javier Serrano
+          </p>
+
           <p>Proyectos</p>
           <p>Skills</p>
           <p>Contacto</p>
@@ -97,6 +151,7 @@ function FolderWindow({
           <p className="folder-sidebar-section folder-sidebar-system">
             Sistema
           </p>
+
           <p className="is-selected">[portfolio]</p>
           <p>Archivo local</p>
           <p>Recursos</p>
@@ -106,34 +161,21 @@ function FolderWindow({
           {window.items.map((folderItem) => (
             <button
               className="folder-item"
+              type="button"
               key={folderItem.id}
-              onPointerDown={(event) => event.stopPropagation()}
-              onDoubleClick={(event) => {
-                event.stopPropagation();
-
-                if (folderItem.targetFolder) {
-                  openFolderScreen(window.id, folderItem.targetFolder);
-                  return;
-                }
-
-                if (folderItem.openWindowKey) {
-                  openWindowByKey(folderItem.openWindowKey);
-                  return;
-                }
-
-                if (!folderItem.externalUrl) {
-                  return;
-                }
-
-                if (folderItem.id === "email-file") {
-                  document.location.href = folderItem.externalUrl;
-                  return;
-                }
-
-                globalThis.open(folderItem.externalUrl, "_blank", "noopener,noreferrer");
-              }}
+              onPointerDown={(event) =>
+                event.stopPropagation()
+              }
+              onDoubleClick={(event) =>
+                handleFolderItemOpen(event, folderItem)
+              }
             >
-              <img src={folderItem.icon} alt="" draggable="false" />
+              <img
+                src={folderItem.icon}
+                alt=""
+                draggable="false"
+              />
+
               <span>{folderItem.label}</span>
             </button>
           ))}

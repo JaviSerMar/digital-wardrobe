@@ -11,9 +11,11 @@
 .app-window-content {
   width: 100%;
   height: 100%;
+
   display: flex;
   align-items: flex-start;
   justify-content: center;
+
   overflow: visible;
 }
 
@@ -34,6 +36,7 @@
   width: 320px;
   height: 610px;
   padding: 7px;
+
   box-sizing: border-box;
   overflow: hidden;
 
@@ -107,6 +110,7 @@
 .app-phone-status-icons svg {
   width: 21px;
   height: 21px;
+
   display: block;
 }
 
@@ -134,6 +138,7 @@
   );
 
   border-bottom: 1px solid rgba(16, 83, 126, 0.1);
+
   box-shadow: 0 5px 15px rgba(16, 73, 110, 0.04);
 }
 
@@ -147,10 +152,10 @@
   align-items: center;
   justify-content: center;
 
+  background: rgba(28, 115, 165, 0.08);
   border: 1px solid rgba(20, 91, 136, 0.08);
   border-radius: 50%;
 
-  background: rgba(28, 115, 165, 0.08);
   color: rgba(12, 71, 107, 0.66);
 
   font-family: Arial, Helvetica, sans-serif;
@@ -192,6 +197,7 @@
   margin: 0;
 
   color: #073c62;
+
   font-size: 16px;
   font-weight: 850;
   letter-spacing: 0.7px;
@@ -202,6 +208,7 @@
   margin: 3px 0 0;
 
   color: rgba(17, 74, 108, 0.5);
+
   font-size: 10px;
   line-height: 1.2;
 }
@@ -219,6 +226,7 @@
   border-radius: 999px;
 
   color: #11865a;
+
   font-size: 9px;
   font-weight: 750;
   white-space: nowrap;
@@ -242,9 +250,10 @@
 /* SCROLLABLE CONTENT */
 
 .app-phone-body {
-  flex: 1;
   min-height: 0;
-  padding: 10px;
+  padding: 10px 10px 18px;
+  flex: 1;
+
   box-sizing: border-box;
 
   overflow-y: auto;
@@ -287,68 +296,6 @@
   gap: 12px;
 }
 
-.velaris-view-heading {
-  padding: 4px 3px 2px;
-}
-
-.velaris-view-heading > span {
-  display: block;
-
-  color: #1e91c5;
-  font-size: 12px;
-  font-weight: 850;
-  letter-spacing: 0.9px;
-}
-
-.velaris-view-heading h2 {
-  margin: 4px 0 0;
-
-  color: #083b5d;
-  font-size: 18px;
-  font-weight: 800;
-  line-height: 1.15;
-}
-
-.velaris-view-heading p {
-  margin: 5px 0 0;
-
-  color: rgba(14, 69, 102, 0.54);
-  font-size: 10px;
-  line-height: 1.45;
-}
-
-
-/* SHARED PANEL */
-
-.velaris-panel {
-  padding: 10px;
-
-  background: linear-gradient(
-    145deg,
-    #0d3b55,
-    #08283d 68%,
-    #0a334b
-  );
-
-  border: 1px solid rgba(77, 190, 227, 0.14);
-  border-radius: 14px;
-
-  color: #edfaff;
-
-  box-shadow:
-    0 9px 20px rgba(8, 52, 77, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-}
-
-.velaris-panel > h3 {
-  margin: 0 0 8px;
-
-  color: rgba(211, 239, 249, 0.65);
-  font-size: 12px;
-  font-weight: 850;
-  letter-spacing: 0.45px;
-}
-
 
 /* HOME */
 
@@ -387,13 +334,14 @@
   border-radius: 50%;
 
   color: #148dcf;
+
   font-size: 12px;
   font-weight: 850;
 }
 
 .velaris-operator-info {
-  flex: 1;
   min-width: 0;
+  flex: 1;
 }
 
 .velaris-operator-info span,
@@ -447,6 +395,7 @@
   justify-content: space-between;
 
   color: rgba(18, 67, 98, 0.56);
+
   font-size: 9px;
   font-weight: 750;
   letter-spacing: 0.3px;
@@ -454,6 +403,7 @@
 
 .velaris-home-section-link {
   color: #158ed0;
+
   font-size: 9px;
   font-weight: 700;
 }
@@ -463,6 +413,7 @@
 
 .velaris-home-camera {
   position: relative;
+
   height: 148px;
 
   overflow: hidden;
@@ -500,10 +451,10 @@
   margin-left: auto;
   padding: 0;
 
+  background: rgba(255, 255, 255, 0.1);
   border: 0;
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
 
@@ -572,6 +523,7 @@
   left: 50%;
 
   background: #594c3c;
+
   transform: translateX(-50%);
 }
 
@@ -594,6 +546,7 @@
   );
 
   clip-path: polygon(36% 0, 64% 0, 100% 100%, 0 100%);
+
   transform: translateX(-50%);
 }
 
@@ -621,6 +574,7 @@
   display: block;
 
   color: rgba(16, 64, 95, 0.48);
+
   font-size: 8px;
   letter-spacing: 0.35px;
 }
@@ -656,6 +610,7 @@
 
 .velaris-home-progress > span {
   height: 100%;
+
   display: block;
 
   background: linear-gradient(90deg, #1db97f, #22a6cf);
@@ -688,6 +643,7 @@
   margin: 0;
 
   color: #153f5d;
+
   font-size: 10px;
   font-weight: 750;
 }
@@ -711,12 +667,14 @@
   justify-content: center;
 
   border-radius: 6px;
+
   color: #8294a1;
   font-size: 9px;
 }
 
 .velaris-home-segmented span.is-active {
   background: #fff;
+
   color: #138fd1;
 
   box-shadow: 0 2px 5px rgba(14, 66, 98, 0.08);
@@ -760,10 +718,12 @@
 }
 
 .velaris-home-direction-label {
-  display: block;
   margin-bottom: 9px;
 
+  display: block;
+
   color: rgba(18, 67, 98, 0.48);
+
   font-size: 9px;
   font-weight: 650;
 }
@@ -812,6 +772,7 @@
 
   background: #ef4650;
   border-color: transparent;
+
   color: #ffffff;
 }
 
@@ -840,6 +801,7 @@
   height: 30px;
   margin-bottom: 6px;
   padding: 0 10px;
+
   box-sizing: border-box;
 
   display: flex;
@@ -850,6 +812,7 @@
   border-radius: 8px;
 
   color: #526b7a;
+
   font-size: 9px;
 }
 
@@ -866,9 +829,10 @@
 
 .velaris-home-pause-icon {
   width: 12px;
-  text-align: center;
+
   font-size: 11px;
   font-weight: 800;
+  text-align: center;
 }
 
 .velaris-home-control-footer {
@@ -892,7 +856,9 @@
 
 .velaris-home-map {
   position: relative;
+
   height: 215px;
+
   overflow: hidden;
 
   background: #f8fbfd;
@@ -904,9 +870,11 @@
 
 .velaris-home-map::after {
   content: "";
+
   position: absolute;
   inset: 0;
   z-index: 2;
+
   pointer-events: none;
 
   background: linear-gradient(
@@ -923,10 +891,12 @@
 
   width: 205px;
   height: 275px;
+
   display: block;
   object-fit: contain;
 
   opacity: 0.72;
+
   filter:
     grayscale(0.65)
     contrast(1.2)
@@ -951,6 +921,7 @@
 
   background: rgba(255, 255, 255, 0.94);
   border-radius: 50%;
+
   color: #36677f;
   font-size: 13px;
 
@@ -960,17 +931,22 @@
 .velaris-home-map-route {
   position: absolute;
   z-index: 3;
+
   box-sizing: border-box;
+
   border-color: #159dcc;
   border-style: dashed;
+
   pointer-events: none;
 }
 
 .velaris-home-map-route.route-one {
   top: 61px;
   left: 50px;
+
   width: 89px;
   height: 45px;
+
   border-width: 2px 0 0 2px;
   border-radius: 14px 0 0;
 }
@@ -978,8 +954,10 @@
 .velaris-home-map-route.route-two {
   top: 102px;
   left: 137px;
+
   width: 74px;
   height: 50px;
+
   border-width: 2px 2px 0 0;
   border-radius: 0 14px 0 0;
 }
@@ -987,8 +965,10 @@
 .velaris-home-map-route.route-three {
   top: 149px;
   left: 107px;
+
   width: 106px;
   height: 28px;
+
   border-width: 0 2px 2px 0;
   border-radius: 0 0 14px;
 }
@@ -999,6 +979,7 @@
 
   width: 9px;
   height: 9px;
+
   box-sizing: border-box;
 
   background: #ffffff;
@@ -1032,6 +1013,7 @@
   min-width: 22px;
   height: 18px;
   padding: 0 5px;
+
   box-sizing: border-box;
 
   display: flex;
@@ -1043,6 +1025,7 @@
   border-radius: 5px;
 
   color: #b66d08;
+
   font-size: 7px;
   font-weight: 800;
 
@@ -1080,6 +1063,7 @@
   background: #168fc9;
   border: 3px solid rgba(255, 255, 255, 0.94);
   border-radius: 50%;
+
   color: #ffffff;
 
   box-shadow:
@@ -1106,11 +1090,13 @@
   border-radius: 999px;
 
   color: #536c7d;
+
   font-size: 8px;
   font-weight: 650;
 
   box-shadow: 0 3px 8px rgba(15, 62, 91, 0.09);
 }
+
 
 /* HOME PATROL */
 
@@ -1135,27 +1121,30 @@
   display: block;
 
   color: #153f5d;
+
   font-size: 11px;
   font-weight: 800;
   line-height: 1.3;
 }
 
 .velaris-home-patrol-heading small {
-  display: block;
   margin-top: 4px;
+
+  display: block;
 
   color: rgba(18, 67, 98, 0.52);
   font-size: 9px;
 }
 
 .velaris-home-patrol-heading > strong {
-  align-self: flex-start;
   padding: 4px 7px;
+  align-self: flex-start;
 
   background: rgba(30, 185, 105, 0.1);
   border-radius: 999px;
 
   color: #14915b;
+
   font-size: 8px;
   white-space: nowrap;
 }
@@ -1204,6 +1193,7 @@
   font-size: 12px;
 }
 
+
 /* HOME ALERTS */
 
 .velaris-home-alert-list {
@@ -1237,13 +1227,14 @@
   justify-content: center;
 
   border-radius: 8px;
+
   font-size: 14px;
   font-weight: 800;
 }
 
 .velaris-home-alert-list article > div {
-  flex: 1;
   min-width: 0;
+  flex: 1;
 }
 
 .velaris-home-alert-list strong,
@@ -1253,6 +1244,7 @@
 
 .velaris-home-alert-list strong {
   color: #173f5c;
+
   font-size: 10px;
   font-weight: 800;
   line-height: 1.3;
@@ -1262,6 +1254,7 @@
   margin-top: 4px;
 
   color: rgba(18, 67, 98, 0.52);
+
   font-size: 8px;
   line-height: 1.3;
 }
@@ -1286,833 +1279,8 @@
   color: #718692;
 }
 
-/* CAMERA VIEW */
 
-.velaris-camera-view {
-  gap: 12px;
-  padding-bottom: 6px;
-}
-
-.velaris-camera-view .velaris-view-heading {
-  padding: 2px 3px 0;
-}
-
-/*
- * Los paneles de la pestaña Cámara siguen el estilo claro de Inicio y Mapa.
- * El visor reutiliza exactamente .velaris-home-camera.
- */
-
-.velaris-camera-view .velaris-camera-main-panel,
-.velaris-camera-view > .velaris-panel:not(.velaris-camera-main-panel) {
-  padding: 10px;
-
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(20, 76, 110, 0.08);
-  border-radius: 14px;
-
-  color: #153f5d;
-
-  box-shadow: 0 6px 14px rgba(15, 62, 91, 0.05);
-}
-
-/* Misma cámara de Inicio, ampliada únicamente en esta pestaña. */
-
-.velaris-home-camera-large {
-  height: 205px;
-
-  border: 1px solid rgba(74, 181, 216, 0.13);
-  border-radius: 12px;
-}
-
-.velaris-home-camera-large .velaris-home-camera-top,
-.velaris-home-camera-large .velaris-home-camera-bottom {
-  left: 12px;
-  right: 12px;
-
-  font-size: 12px;
-}
-
-.velaris-home-camera-large .velaris-home-camera-top {
-  top: 11px;
-}
-
-.velaris-home-camera-large .velaris-home-camera-bottom {
-  bottom: 11px;
-}
-
-.velaris-home-camera-large .velaris-home-expand {
-  width: 22px;
-  height: 22px;
-}
-
-.velaris-home-camera-large .velaris-camera-moon {
-  top: 15px;
-
-  width: 56px;
-  height: 67px;
-}
-
-.velaris-home-camera-large .velaris-camera-box {
-  bottom: 65px;
-
-  width: 39px;
-  height: 28px;
-}
-
-.velaris-home-camera-large .velaris-camera-box.box-left {
-  left: 34px;
-}
-
-.velaris-home-camera-large .velaris-camera-box.box-right {
-  right: 34px;
-}
-
-.velaris-home-camera-large .velaris-camera-path {
-  bottom: -64px;
-
-  width: 178px;
-  height: 192px;
-}
-
-.velaris-camera-data {
-  margin-top: 8px;
-
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 6px;
-}
-
-.velaris-camera-data span {
-  min-width: 0;
-  padding: 8px 4px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  background: #edf2f5;
-  border: 1px solid rgba(20, 76, 110, 0.04);
-  border-radius: 8px;
-
-  color: #607989;
-  font-size: 11px;
-  line-height: 1.15;
-  text-align: center;
-}
-
-.velaris-camera-data strong {
-  margin-bottom: 5px;
-
-  color: #153f5d;
-  font-size: 8px;
-  font-weight: 800;
-  line-height: 1.15;
-}
-
-.velaris-camera-view > .velaris-panel > h3 {
-  margin: 0 0 10px;
-
-  color: rgba(18, 67, 98, 0.6);
-  font-size: 10px;
-  font-weight: 850;
-  letter-spacing: 0.45px;
-}
-
-.velaris-analysis-list {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.velaris-analysis-list article {
-  min-height: 52px;
-  padding: 9px 10px;
-  box-sizing: border-box;
-
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  background: #edf2f5;
-  border: 1px solid rgba(20, 76, 110, 0.04);
-  border-radius: 9px;
-}
-
-.velaris-analysis-list article > div {
-  min-width: 0;
-}
-
-.velaris-analysis-indicator {
-  width: 8px;
-  height: 8px;
-  flex-shrink: 0;
-
-  background: #8195a0;
-  border-radius: 50%;
-
-  box-shadow: 0 0 0 3px rgba(129, 149, 160, 0.1);
-}
-
-.velaris-analysis-indicator.is-enabled {
-  background: #24c98f;
-
-  box-shadow:
-    0 0 0 3px rgba(36, 201, 143, 0.13),
-    0 0 8px rgba(36, 201, 143, 0.2);
-}
-
-.velaris-analysis-list strong,
-.velaris-analysis-list small {
-  display: block;
-}
-
-.velaris-analysis-list strong {
-  color: #153f5d;
-  font-size: 10px;
-  font-weight: 800;
-  line-height: 1.25;
-}
-
-.velaris-analysis-list small {
-  margin-top: 4px;
-
-  color: rgba(18, 67, 98, 0.52);
-  font-size: 9px;
-  line-height: 1.3;
-}
-
-.velaris-capture-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 7px;
-}
-
-.velaris-capture-grid img {
-  width: 100%;
-  height: 76px;
-
-  display: block;
-  object-fit: cover;
-
-  background: #102632;
-  border: 1px solid rgba(20, 76, 110, 0.08);
-  border-radius: 8px;
-
-  box-shadow: 0 4px 9px rgba(15, 62, 91, 0.08);
-
-  filter:
-    brightness(0.9)
-    contrast(1.07)
-    saturate(0.92);
-}
-
-/* MAP VIEW */
-
-.velaris-map-view {
-  gap: 12px;
-  padding-bottom: 6px;
-}
-
-.velaris-map-view .velaris-view-heading {
-  padding: 2px 3px 0;
-}
-
-.velaris-map-view .velaris-view-heading > span {
-  font-size: 11px;
-}
-
-.velaris-map-view .velaris-view-heading h2 {
-  font-size: 18px;
-}
-
-.velaris-map-view .velaris-view-heading p {
-  max-width: 270px;
-  font-size: 10px;
-  line-height: 1.4;
-}
-
-/*
- * El JSX antiguo usa:
- *   .velaris-panel.velaris-map-main-panel
- *   .velaris-map-main
- *
- * Las reglas se mantienen sobre esos nombres para que la segunda pestaña
- * cambie de verdad aunque siga cargándose la versión anterior del componente.
- */
-
-.velaris-map-main-panel {
-  padding: 0;
-
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-
-  box-shadow: none;
-}
-
-.velaris-map-main,
-.velaris-map-tab-map {
-  position: relative;
-  height: 215px;
-
-  overflow: hidden;
-
-  background: #f8fbfd;
-  border: 1px solid rgba(20, 76, 110, 0.1);
-  border-radius: 13px;
-
-  box-shadow: 0 6px 14px rgba(15, 62, 91, 0.05);
-}
-
-.velaris-map-main::before,
-.velaris-map-main::after {
-  content: "";
-  position: absolute;
-  z-index: 3;
-
-  box-sizing: border-box;
-  pointer-events: none;
-
-  border-color: #159dcc;
-  border-style: dashed;
-}
-
-.velaris-map-main::before {
-  top: 58px;
-  left: 47px;
-
-  width: 91px;
-  height: 45px;
-
-  border-width: 2px 0 0 2px;
-  border-radius: 14px 0 0;
-}
-
-.velaris-map-main::after {
-  top: 101px;
-  left: 136px;
-
-  width: 79px;
-  height: 70px;
-
-  border-width: 2px 2px 2px 0;
-  border-radius: 0 14px 14px 0;
-}
-
-.velaris-map-main img,
-.velaris-map-tab-map img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  width: 205px;
-  height: 275px;
-
-  display: block;
-  object-fit: contain;
-
-  opacity: 0.72;
-
-  filter:
-    grayscale(0.65)
-    contrast(1.2)
-    brightness(0.96)
-    saturate(0.75);
-
-  transform: translate(-50%, -50%) rotate(90deg);
-}
-
-/* Robot: funciona tanto con el span vacío antiguo como con un SVG dentro. */
-
-.velaris-map-main-robot {
-  position: absolute;
-  top: 91px;
-  left: 173px;
-  z-index: 7;
-
-  width: 28px;
-  height: 28px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: #168fc9;
-  border: 3px solid rgba(255, 255, 255, 0.94);
-  border-radius: 50%;
-
-  color: #ffffff;
-
-  box-shadow:
-    0 0 0 4px rgba(22, 143, 201, 0.15),
-    0 5px 11px rgba(5, 78, 111, 0.27);
-
-  transform: none;
-  filter: none;
-}
-
-.velaris-map-main-robot::before {
-  content: "▲";
-
-  display: block;
-
-  color: currentColor;
-  font-size: 11px;
-  line-height: 1;
-
-  transform: rotate(8deg);
-}
-
-.velaris-map-main-robot svg {
-  width: 15px;
-  height: 15px;
-}
-
-.velaris-map-main-robot:not(:empty)::before {
-  content: none;
-}
-
-/* Waypoints y etiquetas de puertas. */
-
-.velaris-map-main-waypoint {
-  position: absolute;
-  z-index: 5;
-
-  width: 9px;
-  height: 9px;
-
-  box-sizing: border-box;
-
-  background: #ffffff;
-  border: 2px solid #159dcc;
-  border-radius: 50%;
-
-  box-shadow:
-    0 0 0 3px rgba(21, 157, 204, 0.13),
-    0 2px 6px rgba(5, 70, 101, 0.18);
-}
-
-.velaris-map-main-waypoint::after {
-  position: absolute;
-  top: -25px;
-  left: 50%;
-
-  min-width: 22px;
-  height: 18px;
-  padding: 0 5px;
-  box-sizing: border-box;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: #fff4dd;
-  border: 1px solid rgba(218, 145, 30, 0.34);
-  border-radius: 5px;
-
-  color: #b66d08;
-  font-size: 7px;
-  font-weight: 800;
-
-  box-shadow: 0 3px 7px rgba(97, 58, 4, 0.12);
-
-  transform: translateX(-50%);
-}
-
-.velaris-map-main-waypoint.waypoint-one {
-  top: 55px;
-  left: 45px;
-}
-
-.velaris-map-main-waypoint.waypoint-one::after {
-  content: "P1";
-}
-
-.velaris-map-main-waypoint.waypoint-two {
-  top: 98px;
-  left: 132px;
-}
-
-.velaris-map-main-waypoint.waypoint-two::after {
-  content: "P2";
-}
-
-.velaris-map-main-waypoint.waypoint-three {
-  top: 169px;
-  left: 209px;
-}
-
-.velaris-map-main-waypoint.waypoint-three::after {
-  content: "P3";
-  top: -9px;
-  left: 28px;
-}
-
-/* Soporte para la versión nueva que reutiliza las clases del mapa de Inicio. */
-
-.velaris-map-tab-map {
-  height: 215px;
-}
-
-.velaris-map-live-status,
-.velaris-map-route-count {
-  padding: 4px 7px;
-
-  background: rgba(30, 185, 105, 0.1);
-  border-radius: 999px;
-
-  color: #14915b;
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0;
-}
-
-/* Tarjetas de información. */
-
-.velaris-status-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.velaris-status-card {
-  min-width: 0;
-  min-height: 82px;
-  padding: 11px;
-  box-sizing: border-box;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(20, 76, 110, 0.07);
-  border-radius: 13px;
-
-  box-shadow: 0 6px 14px rgba(15, 62, 91, 0.05);
-}
-
-.velaris-status-card > span {
-  color: rgba(18, 67, 98, 0.56);
-  font-size: 10px;
-  font-weight: 750;
-  line-height: 1.25;
-}
-
-.velaris-status-card > strong {
-  margin-top: 7px;
-
-  color: #153f5d;
-  font-size: 14px;
-  font-weight: 800;
-  line-height: 1.15;
-}
-
-.velaris-status-card > small {
-  margin-top: 4px;
-
-  color: rgba(18, 67, 98, 0.48);
-  font-size: 9px;
-  line-height: 1.25;
-}
-
-/*
- * El recorrido antiguo es un .velaris-panel sin clase propia.
- * Este selector evita que herede el panel azul oscuro.
- */
-
-.velaris-map-route-card,
-.velaris-map-view > .velaris-panel:last-child {
-  padding: 12px;
-
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(20, 76, 110, 0.07);
-  border-radius: 13px;
-
-  color: #153f5d;
-
-  box-shadow: 0 6px 14px rgba(15, 62, 91, 0.05);
-}
-
-.velaris-map-route-card > .velaris-home-section-title {
-  margin-bottom: 9px;
-  padding: 0;
-}
-
-.velaris-map-route-count {
-  background: rgba(25, 151, 214, 0.09);
-  color: #148ecb;
-}
-
-.velaris-map-view > .velaris-panel:last-child > h3 {
-  margin: 0 0 10px;
-
-  color: rgba(18, 67, 98, 0.58);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.45px;
-}
-
-.velaris-route-list {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.velaris-route-list article {
-  min-height: 50px;
-  padding: 9px 10px;
-  box-sizing: border-box;
-
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  background: #edf2f5;
-  border: 1px solid transparent;
-  border-radius: 9px;
-
-  opacity: 0.68;
-}
-
-.velaris-route-list article > span {
-  width: 28px;
-  height: 28px;
-  flex-shrink: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(18, 67, 98, 0.08);
-  border-radius: 50%;
-
-  color: rgba(18, 67, 98, 0.6);
-  font-size: 9px;
-  font-weight: 850;
-}
-
-.velaris-route-list article > div {
-  min-width: 0;
-}
-
-.velaris-route-list strong,
-.velaris-route-list small {
-  display: block;
-}
-
-.velaris-route-list strong {
-  color: #153f5d;
-  font-size: 11px;
-  font-weight: 800;
-  line-height: 1.25;
-}
-
-.velaris-route-list small {
-  margin-top: 3px;
-
-  color: rgba(18, 67, 98, 0.48);
-  font-size: 9px;
-  line-height: 1.2;
-}
-
-.velaris-route-list article.is-completed,
-.velaris-route-list article.is-current {
-  opacity: 1;
-}
-
-.velaris-route-list article.is-completed > span {
-  background: rgba(30, 185, 105, 0.12);
-  color: #14915b;
-}
-
-.velaris-route-list article.is-current {
-  background: rgba(25, 151, 214, 0.08);
-  border-color: rgba(25, 151, 214, 0.32);
-}
-
-.velaris-route-list article.is-current > span {
-  background: #159fc9;
-  color: #ffffff;
-}
-
-
-/* ALERTS VIEW */
-
-.velaris-alert-summary {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 7px;
-}
-
-.velaris-alert-summary article {
-  padding: 10px 4px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  background: linear-gradient(
-    145deg,
-    #ffffff,
-    #e8f5fb
-  );
-
-  border: 1px solid rgba(21, 102, 146, 0.08);
-  border-radius: 12px;
-
-  box-shadow: 0 6px 14px rgba(13, 65, 97, 0.07);
-}
-
-.velaris-alert-summary strong {
-  color: #0b4a70;
-  font-size: 20px;
-}
-
-.velaris-alert-summary span {
-  margin-top: 3px;
-
-  color: rgba(19, 75, 107, 0.48);
-  font-size: 9px;
-}
-
-.velaris-alert-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.velaris-alert-item {
-  padding: 10px;
-
-  display: flex;
-  gap: 9px;
-
-  background: linear-gradient(
-    145deg,
-    #ffffff,
-    #eaf7fb
-  );
-
-  border: 1px solid rgba(21, 102, 146, 0.08);
-  border-radius: 13px;
-
-  box-shadow: 0 6px 14px rgba(13, 65, 97, 0.07);
-}
-
-.velaris-alert-item-icon {
-  width: 30px;
-  height: 30px;
-  flex-shrink: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 9px;
-}
-
-.velaris-alert-item-icon svg {
-  width: 16px;
-  height: 16px;
-}
-
-.velaris-alert-item strong,
-.velaris-alert-item p,
-.velaris-alert-item small {
-  display: block;
-}
-
-.velaris-alert-item strong {
-  color: #0b4a70;
-  font-size: 11px;
-}
-
-.velaris-alert-item p {
-  margin: 4px 0 0;
-
-  color: rgba(19, 75, 107, 0.54);
-  font-size: 9px;
-}
-
-.velaris-alert-item small {
-  margin-top: 4px;
-
-  color: rgba(19, 75, 107, 0.36);
-  font-size: 13px;
-}
-
-.velaris-alert-item.is-warning .velaris-alert-item-icon {
-  background: rgba(242, 164, 46, 0.13);
-  color: #d88b1b;
-}
-
-.velaris-alert-item.is-info .velaris-alert-item-icon {
-  background: rgba(32, 153, 207, 0.12);
-  color: #1387ba;
-}
-
-.velaris-alert-item.is-resolved .velaris-alert-item-icon {
-  background: rgba(36, 197, 137, 0.12);
-  color: #159766;
-}
-
-
-/* TAB BAR */
-
-.app-phone-tabbar {
-  height: 66px;
-  padding: 4px 8px 8px;
-  box-sizing: border-box;
-  flex-shrink: 0;
-
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: center;
-
-  background: linear-gradient(
-    180deg,
-    #ffffff,
-    #eff7fb
-  );
-
-  border-top: 1px solid rgba(17, 84, 124, 0.09);
-  box-shadow: 0 -5px 14px rgba(17, 67, 98, 0.05);
-}
-
-.app-phone-tabbar button {
-  height: 52px;
-  padding: 3px 0;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-
-  border: 0;
-  background: transparent;
-
-  color: #91a8b5;
-  font-family: inherit;
-  font-size: 9px;
-
-  cursor: pointer;
-
-  transition:
-    color 150ms ease,
-    transform 150ms ease;
-}
-
-.app-phone-tabbar button svg {
-  width: 21px;
-  height: 21px;
-}
-
-.app-phone-tabbar button.is-active {
-  color: #0a9bc5;
-  transform: translateY(-1px);
-}
+/* HOME INDICATOR */
 
 .app-phone-home-indicator {
   position: absolute;
@@ -2127,345 +1295,3 @@
 
   transform: translateX(-50%);
 }
-
-
-/* DARK MODE */
-
-.dark-mode .app-phone-screen {
-  background: #0b1721;
-  color: rgba(240, 250, 253, 0.94);
-}
-
-.dark-mode .app-phone-statusbar,
-.dark-mode .app-phone-toolbar,
-.dark-mode .app-phone-tabbar {
-  background: linear-gradient(
-    135deg,
-    #112936,
-    #0b1e29
-  );
-
-  color: rgba(240, 250, 253, 0.92);
-  border-color: rgba(121, 213, 239, 0.08);
-}
-
-.dark-mode .app-phone-close {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.07);
-  color: rgba(240, 250, 253, 0.7);
-}
-
-.dark-mode .app-phone-brand h1 {
-  color: #effcff;
-}
-
-.dark-mode .app-phone-brand p {
-  color: rgba(225, 244, 249, 0.46);
-}
-
-.dark-mode .app-phone-body {
-  background:
-    radial-gradient(
-      circle at 92% 4%,
-      rgba(31, 161, 200, 0.14),
-      transparent 32%
-    ),
-    linear-gradient(
-      180deg,
-      #0d202b,
-      #07151e
-    );
-
-  scrollbar-color: rgba(114, 213, 238, 0.17) transparent;
-}
-
-.dark-mode .app-phone-body::-webkit-scrollbar-thumb {
-  background: rgba(114, 213, 238, 0.16);
-}
-
-.dark-mode .velaris-view-heading > span {
-  color: #48c3e6;
-}
-
-.dark-mode .velaris-view-heading h2 {
-  color: rgba(240, 250, 253, 0.96);
-}
-
-.dark-mode .velaris-view-heading p {
-  color: rgba(221, 240, 246, 0.44);
-}
-
-.dark-mode .velaris-panel {
-  background: linear-gradient(
-    145deg,
-    #0c3a50,
-    #062739
-  );
-
-  border-color: rgba(98, 205, 235, 0.1);
-}
-
-.dark-mode .velaris-operator-card,
-.dark-mode .velaris-home-card,
-.dark-mode .velaris-home-control,
-.dark-mode .velaris-home-map,
-.dark-mode .velaris-home-patrol-card,
-.dark-mode .velaris-home-alert-list article,
-.dark-mode .velaris-status-card,
-.dark-mode .velaris-map-route-card,
-.dark-mode .velaris-alert-summary article,
-.dark-mode .velaris-alert-item {
-  background: linear-gradient(
-    145deg,
-    #142d39,
-    #0d222d
-  );
-
-  border-color: rgba(112, 211, 237, 0.08);
-  box-shadow: 0 7px 16px rgba(0, 0, 0, 0.18);
-}
-
-.dark-mode .velaris-home-welcome > div > span,
-.dark-mode .velaris-operator-info strong,
-.dark-mode .velaris-home-battery strong,
-.dark-mode .velaris-home-mode-title strong,
-.dark-mode .velaris-home-data-list dd,
-.dark-mode .velaris-home-mode-status strong,
-.dark-mode .velaris-home-control-footer strong,
-.dark-mode .velaris-home-patrol-heading span,
-.dark-mode .velaris-home-patrol-progress-heading strong,
-.dark-mode .velaris-home-patrol-summary strong,
-.dark-mode .velaris-home-alert-list strong,
-.dark-mode .velaris-status-card > strong,
-.dark-mode .velaris-alert-summary strong,
-.dark-mode .velaris-alert-item strong,
-.dark-mode .velaris-route-list strong {
-  color: rgba(242, 252, 255, 0.92);
-}
-
-.dark-mode .velaris-home-section-title,
-.dark-mode .velaris-operator-info span,
-.dark-mode .velaris-home-card-label,
-.dark-mode .velaris-home-data-list dt,
-.dark-mode .velaris-home-mode-status span,
-.dark-mode .velaris-home-control-footer,
-.dark-mode .velaris-home-patrol-heading small,
-.dark-mode .velaris-home-patrol-progress-heading,
-.dark-mode .velaris-home-patrol-summary span,
-.dark-mode .velaris-home-alert-list small,
-.dark-mode .velaris-status-card > span,
-.dark-mode .velaris-status-card > small,
-.dark-mode .velaris-alert-summary span,
-.dark-mode .velaris-alert-item p,
-.dark-mode .velaris-alert-item small,
-.dark-mode .velaris-route-list small {
-  color: rgba(220, 241, 247, 0.43);
-}
-
-.dark-mode .velaris-home-segmented,
-.dark-mode .velaris-home-patrol-summary article {
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.dark-mode .velaris-home-segmented span.is-active {
-  background: rgba(64, 188, 222, 0.16);
-  color: #56c9e8;
-}
-
-.dark-mode .velaris-route-list article {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: transparent;
-}
-
-.dark-mode .velaris-route-list article > span {
-  background: rgba(255, 255, 255, 0.07);
-  color: rgba(227, 243, 248, 0.62);
-}
-
-.dark-mode .velaris-route-list article.is-completed > span {
-  background: rgba(30, 185, 105, 0.14);
-  color: #43d99a;
-}
-
-.dark-mode .velaris-route-list article.is-current {
-  background: rgba(42, 181, 224, 0.09);
-  border-color: rgba(42, 181, 224, 0.3);
-}
-
-.dark-mode .velaris-route-list article.is-current > span {
-  background: #159fc9;
-  color: #ffffff;
-}
-
-.dark-mode .app-phone-tabbar button {
-  color: rgba(218, 239, 245, 0.38);
-}
-
-.dark-mode .app-phone-tabbar button.is-active {
-  color: #4ed0ef;
-}
-
-.dark-mode .app-phone-home-indicator {
-  background: rgba(230, 248, 252, 0.7);
-}
-
-
-.dark-mode .velaris-home-direction-button,
-.dark-mode .velaris-home-patrol-action {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.05);
-  color: rgba(227, 243, 248, 0.72);
-}
-
-.dark-mode .velaris-home-direction-button.direction-stop {
-  background: #d9424d;
-  color: #ffffff;
-}
-
-.dark-mode .velaris-home-patrol-action.is-start {
-  background: #1da961;
-  color: #ffffff;
-}
-
-/* DARK MODE · MAP VIEW OVERRIDES */
-
-.dark-mode .velaris-map-main-panel {
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-}
-
-.dark-mode .velaris-map-main,
-.dark-mode .velaris-map-tab-map {
-  background: linear-gradient(
-    145deg,
-    #142d39,
-    #0d222d
-  );
-
-  border-color: rgba(112, 211, 237, 0.08);
-
-  box-shadow: 0 7px 16px rgba(0, 0, 0, 0.18);
-}
-
-.dark-mode .velaris-map-main img,
-.dark-mode .velaris-map-tab-map img {
-  opacity: 0.62;
-
-  filter:
-    grayscale(0.55)
-    contrast(1.2)
-    brightness(0.76)
-    saturate(0.72);
-}
-
-.dark-mode .velaris-map-main-waypoint {
-  background: #102733;
-  border-color: #4cc9e9;
-}
-
-.dark-mode .velaris-map-main-waypoint::after {
-  background: #382d1c;
-  border-color: rgba(239, 175, 68, 0.32);
-  color: #f0b75a;
-}
-
-.dark-mode .velaris-status-card,
-.dark-mode .velaris-map-route-card,
-.dark-mode .velaris-map-view > .velaris-panel:last-child {
-  background: linear-gradient(
-    145deg,
-    #142d39,
-    #0d222d
-  );
-
-  border-color: rgba(112, 211, 237, 0.08);
-  box-shadow: 0 7px 16px rgba(0, 0, 0, 0.18);
-}
-
-.dark-mode .velaris-map-view > .velaris-panel:last-child > h3 {
-  color: rgba(220, 241, 247, 0.56);
-}
-
-.dark-mode .velaris-route-list article {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: transparent;
-}
-
-.dark-mode .velaris-route-list article > span {
-  background: rgba(255, 255, 255, 0.07);
-  color: rgba(227, 243, 248, 0.62);
-}
-
-.dark-mode .velaris-route-list article.is-completed > span {
-  background: rgba(30, 185, 105, 0.14);
-  color: #43d99a;
-}
-
-.dark-mode .velaris-route-list article.is-current {
-  background: rgba(42, 181, 224, 0.09);
-  border-color: rgba(42, 181, 224, 0.3);
-}
-
-.dark-mode .velaris-route-list article.is-current > span {
-  background: #159fc9;
-  color: #ffffff;
-}
-
-/* DARK MODE · CAMERA VIEW OVERRIDES */
-
-.dark-mode .velaris-camera-view .velaris-camera-main-panel,
-.dark-mode .velaris-camera-view > .velaris-panel:not(.velaris-camera-main-panel) {
-  background: linear-gradient(
-    145deg,
-    #142d39,
-    #0d222d
-  );
-
-  border-color: rgba(112, 211, 237, 0.08);
-  color: rgba(242, 252, 255, 0.92);
-
-  box-shadow: 0 7px 16px rgba(0, 0, 0, 0.18);
-}
-
-.dark-mode .velaris-camera-view > .velaris-panel > h3 {
-  color: rgba(220, 241, 247, 0.58);
-}
-
-.dark-mode .velaris-home-camera-large {
-  border-color: rgba(98, 205, 235, 0.1);
-
-  box-shadow:
-    inset 0 0 36px rgba(0, 8, 14, 0.45),
-    0 5px 12px rgba(0, 0, 0, 0.18);
-}
-
-.dark-mode .velaris-camera-data span,
-.dark-mode .velaris-analysis-list article {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.035);
-}
-
-.dark-mode .velaris-camera-data strong,
-.dark-mode .velaris-analysis-list strong {
-  color: rgba(242, 252, 255, 0.92);
-}
-
-.dark-mode .velaris-camera-data span,
-.dark-mode .velaris-analysis-list small {
-  color: rgba(220, 241, 247, 0.48);
-}
-
-.dark-mode .velaris-analysis-indicator {
-  background: #708793;
-}
-
-.dark-mode .velaris-analysis-indicator.is-enabled {
-  background: #35d49b;
-}
-
-.dark-mode .velaris-capture-grid img {
-  border-color: rgba(112, 211, 237, 0.09);
-  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2);
-}
-

@@ -25,6 +25,7 @@ function GridIcon() {
         stroke="currentColor"
         strokeWidth="1.6"
       />
+
       <rect
         x="14"
         y="4"
@@ -35,6 +36,7 @@ function GridIcon() {
         stroke="currentColor"
         strokeWidth="1.6"
       />
+
       <rect
         x="4"
         y="14"
@@ -45,6 +47,7 @@ function GridIcon() {
         stroke="currentColor"
         strokeWidth="1.6"
       />
+
       <rect
         x="14"
         y="14"
@@ -117,6 +120,7 @@ function TagIcon() {
         strokeWidth="1.7"
         strokeLinejoin="round"
       />
+
       <circle cx="8.5" cy="9.5" r="1.2" fill="currentColor" />
     </svg>
   );
@@ -147,6 +151,7 @@ function SearchIcon() {
         stroke="currentColor"
         strokeWidth="1.8"
       />
+
       <path
         d="m15 15 4 4"
         fill="none"
@@ -168,16 +173,7 @@ function DocumentHeader({
   isDesktopPhoto = false,
   isTeamImage = false,
   isManifestoImage = false,
-  isDarkMode = false,
 }) {
-  function getToolbarSrc() {
-    if (!isDarkMode) {
-      return toolbarSrc;
-    }
-
-    return "/images/VersionOscuro/document-toolbar_Oscura.png";
-  }
-
   return (
     <div className="document-header">
       <div className="document-titlebar">
@@ -262,7 +258,7 @@ function DocumentHeader({
           } ${isDesktopPhoto ? "desktop-photo-toolbar" : ""} ${
             isTeamImage ? "team-image-toolbar" : ""
           } ${isManifestoImage ? "manifesto-image-toolbar" : ""}`}
-          src={getToolbarSrc()}
+          src={toolbarSrc}
           alt=""
           draggable="false"
         />

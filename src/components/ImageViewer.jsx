@@ -1,6 +1,11 @@
 import { useEffect } from "react";
 
-function ImageViewer({ images, selectedIndex, onSelectImage, onClose }) {
+function ImageViewer({
+  images,
+  selectedIndex,
+  onSelectImage,
+  onClose,
+}) {
   const selectedImage = images[selectedIndex];
 
   useEffect(() => {
@@ -11,14 +16,18 @@ function ImageViewer({ images, selectedIndex, onSelectImage, onClose }) {
 
       if (event.key === "ArrowUp") {
         const previousIndex =
-            selectedIndex === 0 ? images.length - 1 : selectedIndex - 1;
+          selectedIndex === 0
+            ? images.length - 1
+            : selectedIndex - 1;
 
         onSelectImage(previousIndex);
-        }
+      }
 
-        if (event.key === "ArrowDown") {
+      if (event.key === "ArrowDown") {
         const nextIndex =
-            selectedIndex === images.length - 1 ? 0 : selectedIndex + 1;
+          selectedIndex === images.length - 1
+            ? 0
+            : selectedIndex + 1;
 
         onSelectImage(nextIndex);
       }
@@ -29,9 +38,16 @@ function ImageViewer({ images, selectedIndex, onSelectImage, onClose }) {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [images.length, selectedIndex, onSelectImage, onClose]);
+  }, [
+    images.length,
+    selectedIndex,
+    onSelectImage,
+    onClose,
+  ]);
 
-  if (!selectedImage) return null;
+  if (!selectedImage) {
+    return null;
+  }
 
   return (
     <div className="image-viewer-overlay">
@@ -44,7 +60,9 @@ function ImageViewer({ images, selectedIndex, onSelectImage, onClose }) {
 
       <section
         className="image-viewer"
-        onPointerDown={(event) => event.stopPropagation()}
+        onPointerDown={(event) =>
+          event.stopPropagation()
+        }
       >
         <div className="image-viewer-main">
           <img
@@ -55,18 +73,27 @@ function ImageViewer({ images, selectedIndex, onSelectImage, onClose }) {
           />
         </div>
 
-        <aside className="image-viewer-side-list" aria-label="Imágenes">
+        <aside
+          className="image-viewer-side-list"
+          aria-label="Imágenes"
+        >
           {images.map((image, index) => (
             <button
               className={`image-viewer-side-item ${
-                index === selectedIndex ? "is-selected" : ""
+                index === selectedIndex
+                  ? "is-selected"
+                  : ""
               }`}
               type="button"
               key={image.src}
               onClick={() => onSelectImage(index)}
               aria-label={`Ver imagen ${index + 1}`}
             >
-              <img src={image.src} alt="" draggable="false" />
+              <img
+                src={image.src}
+                alt=""
+                draggable="false"
+              />
             </button>
           ))}
         </aside>

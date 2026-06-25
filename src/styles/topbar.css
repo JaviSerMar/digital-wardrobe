@@ -313,7 +313,6 @@
   font-style: italic;
 }
 
-
 .topbar-popover-anchor {
   position: relative;
   display: flex;
@@ -411,6 +410,7 @@
   line-height: 1.2;
 }
 
+
 /* INTERRUPTOR */
 
 .control-center-switch {
@@ -450,117 +450,6 @@
 .control-center-switch:focus-visible {
   outline: 2px solid rgba(47, 121, 236, 0.44);
   outline-offset: 2px;
-}
-
-
-/* DARK MODE - TOPBAR PANELS */
-
-.dark-mode .profile-panel,
-.dark-mode .notifications-panel,
-.dark-mode .control-center-panel {
-  background: rgba(29, 30, 35, 0.94);
-  border-color: rgba(255, 255, 255, 0.13);
-  box-shadow:
-    0 20px 44px rgba(0, 0, 0, 0.48),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  color: rgba(243, 243, 246, 0.92);
-}
-
-.dark-mode .profile-panel::before,
-.dark-mode .notifications-panel::before,
-.dark-mode .control-center-panel::before {
-  background: rgba(29, 30, 35, 0.94);
-  border-top-color: rgba(255, 255, 255, 0.13);
-  border-left-color: rgba(255, 255, 255, 0.13);
-}
-
-.dark-mode .profile-panel-close,
-.dark-mode .notifications-panel-close {
-  color: rgba(255, 255, 255, 0.48);
-}
-
-.dark-mode .profile-panel-close:hover,
-.dark-mode .notifications-panel-close:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.86);
-}
-
-/* PERFIL */
-
-.dark-mode .profile-panel-photo {
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 5px 13px rgba(0, 0, 0, 0.32);
-}
-
-.dark-mode .profile-panel-name {
-  color: rgba(248, 248, 250, 0.96);
-}
-
-.dark-mode .profile-panel-degree {
-  color: rgba(242, 242, 245, 0.6);
-}
-
-.dark-mode .profile-panel-status {
-  background: rgba(255, 255, 255, 0.07);
-  color: rgba(242, 242, 245, 0.78);
-}
-
-/* NOTIFICACIONES */
-
-.dark-mode .notifications-panel-title {
-  color: rgba(248, 248, 250, 0.96);
-}
-
-.dark-mode .notification-card {
-  background: rgba(255, 255, 255, 0.065);
-  border-color: rgba(255, 255, 255, 0.06);
-}
-
-.dark-mode .notification-label {
-  color: rgba(242, 242, 245, 0.46);
-}
-
-.dark-mode .notification-project {
-  color: rgba(248, 248, 250, 0.94);
-}
-
-.dark-mode .notification-description {
-  color: rgba(242, 242, 245, 0.65);
-}
-
-.dark-mode .notification-cooking {
-  color: rgba(242, 242, 245, 0.55);
-}
-
-/* CENTRO DE CONTROL */
-
-.dark-mode .control-center-title {
-  color: rgba(248, 248, 250, 0.96);
-}
-
-.dark-mode .control-center-section {
-  background: rgba(255, 255, 255, 0.065);
-  border-color: rgba(255, 255, 255, 0.06);
-}
-
-.dark-mode .control-center-section-title {
-  color: rgba(242, 242, 245, 0.46);
-}
-
-.dark-mode .control-center-setting-name {
-  color: rgba(248, 248, 250, 0.94);
-}
-
-.dark-mode .control-center-setting-status {
-  color: rgba(242, 242, 245, 0.56);
-}
-
-.dark-mode .control-center-switch {
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.dark-mode .control-center-switch.is-enabled {
-  background: #2f79ec;
 }
 
 
@@ -611,25 +500,6 @@
 
 .topbar-menu-item:hover {
   background: rgba(47, 121, 236, 0.92);
-  color: #fff;
-}
-
-/* DARK MODE - TOPBAR TEXT MENUS */
-
-.dark-mode .topbar-menu {
-  background: rgba(29, 30, 35, 0.95);
-  border-color: rgba(255, 255, 255, 0.14);
-  box-shadow:
-    0 18px 38px rgba(0, 0, 0, 0.48),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-
-.dark-mode .topbar-menu-item {
-  color: rgba(245, 245, 247, 0.88);
-}
-
-.dark-mode .topbar-menu-item:hover {
-  background: rgba(47, 121, 236, 0.9);
   color: #fff;
 }
 
@@ -738,37 +608,4 @@
   background: #2f79ec;
   color: #fff;
   box-shadow: 0 3px 8px rgba(47, 121, 236, 0.32);
-}
-
-/* DARK MODE - CALENDAR PANEL */
-
-.dark-mode .calendar-panel {
-  background: rgba(29, 30, 35, 0.94);
-  border-color: rgba(255, 255, 255, 0.13);
-  box-shadow:
-    0 20px 44px rgba(0, 0, 0, 0.48),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-
-.dark-mode .calendar-panel::before {
-  background: rgba(29, 30, 35, 0.94);
-  border-top-color: rgba(255, 255, 255, 0.13);
-  border-left-color: rgba(255, 255, 255, 0.13);
-}
-
-.dark-mode .calendar-panel-title {
-  color: rgba(248, 248, 250, 0.96);
-}
-
-.dark-mode .calendar-weekdays span {
-  color: rgba(242, 242, 245, 0.46);
-}
-
-.dark-mode .calendar-day {
-  color: rgba(242, 242, 245, 0.78);
-}
-
-.dark-mode .calendar-day.is-today {
-  background: #2f79ec;
-  color: #fff;
 }

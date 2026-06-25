@@ -32,29 +32,36 @@
 }
 
 .folder-titlebar {
+  position: relative;
+
   width: 330px;
   flex-shrink: 0;
-  position: relative;
+
   display: flex;
   align-items: center;
+
   background: rgba(248, 248, 248, 0.95);
 }
 
 .folder-window-buttons {
+  position: relative;
+  z-index: 2;
+
+  margin-left: 14px;
+
   display: flex;
   align-items: center;
   gap: 9px;
-  margin-left: 14px;
-  position: relative;
-  z-index: 2;
 }
 
 .folder-window-button {
   width: 13px;
   height: 13px;
-  border-radius: 50%;
-  border: 0;
   padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
   cursor: default;
 }
 
@@ -65,12 +72,16 @@
 
 .folder-close::after {
   content: "×";
+
   position: absolute;
   inset: 0;
+
   display: none;
   align-items: center;
   justify-content: center;
+
   color: rgba(90, 0, 0, 0.65);
+
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
   font-weight: 700;
@@ -92,33 +103,40 @@
 }
 
 .folder-navigation {
+  height: 28px;
+  margin-left: 17px;
+  padding: 0 4px;
+
   display: flex;
   align-items: center;
-  margin-left: 17px;
-  height: 28px;
-  padding: 0 4px;
+
   background: rgba(255, 255, 255, 0.62);
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 999px;
+
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
 }
 
 .folder-nav-button {
   width: 23px;
   height: 23px;
-  border: 0;
-  background: transparent;
-  color: rgba(0, 0, 0, 0.5);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 21px;
-  line-height: 1;
   padding: 0;
-  cursor: default;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  background: transparent;
+  border: 0;
   border-radius: 50%;
+
+  color: rgba(0, 0, 0, 0.5);
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 21px;
+  line-height: 1;
+
+  cursor: default;
 }
 
 .folder-nav-button:hover {
@@ -130,42 +148,51 @@
   width: 1px;
   height: 15px;
   margin: 0 3px;
+
   background: rgba(0, 0, 0, 0.08);
 }
 
 .folder-title {
   margin: 0 0 0 8px;
+
+  color: #4d4d4d;
+
   font-size: 13px;
   font-weight: 650;
-  color: #4d4d4d;
-  white-space: nowrap;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .folder-toolbar-image {
-  flex: 1;
-  min-width: 0;
   height: 100%;
+  min-width: 0;
+  padding-right: 4px;
+  flex: 1;
+
   display: block;
   object-fit: contain;
   object-position: center right;
+
   pointer-events: none;
   user-select: none;
-  padding-right: 4px;
 }
 
 .folder-main {
-  flex: 1;
-  display: flex;
   min-height: 0;
+  flex: 1;
+
+  display: flex;
 }
 
 .folder-sidebar {
   width: 150px;
   padding: 8px 10px 16px;
+
   background: rgba(236, 239, 241, 0.78);
   border-right: 1px solid rgba(210, 210, 210, 0.6);
+
   color: rgba(0, 0, 0, 0.72);
+
   font-size: 13px;
   font-weight: 600;
 }
@@ -173,13 +200,16 @@
 .folder-sidebar p {
   margin: 0 0 4px;
   padding: 5px 10px;
+
   border-radius: 8px;
 }
 
 .folder-sidebar-section {
   margin-top: 8px !important;
   margin-bottom: 1px !important;
+
   color: rgba(0, 0, 0, 0.42);
+
   font-size: 11px;
   font-weight: 700;
 }
@@ -194,26 +224,32 @@
 }
 
 .folder-content {
-  flex: 1;
   padding: 34px 42px;
+  flex: 1;
+
   display: flex;
   align-content: flex-start;
   align-items: flex-start;
-  gap: 34px 44px;
   flex-wrap: wrap;
+  gap: 34px 44px;
+
   background: rgba(255, 255, 255, 0.78);
 }
 
 .folder-item {
   width: 86px;
   padding: 6px 4px;
-  border: 0;
+
   background: transparent;
-  color: #111;
-  text-align: center;
-  font-size: 11px;
-  cursor: default;
+  border: 0;
   border-radius: 7px;
+
+  color: #111;
+
+  font-size: 11px;
+  text-align: center;
+
+  cursor: default;
 }
 
 .folder-item:hover {
@@ -223,97 +259,19 @@
 .folder-item img {
   width: 54px;
   height: 54px;
-  object-fit: contain;
-  display: block;
   margin: 0 auto 4px;
+
+  display: block;
+  object-fit: contain;
 }
 
 .folder-item span {
-  display: block;
   width: 100%;
-  text-align: center;
+
+  display: block;
+
   line-height: 1.25;
+  text-align: center;
   white-space: normal;
   overflow-wrap: anywhere;
-}
-
-
-/* DARK MODE - FOLDER WINDOWS */
-
-.dark-mode .folder-window {
-  background: rgba(27, 28, 33, 0.97);
-  color: rgba(242, 242, 245, 0.92);
-  border-color: rgba(255, 255, 255, 0.14);
-  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.5);
-}
-
-.dark-mode .folder-window-content {
-  background: #1b1c21;
-}
-
-.dark-mode .folder-header {
-  background: #1c1d1f;
-  border-bottom-color: rgba(255, 255, 255, 0.12);
-}
-
-.dark-mode .folder-titlebar {
-  background: #1c1d1f;
-}
-
-.dark-mode .folder-toolbar-image {
-  background: #1c1d1f;
-}
-
-.dark-mode .folder-navigation {
-  background: rgba(255, 255, 255, 0.055);
-  border-color: rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-}
-
-.dark-mode .folder-nav-button {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.dark-mode .folder-nav-button:hover {
-  background: rgba(255, 255, 255, 0.09);
-  color: rgba(255, 255, 255, 0.86);
-}
-
-.dark-mode .folder-nav-divider {
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.dark-mode .folder-title {
-  color: rgba(245, 245, 247, 0.87);
-}
-
-.dark-mode .folder-toolbar-image {
-  background: #23242a;
-}
-
-.dark-mode .folder-sidebar {
-  background: rgba(35, 36, 42, 0.96);
-  border-right-color: rgba(255, 255, 255, 0.1);
-  color: rgba(242, 242, 245, 0.74);
-}
-
-.dark-mode .folder-sidebar-section {
-  color: rgba(242, 242, 245, 0.4);
-}
-
-.dark-mode .folder-sidebar .is-selected {
-  background: rgba(255, 255, 255, 0.11);
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.dark-mode .folder-content {
-  background: rgba(22, 23, 28, 0.96);
-}
-
-.dark-mode .folder-item {
-  color: rgba(242, 242, 245, 0.9);
-}
-
-.dark-mode .folder-item:hover {
-  background: rgba(70, 125, 232, 0.22);
 }

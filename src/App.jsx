@@ -1,28 +1,31 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
-import { initialDesktopItems } from "./data/desktopItems";
-import ReleaseToast from "./components/ReleaseToast";
+
+import AppWindow from "./components/AppWindow";
+import DesktopGrid from "./components/DesktopGrid";
 import DockBar from "./components/DockBar";
+import DocumentWindow from "./components/DocumentWindow";
+import FolderWindow from "./components/FolderWindow";
+import GalleryViewer from "./components/GalleryViewer";
 import ImageViewer from "./components/ImageViewer";
+import ImageWidget from "./components/ImageWidget";
+import ReleaseToast from "./components/ReleaseToast";
+import StickyWindow from "./components/StickyWindow";
+import TerminalWindow from "./components/TerminalWindow";
+import Topbar from "./components/Topbar";
+
+import { initialDesktopItems } from "./data/desktopItems";
+import {
+  imageGalleries,
+  projectFolderScreens,
+} from "./data/projectFolders";
 
 import {
-  stickyNotesData,
   documentWindowsData,
-  terminalWindowsData,
   folderWindowsData,
+  stickyNotesData,
+  terminalWindowsData,
 } from "./data/windowsData";
-
-import { projectFolderScreens } from "./data/projectFolders";
-import DocumentHeader from "./components/DocumentHeader";
-import Topbar from "./components/Topbar";
-import DesktopGrid from "./components/DesktopGrid";
-import TerminalWindow from "./components/TerminalWindow";
-import DocumentWindow from "./components/DocumentWindow";
-
-import FolderWindow from "./components/FolderWindow";
-import StickyWindow from "./components/StickyWindow";
-import ImageWidget from "./components/ImageWidget";
-import AppWindow from "./components/AppWindow";
 
 function formatTopbarDate(date) {
   const days = [
@@ -60,33 +63,31 @@ function formatTopbarDate(date) {
   return `${dayName} ${dayNumber} ${monthName} ${hours}:${minutes}`;
 }
 
-
-
-
-
 function App() {
   const gridRef = useRef(null);
   const floatingLayerRef = useRef(null);
 
   const [desktopItems, setDesktopItems] = useState(initialDesktopItems);
   const [draggedItemId, setDraggedItemId] = useState(null);
+
   const [openWindows, setOpenWindows] = useState(() =>
     Object.values(stickyNotesData).map((window, index) => ({
       ...window,
       zIndex: index + 1,
     }))
   );
+
   const [draggingWindow, setDraggingWindow] = useState(null);
 
   const [currentDate, setCurrentDate] = useState(() => new Date());
+
   const [isProfilePanelOpen, setIsProfilePanelOpen] = useState(false);
-  const [isNotificationsPanelOpen, setIsNotificationsPanelOpen] = useState(false);
-
-  const [isControlCenterPanelOpen, setIsControlCenterPanelOpen] = useState(false);
-
+  const [isNotificationsPanelOpen, setIsNotificationsPanelOpen] =
+    useState(false);
+  const [isControlCenterPanelOpen, setIsControlCenterPanelOpen] =
+    useState(false);
   const [isCalendarPanelOpen, setIsCalendarPanelOpen] = useState(false);
 
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [isDockVisible, setIsDockVisible] = useState(() => {
     const savedDockVisibility = localStorage.getItem(
       "portfolio-dock-visible"
@@ -103,6 +104,23 @@ function App() {
   const [viewerSelectedIndex, setViewerSelectedIndex] = useState(0);
   const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
 
+  const [windowPositions, setWindowPositions] = useState(() =>
+    Object.fromEntries(
+      [
+        ...Object.values(stickyNotesData),
+        ...Object.values(documentWindowsData),
+        ...Object.values(terminalWindowsData),
+        ...Object.values(folderWindowsData),
+      ].map((window) => [
+        window.id,
+        {
+          left: window.left,
+          top: window.top,
+        },
+      ])
+    )
+  );
+
   useEffect(() => {
     const intervalId = window.setInterval(() => {
       setCurrentDate(new Date());
@@ -114,7 +132,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (!isReleaseToastVisible) return;
+    if (!isReleaseToastVisible) {
+      return undefined;
+    }
 
     const timeoutId = window.setTimeout(() => {
       setIsReleaseToastVisible(false);
@@ -132,23 +152,6 @@ function App() {
     );
   }, [isDockVisible]);
 
-  const [windowPositions, setWindowPositions] = useState(() =>
-  Object.fromEntries(
-    [
-      ...Object.values(stickyNotesData),
-      ...Object.values(documentWindowsData),
-      ...Object.values(terminalWindowsData),
-      ...Object.values(folderWindowsData),
-    ].map((window) => [
-      window.id,
-      {
-        left: window.left,
-        top: window.top,
-      },
-    ])
-  )
-);
-
   const columns = 14;
   const rows = 7;
   const cellWidth = 86;
@@ -157,7 +160,9 @@ function App() {
   const rowGap = 10;
 
   function moveItemToPointer(itemId, event) {
-    if (!gridRef.current) return;
+    if (!gridRef.current) {
+      return;
+    }
 
     const gridRect = gridRef.current.getBoundingClientRect();
 
@@ -178,10 +183,14 @@ function App() {
     setDesktopItems((currentItems) => {
       const isCellOccupied = currentItems.some(
         (item) =>
-          item.id !== itemId && item.x === limitedX && item.y === limitedY
+          item.id !== itemId &&
+          item.x === limitedX &&
+          item.y === limitedY
       );
 
-      if (isCellOccupied) return currentItems;
+      if (isCellOccupied) {
+        return currentItems;
+      }
 
       return currentItems.map((item) =>
         item.id === itemId
@@ -215,17 +224,24 @@ function App() {
     const terminalData = terminalWindowsData[item.id];
     const folderData = folderWindowsData[item.id];
 
+    const windowData =
+      noteData ||
+      documentData ||
+      terminalData ||
+      folderData;
 
-    const windowData = noteData || documentData || terminalData || folderData;
-
-    if (!windowData) return;
+    if (!windowData) {
+      return;
+    }
 
     setOpenWindows((currentWindows) => {
       const alreadyOpen = currentWindows.some(
         (window) => window.id === windowData.id
       );
 
-      if (alreadyOpen) return currentWindows;
+      if (alreadyOpen) {
+        return currentWindows;
+      }
 
       const savedPosition = windowPositions[windowData.id] ?? {
         left: windowData.left,
@@ -252,9 +268,13 @@ function App() {
   function handleWindowPointerDown(event, windowId) {
     bringWindowToFront(windowId);
 
-    const windowElement = event.currentTarget.closest(".floating-window");
+    const windowElement = event.currentTarget.closest(
+      ".floating-window"
+    );
 
-    if (!windowElement) return;
+    if (!windowElement) {
+      return;
+    }
 
     const windowRect = windowElement.getBoundingClientRect();
 
@@ -268,12 +288,22 @@ function App() {
   }
 
   function handleWindowPointerMove(event) {
-    if (!draggingWindow || !floatingLayerRef.current) return;
+    if (!draggingWindow || !floatingLayerRef.current) {
+      return;
+    }
 
-    const layerRect = floatingLayerRef.current.getBoundingClientRect();
+    const layerRect =
+      floatingLayerRef.current.getBoundingClientRect();
 
-    const newLeft = event.clientX - layerRect.left - draggingWindow.offsetX;
-    const newTop = event.clientY - layerRect.top - draggingWindow.offsetY;
+    const newLeft =
+      event.clientX -
+      layerRect.left -
+      draggingWindow.offsetX;
+
+    const newTop =
+      event.clientY -
+      layerRect.top -
+      draggingWindow.offsetY;
 
     setOpenWindows((currentWindows) =>
       currentWindows.map((window) =>
@@ -306,7 +336,9 @@ function App() {
 
   function closeWindow(windowId) {
     setOpenWindows((currentWindows) =>
-      currentWindows.filter((currentWindow) => currentWindow.id !== windowId)
+      currentWindows.filter(
+        (currentWindow) => currentWindow.id !== windowId
+      )
     );
   }
 
@@ -324,6 +356,99 @@ function App() {
     setIsImageViewerOpen(true);
   }
 
+  function openImageGallery(galleryKey, selectedIndex = 0) {
+    const galleryData = imageGalleries[galleryKey];
+
+    const items = Array.isArray(galleryData)
+      ? galleryData
+      : galleryData?.items;
+
+    if (!Array.isArray(items) || items.length === 0) {
+      return;
+    }
+
+    const safeSelectedIndex =
+      Number.isInteger(selectedIndex) &&
+      selectedIndex >= 0 &&
+      selectedIndex < items.length
+        ? selectedIndex
+        : 0;
+
+    const galleryConfig = Array.isArray(galleryData)
+      ? {}
+      : galleryData;
+
+    const galleryWindowId = `gallery-${galleryKey}-window`;
+
+    const savedPosition = windowPositions[galleryWindowId] ?? {
+      left: galleryConfig.left ?? 160,
+      top: galleryConfig.top ?? 70,
+    };
+
+    setOpenWindows((currentWindows) => {
+      const maxZIndex = Math.max(
+        0,
+        ...currentWindows.map((window) => window.zIndex || 1)
+      );
+
+      const galleryIsAlreadyOpen = currentWindows.some(
+        (window) => window.id === galleryWindowId
+      );
+
+      if (galleryIsAlreadyOpen) {
+        return currentWindows.map((window) =>
+          window.id === galleryWindowId
+            ? {
+                ...window,
+                items,
+                selectedIndex: safeSelectedIndex,
+                zIndex: maxZIndex + 1,
+              }
+            : window
+        );
+      }
+
+      return [
+        ...currentWindows,
+        {
+          id: galleryWindowId,
+          type: "gallery",
+          galleryKey,
+          title: galleryConfig.title ?? galleryKey,
+          items,
+          selectedIndex: safeSelectedIndex,
+          iconSrc:
+            galleryConfig.iconSrc ??
+            "/icons/iconoFoto.png",
+          changeOnHover:
+            galleryConfig.changeOnHover ?? true,
+          ariaLabel:
+            galleryConfig.ariaLabel ??
+            "Galería de imágenes",
+          left: savedPosition.left,
+          top: savedPosition.top,
+          width: galleryConfig.width ?? 980,
+          height: galleryConfig.height ?? 650,
+          zIndex: maxZIndex + 1,
+        },
+      ];
+    });
+  }
+
+  function selectGalleryItem(windowId, selectedIndex) {
+    setOpenWindows((currentWindows) =>
+      currentWindows.map((window) =>
+        window.id === windowId &&
+        window.type === "gallery"
+          ? {
+              ...window,
+              selectedIndex,
+            }
+          : window
+      )
+    );
+  }
+
   function closeImageViewer() {
     setIsImageViewerOpen(false);
     setViewerImages([]);
@@ -333,7 +458,9 @@ function App() {
   function openFolderScreen(windowId, targetFolder) {
     const folderScreen = projectFolderScreens[targetFolder];
 
-    if (!folderScreen) return;
+    if (!folderScreen) {
+      return;
+    }
 
     setOpenWindows((currentWindows) =>
       currentWindows.map((window) =>
@@ -355,14 +482,18 @@ function App() {
       terminalWindowsData[windowKey] ||
       folderWindowsData[windowKey];
 
-    if (!windowData) return;
+    if (!windowData) {
+      return;
+    }
 
     setOpenWindows((currentWindows) => {
       const alreadyOpen = currentWindows.some(
         (window) => window.id === windowData.id
       );
 
-      if (alreadyOpen) return currentWindows;
+      if (alreadyOpen) {
+        return currentWindows;
+      }
 
       const savedPosition = windowPositions[windowData.id] ?? {
         left: windowData.left,
@@ -389,6 +520,7 @@ function App() {
   function bringWindowToFront(windowId) {
     setOpenWindows((currentWindows) => {
       const maxZIndex = Math.max(
+        0,
         ...currentWindows.map((window) => window.zIndex || 1)
       );
 
@@ -427,18 +559,18 @@ function App() {
     setIsProfilePanelOpen(false);
     setIsNotificationsPanelOpen(false);
     setIsControlCenterPanelOpen(false);
+    setIsCalendarPanelOpen(false);
   }
 
   function toggleNotificationsPanel() {
-    setIsNotificationsPanelOpen((currentState) => !currentState);
+    setIsNotificationsPanelOpen(
+      (currentState) => !currentState
+    );
+
     setIsProfilePanelOpen(false);
     setIsControlCenterPanelOpen(false);
     setIsCalendarPanelOpen(false);
     setActiveTopbarMenu(null);
-  }
-
-  function toggleDarkMode() {
-    setIsDarkMode((currentState) => !currentState);
   }
 
   function toggleDock() {
@@ -449,7 +581,9 @@ function App() {
     const projectsWindow = folderWindowsData.projects;
     const velarisScreen = projectFolderScreens.velaris;
 
-    if (!velarisScreen) return;
+    if (!velarisScreen) {
+      return;
+    }
 
     setIsReleaseToastVisible(false);
 
@@ -477,10 +611,11 @@ function App() {
         );
       }
 
-      const savedPosition = windowPositions[projectsWindow.id] ?? {
-        left: projectsWindow.left,
-        top: projectsWindow.top,
-      };
+      const savedPosition =
+        windowPositions[projectsWindow.id] ?? {
+          left: projectsWindow.left,
+          top: projectsWindow.top,
+        };
 
       return [
         ...currentWindows,
@@ -498,14 +633,12 @@ function App() {
   }
 
   return (
-    <main className={`desktop ${isDarkMode ? "dark-mode" : ""}`}>
+    <main className="desktop">
       <Topbar
         currentDate={currentDate}
         formatTopbarDate={formatTopbarDate}
         toggleControlCenterPanel={toggleControlCenterPanel}
         isControlCenterPanelOpen={isControlCenterPanelOpen}
-        isDarkMode={isDarkMode}
-        toggleDarkMode={toggleDarkMode}
         toggleProfilePanel={toggleProfilePanel}
         isProfilePanelOpen={isProfilePanelOpen}
         toggleNotificationsPanel={toggleNotificationsPanel}
@@ -518,7 +651,6 @@ function App() {
         isDockVisible={isDockVisible}
         toggleDock={toggleDock}
       />
-
 
       <DesktopGrid
         gridRef={gridRef}
@@ -550,7 +682,10 @@ function App() {
         />
       )}
 
-      <section ref={floatingLayerRef} className="desktop-floating-layer">
+      <section
+        ref={floatingLayerRef}
+        className="desktop-floating-layer"
+      >
         {openWindows.map((window) => (
           <article
             key={window.id}
@@ -563,9 +698,13 @@ function App() {
                     ? "folder-window"
                     : window.type === "app"
                       ? "app-window"
-                      : `sticky-window sticky-window-${window.type}`
+                      : window.type === "gallery"
+                        ? "gallery-window"
+                        : `sticky-window sticky-window-${window.type}`
             }`}
-            onPointerDown={(event) => handleWindowPointerDown(event, window.id)}
+            onPointerDown={(event) =>
+              handleWindowPointerDown(event, window.id)
+            }
             onPointerMove={handleWindowPointerMove}
             onPointerUp={handleWindowPointerUp}
             onPointerCancel={() => setDraggingWindow(null)}
@@ -577,41 +716,63 @@ function App() {
               zIndex: window.zIndex || 1,
             }}
           >
-            {(window.type === "welcome" || window.type === "profile") && (
-              <StickyWindow window={window} closeWindow={closeWindow} />
+            {(window.type === "welcome" ||
+              window.type === "profile") && (
+              <StickyWindow
+                window={window}
+                closeWindow={closeWindow}
+              />
             )}
 
             {window.type === "document" && (
               <DocumentWindow
                 window={window}
                 closeWindow={closeWindow}
-                isDarkMode={isDarkMode}
                 onOpenImageViewer={openImageViewer}
               />
             )}
 
             {window.type === "terminal" && (
-              <TerminalWindow window={window} closeWindow={closeWindow} />
+              <TerminalWindow
+                window={window}
+                closeWindow={closeWindow}
+              />
             )}
 
-          {window.type === "folder-window" && (
-            <FolderWindow
-              window={window}
-              closeWindow={closeWindow}
-              openFolderScreen={openFolderScreen}
-              openWindowByKey={openWindowByKey}
-              setOpenWindows={setOpenWindows}
-              isDarkMode={isDarkMode}
-            />
-          )}
+            {window.type === "folder-window" && (
+              <FolderWindow
+                window={window}
+                closeWindow={closeWindow}
+                openFolderScreen={openFolderScreen}
+                openWindowByKey={openWindowByKey}
+                openImageGallery={openImageGallery}
+                setOpenWindows={setOpenWindows}
+              />
+            )}
 
-          {window.type === "app" && (
-            <AppWindow
-              window={window}
-              closeWindow={closeWindow}
-              isDarkMode={isDarkMode}
-            />
-          )}
+            {window.type === "app" && (
+              <AppWindow
+                window={window}
+                closeWindow={closeWindow}
+              />
+            )}
+
+            {window.type === "gallery" && (
+              <GalleryViewer
+                items={window.items}
+                selectedIndex={window.selectedIndex}
+                onSelectItem={(selectedIndex) =>
+                  selectGalleryItem(
+                    window.id,
+                    selectedIndex
+                  )
+                }
+                onClose={() => closeWindow(window.id)}
+                iconSrc={window.iconSrc}
+                changeOnHover={window.changeOnHover}
+                ariaLabel={window.ariaLabel}
+              />
+            )}
           </article>
         ))}
       </section>

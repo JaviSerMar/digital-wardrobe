@@ -1,3 +1,47 @@
+export const imageGalleries = {
+  "velaris-dataset": {
+    title: "dataset",
+    width: 700,
+    height: 500,
+    left: 210,
+    top: 85,
+
+    items: [
+      {
+        src: "/projects/velaris/foto1dataset.png",
+        title: "foto01.png",
+        alt: "Imagen 1 del dataset de Velaris",
+      },
+      {
+        src: "/projects/velaris/foto2dataset.png",
+        title: "foto02.png",
+        alt: "Imagen 2 del dataset de Velaris",
+      },
+      {
+        src: "/projects/velaris/foto3dataset.png",
+        title: "foto03.png",
+        alt: "Imagen 3 del dataset de Velaris",
+      },
+      {
+        src: "/projects/velaris/foto4dataset.png",
+        title: "foto04.png",
+        alt: "Imagen 4 del dataset de Velaris",
+      },
+      {
+        src: "/projects/velaris/foto5dataset.png",
+        title: "foto05.png",
+        alt: "Imagen 5 del dataset de Velaris",
+      },
+      {
+        src: "/projects/velaris/foto6dataset.png",
+        title: "foto06.png",
+        alt: "Imagen 6 del dataset de Velaris",
+      },
+    ],
+  },
+};
+
+
 export const projectFolderScreens = {
   velaris: {
     title: "velaris",
@@ -56,37 +100,43 @@ export const projectFolderScreens = {
         id: "velaris-poster",
         label: "foto01.png",
         icon: "/icons/iconoFoto.png",
-        openWindowKey: "velaris-poster",
+        galleryKey: "velaris-dataset",
+        galleryIndex: 0,
       },
       {
         id: "velaris-landing",
         label: "foto02.png",
         icon: "/icons/iconoFoto.png",
-        openWindowKey: "velaris-landing",
+        galleryKey: "velaris-dataset",
+        galleryIndex: 1,
       },
       {
         id: "velaris-gazebo",
         label: "foto03.png",
         icon: "/icons/iconoFoto.png",
-        openWindowKey: "velaris-gazebo",
+        galleryKey: "velaris-dataset",
+        galleryIndex: 2,
       },
       {
         id: "velaris-camera",
         label: "foto04.png",
         icon: "/icons/iconoFoto.png",
-        openWindowKey: "velaris-camera",
+        galleryKey: "velaris-dataset",
+        galleryIndex: 3,
       },
       {
         id: "velaris-opencv",
         label: "foto05.png",
         icon: "/icons/iconoFoto.png",
-        openWindowKey: "velaris-opencv",
+        galleryKey: "velaris-dataset",
+        galleryIndex: 4,
       },
       {
         id: "velaris-foto06",
         label: "foto06.png",
         icon: "/icons/iconoFoto.png",
-        openWindowKey: "velaris-foto06",
+        galleryKey: "velaris-dataset",
+        galleryIndex: 5,
       },
     ],
   },

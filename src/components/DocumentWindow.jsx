@@ -3,7 +3,6 @@ import DocumentHeader from "./DocumentHeader";
 function DocumentWindow({
   window,
   closeWindow,
-  isDarkMode,
   onOpenImageViewer,
 }) {
   const velarisGalleryImages = [
@@ -43,8 +42,9 @@ function DocumentWindow({
         }
         isDesktopPhoto={window.id === "desktop-photo-window"}
         isTeamImage={window.id === "equipo-image-window"}
-        isManifestoImage={window.id === "velaris-manifesto-window"}
-        isDarkMode={isDarkMode}
+        isManifestoImage={
+          window.id === "velaris-manifesto-window"
+        }
       />
 
       <div
@@ -59,7 +59,11 @@ function DocumentWindow({
           window.fileType === "image"
             ? "document-body-no-scroll"
             : ""
-        } ${window.fileType === "image" ? "image-document-body" : ""}`}
+        } ${
+          window.fileType === "image"
+            ? "image-document-body"
+            : ""
+        }`}
       >
         {window.id === "skills-file-window" && (
           <pre className="document-code-text">{`              { skills }
@@ -106,7 +110,9 @@ function DocumentWindow({
 
             <p
               className="email-document-address"
-              onPointerDown={(event) => event.stopPropagation()}
+              onPointerDown={(event) =>
+                event.stopPropagation()
+              }
             >
               javiersemarco@gmail.com
             </p>
@@ -129,40 +135,58 @@ function DocumentWindow({
             <section className="velaris-gallery-grid">
               {velarisGalleryImages.map((image, index) => (
                 <button
-                  className={`velaris-gallery-item velaris-gallery-item-${index + 1}`}
+                  className={`velaris-gallery-item velaris-gallery-item-${
+                    index + 1
+                  }`}
                   type="button"
                   key={image.src}
                   onPointerDown={(event) => {
                     event.stopPropagation();
                   }}
                   onClick={() => {
-                    onOpenImageViewer(velarisGalleryImages, index);
+                    onOpenImageViewer(
+                      velarisGalleryImages,
+                      index
+                    );
                   }}
-                  aria-label={`Ampliar imagen ${index + 1} de Velaris`}
+                  aria-label={`Ampliar imagen ${
+                    index + 1
+                  } de Velaris`}
                 >
-                  <img src={image.src} alt={image.alt} draggable="false" />
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    draggable="false"
+                  />
                 </button>
               ))}
             </section>
 
             <div className="document-readme-text">
               <p>
-                <strong>Velaris</strong> combina robótica, simulación, visión artificial y
-                desarrollo web en un sistema capaz de patrullar un espacio, mostrar
-                información en tiempo real y ser controlado desde una interfaz web. El robot
-                funciona en un almacén simulado con <strong>Gazebo</strong>.{" "}
-                <strong>ROS2</strong> coordina el sistema y <strong>Nav2</strong> permite
-                la navegación autónoma por el mapa. Desde la web se puede ver la cámara,
-                consultar el mapa, revisar el estado del robot, iniciar patrullas y enviar
-                comandos de movimiento. También incorpora <strong>OpenCV</strong> para
-                capturar y procesar imágenes durante las patrullas, preparando la base para
-                futuras detecciones mediante inteligencia artificial.
+                <strong>Velaris</strong> combina robótica,
+                simulación, visión artificial y desarrollo
+                web en un sistema capaz de patrullar un
+                espacio, mostrar información en tiempo real
+                y ser controlado desde una interfaz web. El
+                robot funciona en un almacén simulado con{" "}
+                <strong>Gazebo</strong>.{" "}
+                <strong>ROS2</strong> coordina el sistema y{" "}
+                <strong>Nav2</strong> permite la navegación
+                autónoma por el mapa. Desde la web se puede
+                ver la cámara, consultar el mapa, revisar el
+                estado del robot, iniciar patrullas y enviar
+                comandos de movimiento. También incorpora{" "}
+                <strong>OpenCV</strong> para capturar y
+                procesar imágenes durante las patrullas,
+                preparando la base para futuras detecciones
+                mediante inteligencia artificial.
               </p>
 
               <p className="document-readme-stack">
                 <strong>
-                  Python · ROS2 · Nav2 · Gazebo · RViz · OpenCV · Vite · WebSocket · AWS
-                  Cloud
+                  Python · ROS2 · Nav2 · Gazebo · RViz ·
+                  OpenCV · Vite · WebSocket · AWS Cloud
                 </strong>
               </p>
             </div>

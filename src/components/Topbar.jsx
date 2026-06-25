@@ -1,9 +1,9 @@
 import { useEffect } from "react";
+import CalendarPanel from "./CalendarPanel";
 import ControlCenterPanel from "./ControlCenterPanel";
 import NotificationsPanel from "./NotificationsPanel";
 import ProfilePanel from "./ProfilePanel";
 import TopbarMenu from "./TopbarMenu";
-import CalendarPanel from "./CalendarPanel";
 
 function Topbar({
   currentDate,
@@ -12,8 +12,6 @@ function Topbar({
   toggleTopbarMenu,
   toggleControlCenterPanel,
   isControlCenterPanelOpen,
-  isDarkMode,
-  toggleDarkMode,
   isDockVisible,
   toggleDock,
   toggleProfilePanel,
@@ -63,7 +61,10 @@ function Topbar({
   return (
     <header className="topbar">
       <div className="topbar-left">
-        <button className="topbar-item topbar-logo-item" type="button">
+        <button
+          className="topbar-item topbar-logo-item"
+          type="button"
+        >
           <img
             className="topbar-logo"
             src="/icons/topbar/wardrobe_os1.png"
@@ -179,8 +180,6 @@ function Topbar({
 
           {isControlCenterPanelOpen && (
             <ControlCenterPanel
-              isDarkMode={isDarkMode}
-              onToggleDarkMode={toggleDarkMode}
               isDockVisible={isDockVisible}
               onToggleDock={toggleDock}
             />
@@ -221,7 +220,11 @@ function Topbar({
             }`}
             type="button"
             onClick={toggleProfilePanel}
-            aria-label={isProfilePanelOpen ? "Cerrar perfil" : "Abrir perfil"}
+            aria-label={
+              isProfilePanelOpen
+                ? "Cerrar perfil"
+                : "Abrir perfil"
+            }
             aria-expanded={isProfilePanelOpen}
           >
             <img
@@ -244,7 +247,11 @@ function Topbar({
             }`}
             type="button"
             onClick={toggleCalendarPanel}
-            aria-label="Abrir calendario"
+            aria-label={
+              isCalendarPanelOpen
+                ? "Cerrar calendario"
+                : "Abrir calendario"
+            }
             aria-expanded={isCalendarPanelOpen}
           >
             {formatTopbarDate(currentDate)}
