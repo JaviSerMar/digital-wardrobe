@@ -61,6 +61,21 @@ function BatteryIcon() {
   );
 }
 
+function BluetoothStatusIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="m9 5 7 6-7 6V5Zm0 6 7-6v12L9 11Zm0 0-4-4m4 4-4 4"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 function RobotIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -130,6 +145,88 @@ function ChevronIcon({ direction }) {
         strokeLinejoin="round"
         transform={rotation[direction]}
       />
+    </svg>
+  );
+}
+
+function AirMonitorHomeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="m4 10 8-6 8 6v9a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function AirMonitorMapIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="m4 6 5-2 6 2 5-2v14l-5 2-6-2-5 2zM9 4v14M15 6v14"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function AirMonitorBeaconIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M9 8a5 5 0 0 0 0 8M6 5a9 9 0 0 0 0 14M15 8a5 5 0 0 1 0 8M18 5a9 9 0 0 1 0 14"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+      />
+
+      <circle cx="12" cy="12" r="2" fill="currentColor" />
+    </svg>
+  );
+}
+
+function AirMonitorProfileIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle
+        cx="12"
+        cy="8"
+        r="4"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+      />
+
+      <path
+        d="M5 20a7 7 0 0 1 14 0"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function AirMonitorPinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z"
+        fill="currentColor"
+      />
+
+      <circle cx="12" cy="10" r="2.4" fill="#ffffff" />
     </svg>
   );
 }
@@ -445,7 +542,105 @@ function HomeView() {
   );
 }
 
-function AppWindow({ window, closeWindow }) {
+function AirMonitorView() {
+  const ozoneSpots = [
+    "ozone-spot-one",
+    "ozone-spot-two",
+    "ozone-spot-three",
+    "ozone-spot-four",
+    "ozone-spot-five",
+    "ozone-spot-six",
+  ];
+
+  const mapMarkers = [
+    {
+      className: "marker-one",
+      label: "Medición reciente",
+      value: "O₃ 0.032",
+    },
+    {
+      className: "marker-two",
+      label: "Sensor móvil",
+      value: "O₃ 0.061",
+    },
+    {
+      className: "marker-three",
+      label: "Nivel elevado",
+      value: "O₃ 0.094",
+    },
+    {
+      className: "marker-four",
+      label: "Beacon detectado",
+      value: "BLE",
+    },
+  ];
+
+  return (
+    <div className="airmonitor-app-dashboard airmonitor-app-dashboard-map">
+      <section className="airmonitor-home-map-full">
+        <div className="airmonitor-home-map-canvas">
+          <img
+            className="airmonitor-home-map-image"
+            src="/projects/airmonitor/airmonitor3.png"
+            alt="Mapa de calor con mediciones de ozono"
+            draggable="false"
+          />
+
+          <div
+            className="airmonitor-home-map-ozone-layer"
+            aria-hidden="true"
+          >
+            {ozoneSpots.map((spot) => (
+              <span
+                className={`airmonitor-home-ozone-spot ${spot}`}
+                key={spot}
+              />
+            ))}
+          </div>
+
+          {mapMarkers.map((marker) => (
+            <span
+              className={`airmonitor-home-map-marker ${marker.className}`}
+              key={marker.className}
+              aria-label={`${marker.label}: ${marker.value}`}
+            >
+              <span className="airmonitor-home-map-marker-icon">
+                <AirMonitorPinIcon />
+              </span>
+
+              <span className="airmonitor-home-map-marker-label">
+                <strong>{marker.value}</strong>
+                <small>{marker.label}</small>
+              </span>
+            </span>
+          ))}
+
+          <div
+            className="airmonitor-home-map-legend"
+            aria-label="Leyenda de niveles de ozono"
+          >
+            <span>
+              <i className="is-low" />
+              Bajo
+            </span>
+
+            <span>
+              <i className="is-medium" />
+              Moderado
+            </span>
+
+            <span>
+              <i className="is-high" />
+              Alto
+            </span>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function VelarisAppWindow({ window, closeWindow }) {
   return (
     <div className="app-window-content">
       <div className="app-phone-shell">
@@ -503,5 +698,130 @@ function AppWindow({ window, closeWindow }) {
   );
 }
 
-export default AppWindow;
+function AirMonitorAppWindow({ window, closeWindow }) {
+  return (
+    <div className="app-window-content airmonitor-app-window-content">
+      <div className="app-phone-shell airmonitor-phone-shell">
+        <div className="app-phone-frame airmonitor-phone-frame">
+          <div className="app-phone-screen airmonitor-app-screen">
+            <span
+              className="airmonitor-phone-camera"
+              aria-hidden="true"
+            />
 
+            <header className="app-phone-statusbar airmonitor-statusbar">
+              <span className="app-phone-time">19:12</span>
+
+              <div className="app-phone-status-icons">
+                <BluetoothStatusIcon />
+                <SignalIcon />
+                <WifiIcon />
+
+                <span className="airmonitor-battery-percentage">
+                  100%
+                </span>
+
+                <BatteryIcon />
+              </div>
+            </header>
+
+            <div className="app-phone-toolbar airmonitor-app-toolbar">
+              <div className="airmonitor-app-brand">
+                <img
+                  className="airmonitor-app-logo"
+                  src="/icons/logoAirmonitor.png"
+                  alt=""
+                  draggable="false"
+                />
+
+                <div>
+                  <h1>AirMonitor</h1>
+                  <p>Calidad en cada respiro</p>
+                </div>
+              </div>
+
+              <span className="airmonitor-app-online-status">
+                <span />
+                BLE
+              </span>
+
+              <button
+                className="app-phone-close airmonitor-app-close"
+                type="button"
+                onPointerDown={(event) => event.stopPropagation()}
+                onClick={() => closeWindow(window.id)}
+                aria-label="Cerrar AirMonitor.app"
+              >
+                ×
+              </button>
+            </div>
+
+            <main className="app-phone-body airmonitor-app-body">
+              <AirMonitorView />
+            </main>
+
+            <nav
+              className="airmonitor-app-tabbar"
+              aria-label="Navegación de AirMonitor"
+              onPointerDown={(event) => event.stopPropagation()}
+            >
+              <button
+                className="is-active"
+                type="button"
+                aria-current="page"
+                tabIndex="-1"
+              >
+                <AirMonitorHomeIcon />
+                <span>Inicio</span>
+              </button>
+
+              <button type="button" tabIndex="-1">
+                <AirMonitorMapIcon />
+                <span>Mapa</span>
+              </button>
+
+              <button type="button" tabIndex="-1">
+                <AirMonitorBeaconIcon />
+                <span>BLE</span>
+              </button>
+
+              <button type="button" tabIndex="-1">
+                <AirMonitorProfileIcon />
+                <span>Perfil</span>
+              </button>
+            </nav>
+
+            <div
+              className="airmonitor-android-navigation"
+              aria-hidden="true"
+            >
+              <span className="airmonitor-android-recents" />
+              <span className="airmonitor-android-home" />
+              <span className="airmonitor-android-back" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AppWindow({ window, closeWindow }) {
+  if (window.appType === "airmonitor") {
+    return (
+      <AirMonitorAppWindow
+        window={window}
+        closeWindow={closeWindow}
+      />
+    );
+  }
+
+  return (
+    <VelarisAppWindow
+      window={window}
+      closeWindow={closeWindow}
+    />
+  );
+}
+
+export default AppWindow;

@@ -1295,3 +1295,1020 @@
 
   transform: translateX(-50%);
 }
+
+
+/* ========================================================= */
+/* AIRMONITOR.APP — ANDROID                                  */
+/* ========================================================= */
+
+.airmonitor-app-window-content {
+  font-family:
+    Roboto,
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+.airmonitor-phone-shell {
+  align-items: flex-start;
+}
+
+
+/* ANDROID PHONE FRAME */
+
+.airmonitor-phone-frame {
+  position: relative;
+
+  width: 320px;
+  height: 610px;
+  padding: 6px;
+
+  background: linear-gradient(
+    145deg,
+    #353535 0%,
+    #111111 30%,
+    #020202 70%,
+    #242424 100%
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 31px;
+
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.46),
+    0 12px 28px rgba(0, 0, 0, 0.32),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.7);
+}
+
+.airmonitor-phone-frame::before,
+.airmonitor-phone-frame::after {
+  content: "";
+
+  position: absolute;
+  right: -2px;
+
+  width: 3px;
+
+  background: #171717;
+  border-radius: 0 3px 3px 0;
+}
+
+.airmonitor-phone-frame::before {
+  top: 105px;
+  height: 58px;
+}
+
+.airmonitor-phone-frame::after {
+  top: 181px;
+  height: 39px;
+}
+
+.airmonitor-app-screen {
+  position: relative;
+
+  background: #f7f4f6;
+  border-radius: 25px;
+
+  color: #2b2328;
+
+  font-family:
+    Roboto,
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+
+/* FRONT CAMERA */
+
+.airmonitor-phone-camera {
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  z-index: 30;
+
+  width: 12px;
+  height: 12px;
+
+  background:
+    radial-gradient(
+      circle at 38% 35%,
+      #43515c 0 10%,
+      #10161a 22%,
+      #020303 68%
+    );
+
+  border: 2px solid #090909;
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    inset 0 0 4px rgba(74, 131, 164, 0.35);
+
+  transform: translateX(-50%);
+}
+
+
+/* ANDROID STATUS BAR */
+
+.airmonitor-statusbar {
+  height: 29px;
+  padding: 0 11px;
+
+  background: #ffffff;
+  color: #2f292d;
+}
+
+.airmonitor-statusbar .app-phone-time {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.airmonitor-statusbar .app-phone-status-icons {
+  gap: 2px;
+}
+
+.airmonitor-statusbar .app-phone-status-icons svg {
+  width: 14px;
+  height: 14px;
+}
+
+.airmonitor-statusbar .app-phone-status-icons svg:last-child {
+  width: 19px;
+}
+
+.airmonitor-battery-percentage {
+  margin-left: 1px;
+
+  color: #383136;
+
+  font-size: 8px;
+  font-weight: 700;
+}
+
+
+/* AIRMONITOR HEADER */
+
+.airmonitor-app-toolbar {
+  min-height: 62px;
+  padding: 8px 10px;
+  gap: 7px;
+
+  background: linear-gradient(
+    135deg,
+    #ad0067 0%,
+    #c60773 52%,
+    #dd2188 100%
+  );
+
+  border-bottom: 0;
+
+  box-shadow:
+    0 6px 16px rgba(150, 0, 86, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.airmonitor-app-brand {
+  min-width: 0;
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.airmonitor-app-logo {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+
+  display: block;
+  object-fit: cover;
+
+  background: #ffffff;
+  border-radius: 9px;
+
+  box-shadow:
+    0 5px 12px rgba(75, 0, 43, 0.2),
+    inset 0 0 0 1px rgba(177, 0, 104, 0.08);
+
+  user-select: none;
+  pointer-events: none;
+}
+
+.airmonitor-app-brand h1 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 850;
+  letter-spacing: -0.2px;
+  line-height: 1.05;
+}
+
+.airmonitor-app-brand p {
+  margin: 3px 0 0;
+
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 8px;
+  line-height: 1.15;
+}
+
+.airmonitor-app-online-status {
+  padding: 4px 6px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 999px;
+
+  color: #ffffff;
+
+  font-size: 8px;
+  font-weight: 750;
+}
+
+.airmonitor-app-online-status > span {
+  width: 5px;
+  height: 5px;
+
+  background: #82efb6;
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 2px rgba(130, 239, 182, 0.18),
+    0 0 7px rgba(130, 239, 182, 0.4);
+}
+
+.airmonitor-app-close {
+  background: rgba(255, 255, 255, 0.13);
+  border-color: rgba(255, 255, 255, 0.16);
+
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.airmonitor-app-close:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+
+/* AIRMONITOR BODY */
+
+.airmonitor-app-body {
+  min-height: 0;
+  padding: 8px 9px;
+  flex: 1;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scrollbar-width: none;
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(204, 21, 121, 0.09),
+      transparent 34%
+    ),
+    linear-gradient(
+      180deg,
+      #f5f1f4 0%,
+      #faf8f9 46%,
+      #f3eff2 100%
+    );
+}
+
+.airmonitor-app-body::-webkit-scrollbar {
+  display: none;
+}
+
+.airmonitor-app-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  min-width: 0;
+}
+
+
+/* AIRMONITOR HEADING */
+
+.airmonitor-app-heading {
+  min-height: 34px;
+  padding: 0 2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.airmonitor-app-heading > div {
+  min-width: 0;
+}
+
+.airmonitor-app-eyebrow {
+  display: block;
+
+  color: #b5006b;
+
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+}
+
+.airmonitor-app-heading h2 {
+  margin: 2px 0 0;
+
+  color: #292227;
+
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.airmonitor-app-updated {
+  padding: 4px 7px;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  background: rgba(39, 178, 108, 0.1);
+  border-radius: 999px;
+
+  color: #208a58;
+
+  font-size: 7px;
+  font-weight: 750;
+}
+
+.airmonitor-app-updated > span {
+  width: 5px;
+  height: 5px;
+
+  background: #2fbd77;
+  border-radius: 50%;
+}
+
+
+/* AIRMONITOR MAP */
+
+.airmonitor-app-map-card {
+  overflow: hidden;
+
+  background: #ffffff;
+  border: 1px solid rgba(61, 41, 53, 0.08);
+  border-radius: 14px;
+
+  box-shadow:
+    0 7px 18px rgba(65, 38, 52, 0.07),
+    0 2px 6px rgba(65, 38, 52, 0.04);
+}
+
+.airmonitor-app-map-heading {
+  min-height: 38px;
+  padding: 7px 9px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.airmonitor-app-map-heading > div {
+  min-width: 0;
+}
+
+.airmonitor-app-map-heading strong,
+.airmonitor-app-map-heading span {
+  display: block;
+}
+
+.airmonitor-app-map-heading strong {
+  color: #34272f;
+
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.airmonitor-app-map-heading > div > span {
+  margin-top: 2px;
+
+  color: rgba(57, 42, 51, 0.5);
+
+  font-size: 7px;
+}
+
+.airmonitor-app-map-expand {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(181, 0, 107, 0.08);
+  border-radius: 50%;
+
+  color: #b5006b;
+
+  font-size: 11px;
+}
+
+.airmonitor-app-map {
+  position: relative;
+
+  height: 132px;
+
+  overflow: hidden;
+
+  background: #e7e1e4;
+}
+
+.airmonitor-app-map::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(75, 24, 54, 0.08)
+  );
+}
+
+.airmonitor-app-map img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
+
+  filter:
+    saturate(0.92)
+    contrast(1.03)
+    brightness(0.98);
+}
+
+.airmonitor-app-map-pin {
+  position: absolute;
+  top: 47%;
+  left: 54%;
+  z-index: 5;
+
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+  border: 3px solid #bb086e;
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 5px rgba(187, 8, 110, 0.16),
+    0 4px 11px rgba(87, 0, 49, 0.28);
+
+  transform: translate(-50%, -50%);
+}
+
+.airmonitor-app-map-pin > span {
+  width: 6px;
+  height: 6px;
+
+  background: #bb086e;
+  border-radius: 50%;
+}
+
+.airmonitor-app-map-status {
+  position: absolute;
+  left: 8px;
+  bottom: 7px;
+  z-index: 5;
+
+  padding: 5px 7px;
+
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 999px;
+
+  color: #a10663;
+
+  font-size: 7px;
+  font-weight: 750;
+
+  box-shadow: 0 3px 9px rgba(62, 29, 48, 0.13);
+}
+
+
+/* AIRMONITOR READINGS */
+
+.airmonitor-app-reading-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.airmonitor-app-reading-card {
+  min-width: 0;
+  min-height: 67px;
+  padding: 8px;
+
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(61, 41, 53, 0.07);
+  border-radius: 12px;
+
+  box-shadow: 0 5px 13px rgba(65, 38, 52, 0.055);
+}
+
+.airmonitor-app-reading-icon {
+  width: 31px;
+  height: 31px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+    135deg,
+    #ab0065,
+    #dc2188
+  );
+
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  font-size: 10px;
+  font-weight: 850;
+
+  box-shadow: 0 4px 9px rgba(174, 0, 102, 0.2);
+}
+
+.airmonitor-app-reading-icon sub {
+  margin-left: 1px;
+
+  font-size: 6px;
+}
+
+.airmonitor-app-reading-card > div:last-child {
+  min-width: 0;
+  flex: 1;
+}
+
+.airmonitor-app-reading-card span,
+.airmonitor-app-reading-card strong,
+.airmonitor-app-reading-card small {
+  display: block;
+}
+
+.airmonitor-app-reading-card span {
+  color: rgba(54, 40, 48, 0.54);
+
+  font-size: 7px;
+}
+
+.airmonitor-app-reading-card strong {
+  margin-top: 3px;
+
+  color: #2f252b;
+
+  font-size: 13px;
+  font-weight: 850;
+  line-height: 1.05;
+}
+
+.airmonitor-app-reading-card strong small {
+  display: inline;
+
+  color: #b5006b;
+
+  font-size: 7px;
+  font-weight: 750;
+}
+
+.airmonitor-app-reading-card > div:last-child > small {
+  margin-top: 4px;
+
+  color: rgba(54, 40, 48, 0.48);
+
+  font-size: 7px;
+}
+
+.airmonitor-app-reading-card > div:last-child > small.is-good {
+  color: #239260;
+}
+
+
+/* AIRMONITOR DEVICE */
+
+.airmonitor-app-device-card {
+  min-height: 58px;
+  padding: 8px 9px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(61, 41, 53, 0.07);
+  border-radius: 12px;
+
+  box-shadow: 0 5px 13px rgba(65, 38, 52, 0.055);
+}
+
+.airmonitor-app-device-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(181, 0, 107, 0.09);
+  border-radius: 10px;
+
+  color: #b5006b;
+}
+
+.airmonitor-app-device-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.airmonitor-app-device-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.airmonitor-app-device-info span,
+.airmonitor-app-device-info strong,
+.airmonitor-app-device-info small {
+  display: block;
+}
+
+.airmonitor-app-device-info span {
+  color: rgba(54, 40, 48, 0.47);
+
+  font-size: 7px;
+}
+
+.airmonitor-app-device-info strong {
+  margin-top: 2px;
+
+  overflow: hidden;
+
+  color: #30262c;
+
+  font-size: 10px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.airmonitor-app-device-info small {
+  margin-top: 3px;
+
+  color: rgba(54, 40, 48, 0.46);
+
+  font-size: 7px;
+}
+
+.airmonitor-app-device-signal {
+  height: 25px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.airmonitor-app-device-signal span {
+  width: 3px;
+
+  display: block;
+
+  background: #c20a72;
+  border-radius: 2px 2px 0 0;
+}
+
+.airmonitor-app-device-signal span:nth-child(1) {
+  height: 7px;
+}
+
+.airmonitor-app-device-signal span:nth-child(2) {
+  height: 11px;
+}
+
+.airmonitor-app-device-signal span:nth-child(3) {
+  height: 16px;
+}
+
+.airmonitor-app-device-signal span:nth-child(4) {
+  height: 22px;
+}
+
+
+/* AIRMONITOR HISTORY */
+
+.airmonitor-app-history-card {
+  min-height: 40px;
+  padding: 7px 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(61, 41, 53, 0.07);
+  border-radius: 11px;
+
+  box-shadow: 0 4px 10px rgba(65, 38, 52, 0.045);
+}
+
+.airmonitor-app-history-card span,
+.airmonitor-app-history-card strong {
+  display: block;
+}
+
+.airmonitor-app-history-card > div > span {
+  color: rgba(54, 40, 48, 0.48);
+
+  font-size: 7px;
+}
+
+.airmonitor-app-history-card strong {
+  margin-top: 2px;
+
+  color: #342830;
+
+  font-size: 9px;
+}
+
+.airmonitor-app-history-arrow {
+  color: #b5006b;
+
+  font-size: 18px;
+  line-height: 1;
+}
+
+
+/* STATIC APP TABS */
+
+.airmonitor-app-tabbar {
+  height: 52px;
+  padding: 3px 5px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  background: rgba(255, 255, 255, 0.98);
+  border-top: 1px solid rgba(70, 45, 59, 0.08);
+
+  box-shadow: 0 -5px 14px rgba(68, 35, 54, 0.055);
+}
+
+.airmonitor-app-tabbar button {
+  min-width: 0;
+  padding: 3px 2px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+
+  color: rgba(59, 46, 53, 0.48);
+
+  font-family:
+    Roboto,
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  cursor: default;
+}
+
+.airmonitor-app-tabbar button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.airmonitor-app-tabbar button span {
+  font-size: 7px;
+  font-weight: 650;
+}
+
+.airmonitor-app-tabbar button.is-active {
+  background: rgba(181, 0, 107, 0.07);
+  color: #b5006b;
+}
+
+
+/* ANDROID SYSTEM NAVIGATION */
+
+.airmonitor-android-navigation {
+  height: 24px;
+  padding: 0 69px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #ffffff;
+  border-top: 1px solid rgba(70, 45, 59, 0.055);
+}
+
+.airmonitor-android-recents,
+.airmonitor-android-home,
+.airmonitor-android-back {
+  position: relative;
+
+  display: block;
+
+  color: #4f484c;
+}
+
+.airmonitor-android-recents {
+  width: 9px;
+  height: 9px;
+
+  box-sizing: border-box;
+
+  border: 1.5px solid currentColor;
+  border-radius: 1px;
+}
+
+.airmonitor-android-home {
+  width: 10px;
+  height: 10px;
+
+  box-sizing: border-box;
+
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+}
+
+.airmonitor-android-back {
+  width: 0;
+  height: 0;
+
+  border-top: 5px solid transparent;
+  border-right: 8px solid currentColor;
+  border-bottom: 5px solid transparent;
+}
+
+
+/* ====================================== */
+/* AIRMONITOR HOME SOLO CON MAPA GRANDE   */
+/* ====================================== */
+
+.airmonitor-app-dashboard-map {
+  height: 100%;
+  min-height: 0;
+}
+
+.airmonitor-home-map-full {
+  height: 100%;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.airmonitor-home-map-canvas {
+  position: relative;
+
+  height: 100%;
+  min-height: 455px;
+
+  overflow: hidden;
+
+  background: #ece7ea;
+  border: 1px solid rgba(61, 41, 53, 0.08);
+  border-radius: 20px;
+
+  box-shadow:
+    0 8px 20px rgba(65, 38, 52, 0.08),
+    0 2px 6px rgba(65, 38, 52, 0.05);
+}
+
+.airmonitor-home-map-canvas img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+  object-fit: cover;
+  object-position: center;
+
+  user-select: none;
+}
+
+/* Marcadores */
+
+.airmonitor-home-map-marker {
+  position: absolute;
+  z-index: 6;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  transform: translate(-50%, -50%);
+}
+
+.airmonitor-home-map-dot {
+  width: 18px;
+  height: 18px;
+
+  display: block;
+
+  background: #ffffff;
+  border: 4px solid #b5006b;
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 6px rgba(181, 0, 107, 0.14),
+    0 4px 10px rgba(87, 0, 49, 0.25);
+}
+
+.airmonitor-home-map-marker small {
+  padding: 4px 7px;
+
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 999px;
+
+  color: #8f0053;
+
+  font-size: 8px;
+  font-weight: 700;
+  white-space: nowrap;
+
+  box-shadow: 0 3px 8px rgba(65, 38, 52, 0.12);
+}
+
+/* Posiciones de ejemplo */
+
+.airmonitor-home-map-marker.marker-1 {
+  top: 36%;
+  left: 42%;
+}
+
+.airmonitor-home-map-marker.marker-2 {
+  top: 48%;
+  left: 57%;
+}
+
+.airmonitor-home-map-marker.marker-3 {
+  top: 57%;
+  left: 51%;
+}
+
+.airmonitor-home-map-marker.marker-4 {
+  top: 69%;
+  left: 66%;
+}
+
+.airmonitor-home-map-marker.marker-5 {
+  top: 29%;
+  left: 74%;
+}
+

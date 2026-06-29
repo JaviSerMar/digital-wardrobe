@@ -46,6 +46,109 @@ function DocumentWindow({
     },
   ];
 
+  const airMonitorOverviewImages = [
+    {
+      src: "/projects/airmonitor/airmonitor1.png",
+      alt: "Dispositivo AirMonitor instalado en una mochila",
+    },
+    {
+      src: "/projects/airmonitor/airmonitor2.png",
+      alt: "Identidad visual del proyecto AirMonitor",
+    },
+    {
+      src: "/projects/airmonitor/airmonitor3.png",
+      alt: "Mapa de calor de mediciones ambientales de AirMonitor",
+    },
+  ];
+
+  const airMonitorSensorImages = [
+    {
+      src: "/projects/airmonitor/sensor1.png",
+      alt: "Sensor de ozono de AirMonitor",
+    },
+    {
+      src: "/projects/airmonitor/sensor2.png",
+      alt: "Sensor de temperatura de AirMonitor",
+    },
+    {
+      src: "/projects/airmonitor/sensor3.png",
+      alt: "Placa BLE de AirMonitor",
+    },
+    {
+      src: "/projects/airmonitor/sensor4.png",
+      alt: "Batería LiPo de AirMonitor",
+    },
+    {
+      src: "/projects/airmonitor/sensor5.png",
+      alt: "Montaje ensamblado de AirMonitor",
+    },
+    {
+      src: "/projects/airmonitor/sensor6.png",
+      alt: "Unidad compacta de AirMonitor",
+    },
+    {
+      src: "/projects/airmonitor/sensor7.png",
+      alt: "Concepto de carcasa de AirMonitor",
+    },
+    {
+      src: "/projects/airmonitor/sensor8.png",
+      alt: "Vista explotada de AirMonitor",
+    },
+  ];
+
+  const airMonitorBeaconImages = [
+    {
+      src: "/projects/airmonitor/beacon1.png",
+      alt: "Dispositivo AirMonitor publicando lecturas mediante Bluetooth",
+    },
+    {
+      src: "/projects/airmonitor/beacon2.png",
+      alt: "Aplicación Android detectando el beacon de AirMonitor",
+    },
+    {
+      src: "/projects/airmonitor/beacon3.png",
+      alt: "Escaneo de dispositivos BLE desde la aplicación AirMonitor",
+    },
+    {
+      src: "/projects/airmonitor/beacon4.png",
+      alt: "AirMonitor conectado con la aplicación móvil",
+    },
+  ];
+
+  const airMonitorBackendImages = [
+    {
+      src: "/projects/airmonitor/backend1.png",
+      alt: "Arquitectura del backend de AirMonitor",
+    },
+    {
+      src: "/projects/airmonitor/backend2.png",
+      alt: "Panel de administración del backend de AirMonitor",
+    },
+    {
+      src: "/projects/airmonitor/backend3.png",
+      alt: "API REST, PostgreSQL y Docker Compose de AirMonitor",
+    },
+  ];
+
+  const airMonitorBackendEndpoints = [
+    {
+      method: "GET",
+      path: "/latest",
+    },
+    {
+      method: "POST",
+      path: "/measurements",
+    },
+    {
+      method: "POST",
+      path: "/users",
+    },
+    {
+      method: "DELETE",
+      path: "/users/:id/measurements",
+    },
+  ];
+
   return (
     <div className="document-window-content">
       <DocumentHeader
@@ -62,7 +165,8 @@ function DocumentWindow({
           window.id === "desktop-photo-window"
         }
         isArchitectureImage={
-          window.id === "velaris-architecture-window"
+          window.id === "velaris-architecture-window" ||
+          window.id === "airmonitor-architecture-window"
         }
         isTeamImage={
           window.id === "equipo-image-window"
@@ -78,8 +182,14 @@ function DocumentWindow({
           window.id === "velaris-readme-window" ||
           window.id === "velaris-info-window" ||
           window.id === "velaris-stack-window" ||
+          window.id === "airmonitor-stack-window" ||
           window.id === "velaris-database-window" ||
           window.id === "velaris-opencv-info-window" ||
+          window.id === "airmonitor-readme-window" ||
+          window.id === "airmonitor-info-window" ||
+          window.id === "airmonitor-sensors-window" ||
+          window.id === "airmonitor-beacon-window" ||
+          window.id === "airmonitor-backend-window" ||
           window.id === "actualmente-file-window" ||
           window.id === "aprendizaje-file-window" ||
           window.id === "workflow-file-window" ||
@@ -95,6 +205,30 @@ function DocumentWindow({
           window.id === "velaris-database-window" ||
           window.id === "velaris-opencv-info-window"
             ? "velaris-detail-body"
+            : ""
+        } ${
+          window.id === "airmonitor-readme-window"
+            ? "airmonitor-readme-body"
+            : ""
+        } ${
+          window.id === "airmonitor-info-window"
+            ? "airmonitor-info-body"
+            : ""
+        } ${
+          window.id === "airmonitor-sensors-window"
+            ? "airmonitor-sensors-body"
+            : ""
+        } ${
+          window.id === "airmonitor-beacon-window"
+            ? "airmonitor-beacon-body"
+            : ""
+        } ${
+          window.id === "airmonitor-backend-window"
+            ? "airmonitor-backend-body"
+            : ""
+        } ${
+          window.id === "airmonitor-architecture-window"
+            ? "airmonitor-architecture-body"
             : ""
         } ${
           window.fileType === "image"
@@ -147,9 +281,9 @@ function DocumentWindow({
 
             <p
               className="email-document-address"
-              onPointerDown={(event) =>
-                event.stopPropagation()
-              }
+              onPointerDown={(event) => {
+                event.stopPropagation();
+              }}
             >
               javiersemarco@gmail.com
             </p>
@@ -319,6 +453,43 @@ function DocumentWindow({
         - Modelos de detección`}</pre>
         )}
 
+        {window.id === "airmonitor-stack-window" && (
+          <pre className="document-code-text airmonitor-stack-text">{`      [SENSORES Y SISTEMA EMBEBIDO]
+          - C++
+          - Arduino
+          - Sensor electroquímico de ozono
+          - Sensor de temperatura
+          - Lectura de señales analógicas
+          - Calibración de mediciones
+
+      [COMUNICACIÓN]
+          - Bluetooth Low Energy
+          - iBeacon
+          - Tramas de datos
+          - Identificación mediante UUID
+
+      [APLICACIÓN ANDROID]
+          - Java
+          - Android Studio
+          - Escaneo de dispositivos BLE
+          - Retrofit
+          - Gson
+
+      [BACKEND Y DATOS]
+          - Node.js
+          - Express
+          - API REST
+          - PostgreSQL
+          - Docker
+          - Docker Compose
+
+      [INTERFAZ WEB]
+          - HTML
+          - CSS
+          - JavaScript
+          - Consulta de mediciones mediante API`}</pre>
+        )}
+
         {window.id === "velaris-database-window" && (
           <article className="velaris-detail-content">
             <div className="velaris-detail-image-wrapper">
@@ -403,6 +574,277 @@ function DocumentWindow({
                 la visión artificial con el sistema de
                 supervisión de VELARIS.
               </p>
+            </div>
+          </article>
+        )}
+
+        {window.id === "airmonitor-readme-window" && (
+          <article className="airmonitor-readme-content">
+            <section className="airmonitor-readme-gallery">
+              {airMonitorOverviewImages.map((image, index) => (
+                <button
+                  className="airmonitor-readme-gallery-item"
+                  type="button"
+                  key={image.src}
+                  onPointerDown={(event) => {
+                    event.stopPropagation();
+                  }}
+                  onClick={() => {
+                    onOpenImageViewer(
+                      airMonitorOverviewImages,
+                      index
+                    );
+                  }}
+                  aria-label={`Ampliar imagen ${
+                    index + 1
+                  } de AirMonitor`}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    draggable="false"
+                  />
+                </button>
+              ))}
+            </section>
+
+            <div className="airmonitor-readme-text">
+              <p>
+                <strong>AirMonitor</strong> combina sensores
+                ambientales, comunicación Bluetooth y desarrollo
+                de software para registrar y consultar la calidad
+                del aire en tiempo real. El dispositivo mide ozono
+                y temperatura, procesa las señales y publica las
+                lecturas mediante <strong>BLE/iBeacon</strong> para
+                que una aplicación Android pueda recibirlas.
+              </p>
+
+              <p>
+                La aplicación actúa como enlace con el servidor:
+                envía las mediciones a una API, las almacena en{" "}
+                <strong>PostgreSQL</strong> y permite consultarlas
+                desde el móvil y la web. El proyecto recorre todo el
+                flujo del dato, desde la señal física capturada por
+                el sensor hasta su visualización.
+              </p>
+
+              <p className="airmonitor-readme-stack">
+                <strong>
+                  C++ · Arduino · BLE/iBeacon · Java ·
+                  Node.js · PostgreSQL · Docker ·
+                  JavaScript
+                </strong>
+              </p>
+            </div>
+          </article>
+        )}
+
+        {window.id === "airmonitor-info-window" && (
+          <article className="airmonitor-info-content">
+            <div className="airmonitor-info-image-wrapper">
+              <img
+                className="airmonitor-info-image"
+                src="/projects/airmonitor/readmeAirmonitor.png"
+                alt="Sistema AirMonitor con dispositivo, aplicación Android y panel web"
+                draggable="false"
+              />
+            </div>
+
+            <div className="airmonitor-info-text">
+              <p>
+                AirMonitor se desarrolló como un proyecto académico
+                en equipo para construir un sistema completo de
+                monitorización ambiental. El trabajo se dividió en
+                varias capas: adquisición y calibración de señales,
+                emisión BLE, recepción en Android, envío a la API y
+                consulta desde una interfaz web.
+              </p>
+
+              <p>
+                El principal reto fue conseguir que tecnologías muy
+                diferentes compartieran los mismos datos de forma
+                ordenada. La integración permitió comprobar el
+                recorrido completo de una medición y trabajar con
+                hardware, comunicaciones, aplicaciones móviles y
+                servicios backend dentro de un mismo proyecto.
+              </p>
+            </div>
+          </article>
+        )}
+
+        {window.id === "airmonitor-sensors-window" && (
+          <article className="airmonitor-sensors-content">
+            <section className="airmonitor-sensors-gallery">
+              {airMonitorSensorImages.map((image, index) => (
+                <button
+                  className="airmonitor-sensors-gallery-item"
+                  type="button"
+                  key={image.src}
+                  onPointerDown={(event) => {
+                    event.stopPropagation();
+                  }}
+                  onClick={() => {
+                    onOpenImageViewer(
+                      airMonitorSensorImages,
+                      index
+                    );
+                  }}
+                  aria-label={`Ampliar imagen ${
+                    index + 1
+                  } de los sensores de AirMonitor`}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    draggable="false"
+                  />
+                </button>
+              ))}
+            </section>
+
+            <div className="airmonitor-sensors-text">
+              <p>
+                El dispositivo utilizaba sensores de ozono y
+                temperatura conectados a las entradas analógicas
+                del microcontrolador. Las señales obtenidas se
+                convertían en valores ambientales mediante una
+                clase encargada de leer y procesar cada medición.
+              </p>
+
+              <p>
+                Para calcular la concentración de ozono se aplicaron
+                los parámetros de sensibilidad, ganancia y
+                desplazamiento del sensor. También se realizaron
+                pruebas con valores de referencia para observar la
+                desviación de las lecturas y ajustar su calibración.
+              </p>
+
+              <p>
+                Antes de recoger datos válidos, el sensor necesitaba
+                un periodo de estabilización. Durante el desarrollo
+                se redujo este tiempo para las pruebas, aunque el
+                funcionamiento normal requería aproximadamente una
+                hora.
+              </p>
+            </div>
+          </article>
+        )}
+
+        {window.id === "airmonitor-beacon-window" && (
+          <article className="airmonitor-beacon-content">
+            <section className="airmonitor-beacon-gallery">
+              {airMonitorBeaconImages.map((image, index) => (
+                <button
+                  className="airmonitor-beacon-gallery-item"
+                  type="button"
+                  key={image.src}
+                  onPointerDown={(event) => {
+                    event.stopPropagation();
+                  }}
+                  onClick={() => {
+                    onOpenImageViewer(
+                      airMonitorBeaconImages,
+                      index
+                    );
+                  }}
+                  aria-label={`Ampliar imagen ${
+                    index + 1
+                  } de la comunicación BLE de AirMonitor`}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    draggable="false"
+                  />
+                </button>
+              ))}
+            </section>
+
+            <div className="airmonitor-beacon-text">
+              <p>
+                Una vez procesadas, las lecturas se publicaban
+                periódicamente mediante Bluetooth Low Energy. El
+                dispositivo funcionaba como beacon e incluía en sus
+                anuncios la identificación de la emisora y los
+                valores medidos.
+              </p>
+
+              <p>
+                La aplicación Android escaneaba los dispositivos
+                cercanos, interpretaba la trama iBeacon y recuperaba
+                la información sin que el sensor tuviera que
+                conectarse directamente a Internet. De esta forma,
+                el teléfono funcionaba como puente entre el
+                dispositivo físico y el servidor.
+              </p>
+            </div>
+          </article>
+        )}
+
+        {window.id === "airmonitor-backend-window" && (
+          <article className="airmonitor-backend-content">
+            <section className="airmonitor-backend-gallery">
+              {airMonitorBackendImages.map((image, index) => (
+                <button
+                  className="airmonitor-backend-gallery-item"
+                  type="button"
+                  key={image.src}
+                  onPointerDown={(event) => {
+                    event.stopPropagation();
+                  }}
+                  onClick={() => {
+                    onOpenImageViewer(
+                      airMonitorBackendImages,
+                      index
+                    );
+                  }}
+                  aria-label={`Ampliar imagen ${
+                    index + 1
+                  } del backend de AirMonitor`}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    draggable="false"
+                  />
+                </button>
+              ))}
+            </section>
+
+            <div className="airmonitor-backend-text">
+              <p>
+                La aplicación enviaba las mediciones a una API REST
+                desarrollada con Node.js y Express. El servidor
+                permitía crear usuarios, insertar datos de sensores,
+                consultar las últimas lecturas y eliminar mediciones
+                asociadas a un usuario.
+              </p>
+
+              <p>
+                PostgreSQL almacenaba cada lectura junto con su tipo,
+                valor, fecha y usuario. La API y la base de datos se
+                ejecutaban mediante Docker Compose, lo que permitía
+                iniciar conjuntamente toda la infraestructura del
+                servidor.
+              </p>
+            </div>
+
+            <div
+              className="airmonitor-backend-endpoints"
+              aria-label="Endpoints principales de la API"
+            >
+              {airMonitorBackendEndpoints.map((endpoint) => (
+                <div
+                  className="airmonitor-backend-endpoint"
+                  key={`${endpoint.method}-${endpoint.path}`}
+                >
+                  <span className="airmonitor-backend-method">
+                    {endpoint.method}
+                  </span>
+
+                  <code>{endpoint.path}</code>
+                </div>
+              ))}
             </div>
           </article>
         )}

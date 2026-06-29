@@ -71,6 +71,8 @@ export const documentWindowsData = {
     height: 460,
   },
 
+  /* VELARIS */
+
   "velaris-readme": {
     id: "velaris-readme-window",
     title: "VELARIS.txt",
@@ -233,6 +235,120 @@ export const documentWindowsData = {
     toolbarSrc: "/images/cabeceraImagenMini.png",
   },
 
+  "velaris-app": {
+    id: "velaris-app-window",
+    title: "Velaris.app",
+    type: "app",
+    left: 760,
+    top: 45,
+    width: 340,
+    height: 625,
+    appType: "velaris",
+  },
+
+  /* AIRMONITOR */
+
+  "airmonitor-readme": {
+    id: "airmonitor-readme-window",
+    title: "AIRMONITOR.txt",
+    type: "document",
+    left: 350,
+    top: 75,
+    width: 650,
+    height: 480,
+  },
+
+  "airmonitor-info": {
+    id: "airmonitor-info-window",
+    title: "README.txt",
+    type: "document",
+    left: 310,
+    top: 35,
+    width: 520,
+    height: 570,
+  },
+
+  "airmonitor-stack": {
+    id: "airmonitor-stack-window",
+    title: "tecnologias.txt",
+    type: "document",
+    left: 390,
+    top: 50,
+    width: 520,
+    height: 670,
+  },
+
+  "airmonitor-sensors": {
+    id: "airmonitor-sensors-window",
+    title: "sensores.txt",
+    type: "document",
+    left: 330,
+    top: 55,
+    width: 560,
+    height: 520,
+  },
+
+  "airmonitor-beacon": {
+    id: "airmonitor-beacon-window",
+    title: "beacon.txt",
+    type: "document",
+    left: 350,
+    top: 65,
+    width: 560,
+    height: 760,
+  },
+
+  "airmonitor-backend": {
+    id: "airmonitor-backend-window",
+    title: "backend.txt",
+    type: "document",
+    left: 320,
+    top: 45,
+    width: 700,
+    height: 515,
+  },
+
+  "airmonitor-architecture": {
+    id: "airmonitor-architecture-window",
+    title: "arquitectura.png",
+    type: "document",
+    left: 250,
+    top: 25,
+    width: 540,
+    height: 420,
+    fileType: "image",
+    imageSrc: "/projects/airmonitor/arquitecturaAirmonitor.png",
+    toolbarSrc: "/images/cabeceraImagenMini.png",
+    titleIconSrc: "/icons/iconoFoto.png",
+  },
+
+  "airmonitor-web": {
+    id: "airmonitor-web-window",
+    title: "carcasa.png",
+    type: "document",
+    left: 270,
+    top: 35,
+    width: 550,
+    height: 450,
+    fileType: "image",
+    imageSrc: "/projects/airmonitor/carcasa.png",
+    toolbarSrc: "/images/cabeceraImagenMini.png",
+    titleIconSrc: "/icons/iconoFoto.png",
+  },
+
+  "airmonitor-app": {
+    id: "airmonitor-app-window",
+    title: "AirMonitor.app",
+    type: "app",
+    left: 730,
+    top: 45,
+    width: 360,
+    height: 625,
+    appType: "airmonitor",
+  },
+
+  /* OTROS DOCUMENTOS */
+
   "desktop-photo": {
     id: "desktop-photo-window",
     title: "barack.jpg",
@@ -283,17 +399,6 @@ export const documentWindowsData = {
     top: 170,
     width: 450,
     height: 245,
-  },
-
-  "velaris-app": {
-    id: "velaris-app-window",
-    title: "Velaris.app",
-    type: "app",
-    left: 760,
-    top: 45,
-    width: 340,
-    height: 625,
-    appType: "velaris",
   },
 };
 

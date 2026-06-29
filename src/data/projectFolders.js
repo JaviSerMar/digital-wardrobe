@@ -199,26 +199,59 @@ export const projectFolderScreens = {
     items: [
       {
         id: "airmonitor-readme",
+        label: "AIRMONITOR.txt",
+        icon: "/icons/archivoTxt.png",
+        openWindowKey: "airmonitor-readme",
+      },
+      {
+        id: "airmonitor-info",
         label: "README.txt",
         icon: "/icons/archivoTxt.png",
+        openWindowKey: "airmonitor-info",
       },
       {
         id: "airmonitor-stack",
-        label: "stack.txt",
+        label: "tecnologias.txt",
         icon: "/icons/archivoTxt.png",
+        openWindowKey: "airmonitor-stack",
       },
       {
-        id: "airmonitor-media",
-        label: "media",
-        icon: "/icons/folder.png",
+        id: "airmonitor-sensors",
+        label: "sensores.txt",
+        icon: "/icons/archivoTxt.png",
+        openWindowKey: "airmonitor-sensors",
+      },
+      {
+        id: "airmonitor-beacon",
+        label: "beacon.txt",
+        icon: "/icons/archivoTxt.png",
+        openWindowKey: "airmonitor-beacon",
+      },
+      {
+        id: "airmonitor-backend",
+        label: "backend.txt",
+        icon: "/icons/archivoTxt.png",
+        openWindowKey: "airmonitor-backend",
+      },
+      {
+        id: "airmonitor-app",
+        label: "AirMonitor.app",
+        icon: "/icons/logoAirmonitor2.png",
+        openWindowKey: "airmonitor-app",
+      },
+      {
+        id: "airmonitor-architecture",
+        label: "arquitectura.png",
+        icon: "/icons/iconoFoto.png",
+        openWindowKey: "airmonitor-architecture",
+      },
+      {
+        id: "airmonitor-web",
+        label: "carcasa.png",
+        icon: "/icons/iconoFoto.png",
+        openWindowKey: "airmonitor-web",
       },
     ],
-  },
-
-  "airmonitor-media": {
-    title: "media",
-    path: "proyectos / airmonitor / media",
-    items: [],
   },
 
   bancotech: {
@@ -239,6 +272,7 @@ export const projectFolderScreens = {
         id: "bancotech-media",
         label: "media",
         icon: "/icons/folder.png",
+        targetFolder: "bancotech-media",
       },
     ],
   },

@@ -972,3 +972,656 @@
   line-height: var(--document-line-height);
   text-align: left;
 }
+
+/* SENSORES.TXT DE AIRMONITOR */
+
+.airmonitor-sensors-body {
+  padding: 0;
+  overflow: hidden;
+}
+
+.airmonitor-sensors-content {
+  display: grid;
+  grid-template-rows: 245px minmax(0, 1fr);
+  gap: var(--document-content-gap);
+
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  padding:
+    var(--document-padding-top)
+    var(--document-padding-inline)
+    var(--document-padding-bottom);
+
+  box-sizing: border-box;
+
+  color: #111;
+  font: inherit;
+
+  overflow: hidden;
+}
+
+.airmonitor-sensors-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.airmonitor-sensors-gallery-item {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+
+  background: #f3eeea;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.airmonitor-sensors-gallery-item img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  user-select: none;
+  pointer-events: none;
+
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease;
+}
+
+.airmonitor-sensors-gallery-item:hover img {
+  transform: scale(1.025);
+  filter: brightness(1.04);
+}
+
+.airmonitor-sensors-gallery-item:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+.airmonitor-sensors-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--document-content-gap);
+
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  margin: 0;
+  padding: 0;
+
+  color: #111;
+  font: inherit;
+
+  overflow: hidden;
+}
+
+.airmonitor-sensors-text p {
+  margin: 0;
+  padding: 0;
+
+  font: inherit;
+}
+
+/* AIRMONITOR.TXT */
+
+.airmonitor-readme-body {
+  padding: 0;
+  overflow: hidden;
+}
+
+.airmonitor-readme-content {
+  display: grid;
+  grid-template-rows: 160px minmax(0, 1fr);
+  gap: var(--document-content-gap);
+
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  padding:
+    var(--document-padding-top)
+    var(--document-padding-inline)
+    var(--document-padding-bottom);
+
+  box-sizing: border-box;
+
+  color: #111;
+  font: inherit;
+
+  overflow: hidden;
+}
+
+.airmonitor-readme-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.airmonitor-readme-gallery-item {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+
+  background: #f4f1ee;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.airmonitor-readme-gallery-item img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  user-select: none;
+  pointer-events: none;
+
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease;
+}
+
+/* El logotipo debe verse completo y sin recortarse */
+
+.airmonitor-readme-gallery-item:nth-child(2) img {
+  padding: 10px;
+  box-sizing: border-box;
+
+  background: #f7f5f2;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+.airmonitor-readme-gallery-item:hover img {
+  transform: scale(1.025);
+  filter: brightness(1.04);
+}
+
+.airmonitor-readme-gallery-item:nth-child(2):hover img {
+  transform: scale(1.015);
+}
+
+.airmonitor-readme-gallery-item:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+.airmonitor-readme-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--document-content-gap);
+
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  margin: 0;
+  padding: 0;
+
+  color: #111;
+  font: inherit;
+
+  overflow: hidden;
+}
+
+.airmonitor-readme-text p {
+  margin: 0;
+  padding: 0;
+
+  font: inherit;
+}
+
+.airmonitor-readme-text strong {
+  color: #000;
+  font-weight: 900;
+}
+
+.airmonitor-readme-stack {
+  margin-top: 0;
+}
+
+.document-readme-stack {
+  width: 100%;
+  margin-top: 10px !important;
+  text-align: center;
+}
+
+.airmonitor-readme-stack {
+  width: 100%;
+  margin-top: 0;
+  text-align: center;
+}
+
+/* BEACON.TXT DE AIRMONITOR */
+
+.airmonitor-beacon-body {
+  padding: 0;
+  overflow: hidden;
+}
+
+.airmonitor-beacon-content {
+  display: grid;
+  grid-template-rows: 500px minmax(0, 1fr);
+  gap: var(--document-content-gap);
+
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  padding:
+    var(--document-padding-top)
+    var(--document-padding-inline)
+    var(--document-padding-bottom);
+
+  box-sizing: border-box;
+
+  color: #111;
+  font: inherit;
+
+  overflow: hidden;
+}
+
+.airmonitor-beacon-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.airmonitor-beacon-gallery-item {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+
+  background: #f3eeea;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.airmonitor-beacon-gallery-item img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  user-select: none;
+  pointer-events: none;
+
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease;
+}
+
+.airmonitor-beacon-gallery-item:hover img {
+  transform: scale(1.025);
+  filter: brightness(1.04);
+}
+
+.airmonitor-beacon-gallery-item:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+.airmonitor-beacon-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--document-content-gap);
+
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  margin: 0;
+  padding: 0;
+
+  color: #111;
+  font: inherit;
+
+  overflow: hidden;
+}
+
+.airmonitor-beacon-text p {
+  margin: 0;
+  padding: 0;
+
+  font: inherit;
+}
+
+/* BACKEND.TXT DE AIRMONITOR */
+
+.airmonitor-backend-body {
+  padding: 0;
+  overflow: hidden;
+}
+
+.airmonitor-backend-content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 10px;
+
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  padding:
+    var(--document-padding-top)
+    var(--document-padding-inline)
+    var(--document-padding-bottom);
+
+  box-sizing: border-box;
+
+  color: #111;
+  font: inherit;
+
+  overflow: hidden;
+}
+
+.airmonitor-backend-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.airmonitor-backend-gallery-item {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.airmonitor-backend-gallery-item img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+
+  user-select: none;
+  pointer-events: none;
+
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease;
+}
+
+.airmonitor-backend-gallery-item:hover img {
+  transform: scale(1.015);
+  filter: brightness(1.02);
+}
+
+.airmonitor-backend-gallery-item:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+.airmonitor-backend-text {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 10px;
+
+  width: 100%;
+  min-width: 0;
+
+  margin: 0;
+  padding: 0;
+
+  color: #111;
+  font: inherit;
+}
+
+.airmonitor-backend-text p {
+  margin: 0;
+  padding: 0;
+
+  font: inherit;
+}
+
+.airmonitor-backend-endpoints {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 1px;
+
+  width: 100%;
+  margin: 0;
+  padding: 5px 10px;
+
+  box-sizing: border-box;
+
+  background: #f1efec;
+  color: #111;
+
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 4px;
+
+  overflow: hidden;
+}
+
+.airmonitor-backend-endpoint {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  align-items: center;
+
+  min-height: 18px;
+  margin: 0;
+  padding: 0;
+
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.airmonitor-backend-method {
+  margin: 0;
+  padding: 0;
+}
+
+.airmonitor-backend-endpoint code {
+  margin: 0;
+  padding: 0;
+
+  color: inherit;
+  background: transparent;
+
+  font: inherit;
+  white-space: nowrap;
+}
+
+/* README.TXT DE AIRMONITOR */
+
+.airmonitor-info-body {
+  padding: 0;
+  overflow: hidden;
+}
+
+.airmonitor-info-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--document-content-gap);
+
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  padding:
+    var(--document-padding-top)
+    var(--document-padding-inline)
+    var(--document-padding-bottom);
+
+  box-sizing: border-box;
+
+  color: #111;
+  font: inherit;
+
+  overflow: hidden;
+}
+
+.airmonitor-info-image-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-width: 0;
+  padding: 0;
+  flex: 0 0 auto;
+
+  display: block;
+
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.airmonitor-info-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  user-select: none;
+  pointer-events: none;
+
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease;
+}
+
+.airmonitor-info-image-wrapper:hover .airmonitor-info-image {
+  transform: scale(1.015);
+  filter: brightness(1.02);
+}
+
+.airmonitor-info-image-wrapper:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+.airmonitor-info-text {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: var(--document-content-gap);
+
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  margin: 0;
+  padding: 0;
+
+  color: #111;
+  font: inherit;
+
+  overflow: hidden;
+}
+
+.airmonitor-info-text p {
+  margin: 0;
+  padding: 0;
+
+  font: inherit;
+}
+
+/* ARQUITECTURA.PNG DE AIRMONITOR */
+
+.airmonitor-architecture-body {
+  padding: 10px 12px 12px;
+}
+
+.airmonitor-architecture-body .image-file-viewer {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.airmonitor-architecture-body .image-file-preview {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+
+  object-fit: contain;
+  object-position: center;
+
+  user-select: none;
+  pointer-events: none;
+}
