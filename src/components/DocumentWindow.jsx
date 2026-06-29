@@ -39,6 +39,13 @@ function DocumentWindow({
     },
   ];
 
+  const architectureGalleryImages = [
+    {
+      src: "/projects/velaris/arquitecturaVelaris.png",
+      alt: "Arquitectura del sistema Velaris",
+    },
+  ];
+
   return (
     <div className="document-window-content">
       <DocumentHeader
@@ -51,8 +58,15 @@ function DocumentWindow({
           window.fileType === "image" &&
           window.toolbarSrc === "/images/cabeceraImagenMini.png"
         }
-        isDesktopPhoto={window.id === "desktop-photo-window"}
-        isTeamImage={window.id === "equipo-image-window"}
+        isDesktopPhoto={
+          window.id === "desktop-photo-window"
+        }
+        isArchitectureImage={
+          window.id === "velaris-architecture-window"
+        }
+        isTeamImage={
+          window.id === "equipo-image-window"
+        }
         isManifestoImage={
           window.id === "velaris-manifesto-window"
         }
@@ -142,16 +156,39 @@ function DocumentWindow({
           </div>
         )}
 
-        {window.fileType === "image" && (
-          <div className="image-file-viewer">
-            <img
-              className="image-file-preview"
-              src={window.imageSrc}
-              alt={window.title}
-              draggable="false"
-            />
-          </div>
-        )}
+        {window.fileType === "image" &&
+          (window.id === "velaris-architecture-window" ? (
+            <button
+              className="image-file-viewer image-file-viewer-zoomable"
+              type="button"
+              onPointerDown={(event) => {
+                event.stopPropagation();
+              }}
+              onClick={() => {
+                onOpenImageViewer(
+                  architectureGalleryImages,
+                  0
+                );
+              }}
+              aria-label="Ampliar arquitectura de Velaris"
+            >
+              <img
+                className="image-file-preview"
+                src={window.imageSrc}
+                alt={window.title}
+                draggable="false"
+              />
+            </button>
+          ) : (
+            <div className="image-file-viewer">
+              <img
+                className="image-file-preview"
+                src={window.imageSrc}
+                alt={window.title}
+                draggable="false"
+              />
+            </div>
+          ))}
 
         {window.id === "velaris-readme-window" && (
           <article className="velaris-readme-content">

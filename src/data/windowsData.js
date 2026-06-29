@@ -103,7 +103,7 @@ export const documentWindowsData = {
 
   "velaris-database": {
     id: "velaris-database-window",
-    title: "database.txt",
+    title: "baseDeDatos.txt",
     type: "document",
     left: 310,
     top: 35,
@@ -132,6 +132,20 @@ export const documentWindowsData = {
     fileType: "image",
     imageSrc: "/projects/velaris/manifesto.png",
     toolbarSrc: "/images/cabeceraImagenMini.png",
+    titleIconSrc: "/icons/iconoFoto.png",
+  },
+
+  "velaris-architecture": {
+    id: "velaris-architecture-window",
+    title: "arquitectura.png",
+    type: "document",
+    left: 240,
+    top: 20,
+    width: 700,
+    height: 530,
+    fileType: "image",
+    imageSrc: "/projects/velaris/arquitecturaVelaris.png",
+    toolbarSrc: "/images/cabeceraImagen.png",
     titleIconSrc: "/icons/iconoFoto.png",
   },
 
@@ -304,7 +318,7 @@ export const folderWindowsData = {
     left: 260,
     top: 90,
     width: 760,
-    height: 430,
+    height: 450,
     items: [
       {
         id: "velaris-folder",
@@ -337,7 +351,7 @@ export const folderWindowsData = {
     left: 290,
     top: 120,
     width: 760,
-    height: 430,
+    height: 450,
     items: [
       {
         id: "habilidades-file",
@@ -379,7 +393,7 @@ export const folderWindowsData = {
     left: 320,
     top: 150,
     width: 760,
-    height: 430,
+    height: 450,
     items: [
       {
         id: "email-file",

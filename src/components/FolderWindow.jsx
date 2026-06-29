@@ -1,18 +1,147 @@
 import { folderWindowsData } from "../data/windowsData";
+import { projectFolderScreens } from "../data/projectFolders";
 
 function FolderWindow({
   window,
   closeWindow,
-  openFolderScreen,
   openWindowByKey,
   openImageGallery,
   setOpenWindows,
 }) {
+  const isProjectsWindow =
+    window.id === "projects-window";
+
+  const navigationHistory =
+    Array.isArray(window.navigationHistory) &&
+    window.navigationHistory.length > 0
+      ? window.navigationHistory
+      : [window.currentFolder || "projects"];
+
+  const navigationIndex =
+    Number.isInteger(window.navigationIndex)
+      ? window.navigationIndex
+      : navigationHistory.length - 1;
+
+  const canGoBack =
+    isProjectsWindow && navigationIndex > 0;
+
+  const canGoForward =
+    isProjectsWindow &&
+    navigationIndex < navigationHistory.length - 1;
+
+  function getFolderData(folderKey) {
+    if (folderKey === "projects") {
+      return {
+        title: folderWindowsData.projects.title,
+        items: folderWindowsData.projects.items,
+      };
+    }
+
+    return projectFolderScreens[folderKey] || null;
+  }
+
+  function navigateToFolder(folderKey) {
+    const targetFolder = getFolderData(folderKey);
+
+    if (!targetFolder) {
+      return;
+    }
+
+    setOpenWindows((currentWindows) =>
+      currentWindows.map((currentWindow) => {
+        if (currentWindow.id !== window.id) {
+          return currentWindow;
+        }
+
+        const currentFolder =
+          currentWindow.currentFolder || "projects";
+
+        const currentHistory =
+          Array.isArray(
+            currentWindow.navigationHistory
+          ) &&
+          currentWindow.navigationHistory.length > 0
+            ? currentWindow.navigationHistory
+            : [currentFolder];
+
+        const currentIndex =
+          Number.isInteger(
+            currentWindow.navigationIndex
+          )
+            ? currentWindow.navigationIndex
+            : currentHistory.length - 1;
+
+        const historyBeforeCurrent =
+          currentHistory.slice(0, currentIndex + 1);
+
+        const nextHistory =
+          historyBeforeCurrent[
+            historyBeforeCurrent.length - 1
+          ] === folderKey
+            ? historyBeforeCurrent
+            : [...historyBeforeCurrent, folderKey];
+
+        return {
+          ...currentWindow,
+          title: targetFolder.title,
+          currentFolder: folderKey,
+          items: targetFolder.items,
+          navigationHistory: nextHistory,
+          navigationIndex: nextHistory.length - 1,
+        };
+      })
+    );
+  }
+
+  function navigateThroughHistory(nextIndex) {
+    const folderKey = navigationHistory[nextIndex];
+    const targetFolder = getFolderData(folderKey);
+
+    if (!targetFolder) {
+      return;
+    }
+
+    setOpenWindows((currentWindows) =>
+      currentWindows.map((currentWindow) =>
+        currentWindow.id === window.id
+          ? {
+              ...currentWindow,
+              title: targetFolder.title,
+              currentFolder: folderKey,
+              items: targetFolder.items,
+              navigationHistory,
+              navigationIndex: nextIndex,
+            }
+          : currentWindow
+      )
+    );
+  }
+
+  function handleBackNavigation(event) {
+    event.stopPropagation();
+
+    if (!canGoBack) {
+      return;
+    }
+
+    navigateThroughHistory(navigationIndex - 1);
+  }
+
+  function handleForwardNavigation(event) {
+    event.stopPropagation();
+
+    if (!canGoForward) {
+      return;
+    }
+
+    navigateThroughHistory(navigationIndex + 1);
+  }
+
   function handleFolderItemOpen(event, folderItem) {
     event.stopPropagation();
 
     if (folderItem.targetFolder) {
-      openFolderScreen(window.id, folderItem.targetFolder);
+      navigateToFolder(folderItem.targetFolder);
       return;
     }
 
@@ -37,7 +166,8 @@ function FolderWindow({
     }
 
     if (folderItem.id === "email-file") {
-      document.location.href = folderItem.externalUrl;
+      document.location.href =
+        folderItem.externalUrl;
       return;
     }
 
@@ -45,30 +175,6 @@ function FolderWindow({
       folderItem.externalUrl,
       "_blank",
       "noopener,noreferrer"
-    );
-  }
-
-  function returnToProjectsRoot() {
-    if (
-      window.id !== "projects-window" ||
-      window.currentFolder === "projects"
-    ) {
-      return;
-    }
-
-    const projectsRoot = folderWindowsData.projects;
-
-    setOpenWindows((currentWindows) =>
-      currentWindows.map((currentWindow) =>
-        currentWindow.id === "projects-window"
-          ? {
-              ...currentWindow,
-              title: "proyectos",
-              currentFolder: "projects",
-              items: projectsRoot.items,
-            }
-          : currentWindow
-      )
     );
   }
 
@@ -107,8 +213,9 @@ function FolderWindow({
               onPointerDown={(event) =>
                 event.stopPropagation()
               }
-              onClick={returnToProjectsRoot}
-              aria-label="Volver a proyectos"
+              onClick={handleBackNavigation}
+              disabled={!canGoBack}
+              aria-label="Volver"
             >
               ‹
             </button>
@@ -118,6 +225,11 @@ function FolderWindow({
             <button
               className="folder-nav-button"
               type="button"
+              onPointerDown={(event) =>
+                event.stopPropagation()
+              }
+              onClick={handleForwardNavigation}
+              disabled={!canGoForward}
               aria-label="Avanzar"
             >
               ›
@@ -152,7 +264,10 @@ function FolderWindow({
             Sistema
           </p>
 
-          <p className="is-selected">[portfolio]</p>
+          <p className="is-selected">
+            [portfolio]
+          </p>
+
           <p>Archivo local</p>
           <p>Recursos</p>
         </aside>
@@ -167,14 +282,20 @@ function FolderWindow({
                 event.stopPropagation()
               }
               onDoubleClick={(event) =>
-                handleFolderItemOpen(event, folderItem)
+                handleFolderItemOpen(
+                  event,
+                  folderItem
+                )
               }
+              aria-label={folderItem.label}
             >
-              <img
-                src={folderItem.icon}
-                alt=""
-                draggable="false"
-              />
+              <span className="folder-item-visual">
+                <img
+                  src={folderItem.icon}
+                  alt=""
+                  draggable="false"
+                />
+              </span>
 
               <span>{folderItem.label}</span>
             </button>

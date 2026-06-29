@@ -15,19 +15,27 @@
 .folder-window-content {
   width: 100%;
   height: 100%;
+
   display: flex;
   flex-direction: column;
+
   overflow: hidden;
   border-radius: 18px;
 }
 
+
+/* CABECERA */
+
 .folder-header {
   width: 100%;
   height: 52px;
+
   display: flex;
   align-items: stretch;
+
   background: rgba(248, 248, 248, 0.95);
   border-bottom: 1px solid rgba(210, 210, 210, 0.75);
+
   overflow: hidden;
 }
 
@@ -102,6 +110,9 @@
   pointer-events: none;
 }
 
+
+/* NAVEGACIÓN */
+
 .folder-navigation {
   height: 28px;
   margin-left: 17px;
@@ -170,6 +181,7 @@
   flex: 1;
 
   display: block;
+
   object-fit: contain;
   object-position: center right;
 
@@ -177,12 +189,18 @@
   user-select: none;
 }
 
+
+/* CONTENIDO PRINCIPAL */
+
 .folder-main {
   min-height: 0;
   flex: 1;
 
   display: flex;
 }
+
+
+/* BARRA LATERAL */
 
 .folder-sidebar {
   width: 150px;
@@ -223,6 +241,9 @@
   background: rgba(210, 213, 216, 0.8);
 }
 
+
+/* CUADRÍCULA DE ARCHIVOS */
+
 .folder-content {
   padding: 34px 42px;
   flex: 1;
@@ -231,9 +252,20 @@
   align-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 34px 44px;
+  gap: 28px 44px;
 
   background: rgba(255, 255, 255, 0.78);
+}
+
+.folder-content-centered {
+  align-content: center;
+}
+
+.folder-nav-button:disabled {
+  background: transparent;
+  color: rgba(0, 0, 0, 0.2);
+
+  pointer-events: none;
 }
 
 .folder-item {
@@ -246,6 +278,7 @@
 
   color: #111;
 
+  font-family: inherit;
   font-size: 11px;
   text-align: center;
 
@@ -256,16 +289,35 @@
   background: rgba(40, 120, 255, 0.16);
 }
 
-.folder-item img {
+
+/* CONTENEDOR VISUAL DE LOS ICONOS */
+
+.folder-item-visual {
   width: 54px;
   height: 54px;
   margin: 0 auto 4px;
 
   display: block;
-  object-fit: contain;
 }
 
-.folder-item span {
+.folder-item-visual img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+
+  display: block;
+
+  object-fit: contain;
+  object-position: center;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+
+/* NOMBRE DEL ARCHIVO */
+
+.folder-item > span:last-child {
   width: 100%;
 
   display: block;

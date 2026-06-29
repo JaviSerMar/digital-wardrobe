@@ -620,6 +620,19 @@
   overflow: hidden;
 }
 
+.image-file-viewer-zoomable {
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+
+  cursor: zoom-in;
+}
+
+.image-file-viewer-zoomable .image-file-preview {
+  pointer-events: none;
+}
+
 .image-file-preview {
   display: block;
 

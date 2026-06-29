@@ -7,11 +7,17 @@ function ImageViewer({
   onClose,
 }) {
   const selectedImage = images[selectedIndex];
+  const hasMultipleImages = images.length > 1;
 
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.key === "Escape") {
         onClose();
+        return;
+      }
+
+      if (!hasMultipleImages) {
+        return;
       }
 
       if (event.key === "ArrowUp") {
@@ -43,6 +49,7 @@ function ImageViewer({
     selectedIndex,
     onSelectImage,
     onClose,
+    hasMultipleImages,
   ]);
 
   if (!selectedImage) {
@@ -59,7 +66,11 @@ function ImageViewer({
       />
 
       <section
-        className="image-viewer"
+        className={`image-viewer ${
+          hasMultipleImages
+            ? ""
+            : "image-viewer-single"
+        }`}
         onPointerDown={(event) =>
           event.stopPropagation()
         }
@@ -73,30 +84,32 @@ function ImageViewer({
           />
         </div>
 
-        <aside
-          className="image-viewer-side-list"
-          aria-label="Imágenes"
-        >
-          {images.map((image, index) => (
-            <button
-              className={`image-viewer-side-item ${
-                index === selectedIndex
-                  ? "is-selected"
-                  : ""
-              }`}
-              type="button"
-              key={image.src}
-              onClick={() => onSelectImage(index)}
-              aria-label={`Ver imagen ${index + 1}`}
-            >
-              <img
-                src={image.src}
-                alt=""
-                draggable="false"
-              />
-            </button>
-          ))}
-        </aside>
+        {hasMultipleImages && (
+          <aside
+            className="image-viewer-side-list"
+            aria-label="Imágenes"
+          >
+            {images.map((image, index) => (
+              <button
+                className={`image-viewer-side-item ${
+                  index === selectedIndex
+                    ? "is-selected"
+                    : ""
+                }`}
+                type="button"
+                key={image.src}
+                onClick={() => onSelectImage(index)}
+                aria-label={`Ver imagen ${index + 1}`}
+              >
+                <img
+                  src={image.src}
+                  alt=""
+                  draggable="false"
+                />
+              </button>
+            ))}
+          </aside>
+        )}
       </section>
     </div>
   );

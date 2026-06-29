@@ -66,7 +66,7 @@ export const projectFolderScreens = {
       },
       {
         id: "velaris-database",
-        label: "database.txt",
+        label: "baseDeDatos.txt",
         icon: "/icons/archivoTxt.png",
         openWindowKey: "velaris-database",
       },
@@ -89,10 +89,22 @@ export const projectFolderScreens = {
         openWindowKey: "velaris-manifesto",
       },
       {
+        id: "velaris-architecture",
+        label: "arquitectura.png",
+        icon: "/icons/iconoFoto.png",
+        openWindowKey: "velaris-architecture",
+      },
+      {
         id: "velaris-media",
         label: "dataset",
         icon: "/icons/folder.png",
         targetFolder: "velaris-media",
+      },
+      {
+        id: "velaris-videos",
+        label: "videos",
+        icon: "/icons/folder.png",
+        targetFolder: "velaris-videos",
       },
     ],
   },
@@ -142,6 +154,41 @@ export const projectFolderScreens = {
         icon: "/icons/iconoFoto.png",
         galleryKey: "velaris-dataset",
         galleryIndex: 5,
+      },
+    ],
+  },
+
+  "velaris-videos": {
+    title: "videos",
+    path: "proyectos / velaris / videos",
+    items: [
+      {
+        id: "velaris-video-movim-auto",
+        label: "movimAuto.mp4",
+        icon: "/icons/archivoVideo.png",
+        externalUrl:
+          "https://drive.google.com/file/d/1XLoW44Ym_YMePfj3Nx4KyjlYPS0FFSkx/view?usp=sharing",
+      },
+      {
+        id: "velaris-video-camara-robot",
+        label: "camaraRobot.mp4",
+        icon: "/icons/archivoVideo.png",
+        externalUrl:
+          "https://drive.google.com/file/d/1P9YHaY2chpl2UQSvLE1ch_bJUo_N9omV/view?usp=sharing",
+      },
+      {
+        id: "velaris-video-testeo-final",
+        label: "testeoFinal.mp4",
+        icon: "/icons/archivoVideo.png",
+        externalUrl:
+          "https://drive.google.com/file/d/1M_jN6-xQWMyV-IJhGJrlAle7S_rWivH9/view?usp=sharing",
+      },
+      {
+        id: "velaris-video-testeo-resumido",
+        label: "testeoResumido.mp4",
+        icon: "/icons/archivoVideo.png",
+        externalUrl:
+          "https://drive.google.com/file/d/1fYORTdGpd6gD8LEZiU6t2IbOo__Mwsbv/view?usp=sharing",
       },
     ],
   },

@@ -171,9 +171,13 @@ function DocumentHeader({
   isImageFile = false,
   isSmallImageHeader = false,
   isDesktopPhoto = false,
+  isArchitectureImage = false,
   isTeamImage = false,
   isManifestoImage = false,
 }) {
+  const usesReducedImageToolbar =
+    isDesktopPhoto || isArchitectureImage;
+
   return (
     <div className="document-header">
       <div className="document-titlebar">
@@ -227,7 +231,10 @@ function DocumentHeader({
             </button>
           </div>
 
-          <button className="image-toolbar-view-button" type="button">
+          <button
+            className="image-toolbar-view-button"
+            type="button"
+          >
             <span>Vista</span>
             <ChevronDownIcon />
           </button>
@@ -255,9 +262,17 @@ function DocumentHeader({
         <img
           className={`document-toolbar-image ${
             isImageFile ? "image-toolbar-picture" : ""
-          } ${isDesktopPhoto ? "desktop-photo-toolbar" : ""} ${
+          } ${
+            usesReducedImageToolbar
+              ? "desktop-photo-toolbar"
+              : ""
+          } ${
             isTeamImage ? "team-image-toolbar" : ""
-          } ${isManifestoImage ? "manifesto-image-toolbar" : ""}`}
+          } ${
+            isManifestoImage
+              ? "manifesto-image-toolbar"
+              : ""
+          }`}
           src={toolbarSrc}
           alt=""
           draggable="false"
