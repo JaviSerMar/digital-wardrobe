@@ -85,10 +85,10 @@ export const documentWindowsData = {
     id: "velaris-info-window",
     title: "README.txt",
     type: "document",
-    left: 380,
-    top: 105,
-    width: 560,
-    height: 520,
+    left: 300,
+    top: 25,
+    width: 510,
+    height: 515,
   },
 
   "velaris-stack": {
@@ -101,6 +101,26 @@ export const documentWindowsData = {
     height: 610,
   },
 
+  "velaris-database": {
+    id: "velaris-database-window",
+    title: "database.txt",
+    type: "document",
+    left: 310,
+    top: 35,
+    width: 580,
+    height: 560,
+  },
+
+  "velaris-opencv-info": {
+    id: "velaris-opencv-info-window",
+    title: "openCV.txt",
+    type: "document",
+    left: 330,
+    top: 45,
+    width: 520,
+    height: 400,
+  },
+
   "velaris-manifesto": {
     id: "velaris-manifesto-window",
     title: "manifesto.png",
@@ -111,20 +131,6 @@ export const documentWindowsData = {
     height: 600,
     fileType: "image",
     imageSrc: "/projects/velaris/manifesto.png",
-    toolbarSrc: "/images/cabeceraImagenMini.png",
-    titleIconSrc: "/icons/iconoFoto.png",
-  },
-
-  "velaris-map": {
-    id: "velaris-map-window",
-    title: "almacen.png",
-    type: "document",
-    left: 390,
-    top: 20,
-    width: 450,
-    height: 600,
-    fileType: "image",
-    imageSrc: "/projects/velaris/mapaAlmacen.png",
     toolbarSrc: "/images/cabeceraImagenMini.png",
     titleIconSrc: "/icons/iconoFoto.png",
   },

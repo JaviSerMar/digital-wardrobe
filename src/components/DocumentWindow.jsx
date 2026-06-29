@@ -28,6 +28,17 @@ function DocumentWindow({
     },
   ];
 
+  const opencvGalleryImages = [
+    {
+      src: "/projects/velaris/openCV1.png",
+      alt: "Pipeline de visión OpenCV con puerta abierta detectada",
+    },
+    {
+      src: "/projects/velaris/openCV2.png",
+      alt: "Pipeline de visión OpenCV con puerta cerrada sin alertas",
+    },
+  ];
+
   return (
     <div className="document-window-content">
       <DocumentHeader
@@ -51,13 +62,25 @@ function DocumentWindow({
         className={`document-body ${
           window.id === "skills-file-window" ||
           window.id === "velaris-readme-window" ||
+          window.id === "velaris-info-window" ||
           window.id === "velaris-stack-window" ||
+          window.id === "velaris-database-window" ||
+          window.id === "velaris-opencv-info-window" ||
           window.id === "actualmente-file-window" ||
           window.id === "aprendizaje-file-window" ||
           window.id === "workflow-file-window" ||
           window.id === "email-file-window" ||
           window.fileType === "image"
             ? "document-body-no-scroll"
+            : ""
+        } ${
+          window.id === "velaris-info-window"
+            ? "velaris-info-body"
+            : ""
+        } ${
+          window.id === "velaris-database-window" ||
+          window.id === "velaris-opencv-info-window"
+            ? "velaris-detail-body"
             : ""
         } ${
           window.fileType === "image"
@@ -193,6 +216,41 @@ function DocumentWindow({
           </article>
         )}
 
+        {window.id === "velaris-info-window" && (
+          <article className="velaris-info-content">
+            <div className="velaris-info-image-wrapper">
+              <img
+                className="velaris-info-image"
+                src="/projects/velaris/velarisReadme.png"
+                alt="Robot Velaris patrullando un almacén"
+                draggable="false"
+              />
+            </div>
+
+            <div className="velaris-info-text">
+              <p>
+                VELARIS surgió para integrar distintas áreas del
+                grado en un único sistema. El desarrollo avanzó
+                desde la simulación y el movimiento básico del robot
+                hasta la navegación autónoma, la conexión con la
+                interfaz web, la captura de imágenes y la detección
+                de puertas. El resultado fue un sistema coordinado
+                capaz de patrullar y centralizar la supervisión del
+                entorno.
+              </p>
+
+              <p>
+                El principal reto fue integrar la simulación, la
+                navegación, la cámara y la web para que funcionaran
+                de forma coordinada. El resultado es un prototipo
+                ampliable que permite controlar patrullas, seguir al
+                robot y consultar las incidencias desde una única
+                interfaz.
+              </p>
+            </div>
+          </article>
+        )}
+
         {window.id === "velaris-stack-window" && (
           <pre className="document-code-text velaris-stack-text">{`      [ROBÓTICA]
         - Python
@@ -222,6 +280,94 @@ function DocumentWindow({
         - AWS Cloud
         - Preparación de dataset
         - Modelos de detección`}</pre>
+        )}
+
+        {window.id === "velaris-database-window" && (
+          <article className="velaris-detail-content">
+            <div className="velaris-detail-image-wrapper">
+              <img
+                className="velaris-detail-image"
+                src="/projects/velaris/baseDeDatosRobotica.png"
+                alt="Diagrama de base de datos de Velaris"
+                draggable="false"
+              />
+            </div>
+
+            <div className="velaris-detail-text">
+              <p>
+                La base de datos se diseñó para centralizar
+                la información generada por el sistema. Su
+                estructura relaciona los usuarios con los
+                robots y permite almacenar patrullas,
+                horarios, puntos de recorrido, conexiones
+                con ROS, detecciones y alertas.
+              </p>
+
+              <p>
+                Este modelo permite conservar el historial
+                de actividad del robot y relacionar cada
+                incidencia con su patrulla, posición y
+                momento de detección. De esta forma, la
+                interfaz puede consultar la información
+                necesaria para mostrar el estado del sistema
+                y revisar los eventos registrados durante la
+                vigilancia.
+              </p>
+            </div>
+          </article>
+        )}
+
+        {window.id === "velaris-opencv-info-window" && (
+          <article className="velaris-detail-content velaris-opencv-content">
+            <section className="velaris-opencv-gallery">
+              {opencvGalleryImages.map((image, index) => (
+                <button
+                  className="velaris-opencv-gallery-item"
+                  type="button"
+                  key={image.src}
+                  onPointerDown={(event) => {
+                    event.stopPropagation();
+                  }}
+                  onClick={() => {
+                    onOpenImageViewer(
+                      opencvGalleryImages,
+                      index
+                    );
+                  }}
+                  aria-label={`Ampliar imagen ${
+                    index + 1
+                  } de OpenCV`}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    draggable="false"
+                  />
+                </button>
+              ))}
+            </section>
+
+            <div className="velaris-detail-text">
+              <p>
+                OpenCV se utilizó para capturar y procesar
+                las imágenes obtenidas durante las
+                patrullas. A partir de la imagen original
+                se generaron distintas versiones
+                procesadas, como escala de grises y
+                detección de bordes, que facilitaron el
+                análisis visual del entorno.
+              </p>
+
+              <p>
+                Este procesamiento sirvió como base para
+                detectar puertas y registrar posibles
+                incidencias. Las capturas podían
+                consultarse desde el panel web, conectando
+                la visión artificial con el sistema de
+                supervisión de VELARIS.
+              </p>
+            </div>
+          </article>
         )}
 
         {window.id === "actualmente-file-window" && (

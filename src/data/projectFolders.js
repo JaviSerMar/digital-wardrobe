@@ -41,18 +41,11 @@ export const imageGalleries = {
   },
 };
 
-
 export const projectFolderScreens = {
   velaris: {
     title: "velaris",
     path: "proyectos / velaris",
     items: [
-      {
-        id: "velaris-info",
-        label: "README.txt",
-        icon: "/icons/archivoTxt.png",
-        openWindowKey: "velaris-info",
-      },
       {
         id: "velaris-readme",
         label: "VELARIS.txt",
@@ -60,10 +53,28 @@ export const projectFolderScreens = {
         openWindowKey: "velaris-readme",
       },
       {
+        id: "velaris-info",
+        label: "README.txt",
+        icon: "/icons/archivoTxt.png",
+        openWindowKey: "velaris-info",
+      },
+      {
         id: "velaris-stack",
         label: "tecnologias.txt",
         icon: "/icons/archivoTxt.png",
         openWindowKey: "velaris-stack",
+      },
+      {
+        id: "velaris-database",
+        label: "database.txt",
+        icon: "/icons/archivoTxt.png",
+        openWindowKey: "velaris-database",
+      },
+      {
+        id: "velaris-opencv-info",
+        label: "openCV.txt",
+        icon: "/icons/archivoTxt.png",
+        openWindowKey: "velaris-opencv-info",
       },
       {
         id: "velaris-app",
@@ -76,12 +87,6 @@ export const projectFolderScreens = {
         label: "manifesto.png",
         icon: "/icons/iconoFoto.png",
         openWindowKey: "velaris-manifesto",
-      },
-      {
-        id: "velaris-map",
-        label: "almacen.png",
-        icon: "/icons/iconoFoto.png",
-        openWindowKey: "velaris-map",
       },
       {
         id: "velaris-media",
